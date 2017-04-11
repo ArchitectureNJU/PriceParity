@@ -204,3 +204,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+.idea/
+priceparity.iml
