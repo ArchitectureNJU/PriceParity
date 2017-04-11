@@ -1,0 +1,9 @@
+spring:
+  session:
+    store-type: hash_map
+---
+elasticsearch:
+  cluster: elasticsearch-price-parity
+  hosts:
+    - 10.105.36.220
+    - 10.105.239.92
