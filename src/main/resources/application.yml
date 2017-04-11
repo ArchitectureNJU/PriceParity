@@ -7,3 +7,12 @@ elasticsearch:
   hosts:
     - 10.105.36.220
     - 10.105.239.92
+#server:
+#  port: 1111
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url.defaultZone: http://localhost:${server.port}/eureka/
+
+
