@@ -2,6 +2,12 @@ package architecture.dao.impl;
 
 import architecture.dao.CommodityDao;
 import architecture.entity.CommodityEntity;
+import architecture.jest.ApiIndex;
+import architecture.jest.ClientPool;
+import architecture.jest.DocumentApi;
+import architecture.jest.JsonMapping;
+import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.client.Client;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,7 +26,9 @@ public class CommodityDaoImpl implements CommodityDao {
      */
     @Override
     public CommodityEntity findById(int id) {
-        return null;
+        Client client = ClientPool.instance().getClient();
+        GetResponse response = DocumentApi.get(client,new ApiIndex("price_parity","commodity",id+"",null));
+        return (CommodityEntity) JsonMapping.toObject(response.getSourceAsString(),CommodityEntity.class);
     }
 
     /**
