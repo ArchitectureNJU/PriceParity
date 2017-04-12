@@ -10,6 +10,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class BidRankEntity {
-    private String commodityMark;
+    private long commodityId;
     private double money;
 }

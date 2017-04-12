@@ -12,7 +12,6 @@ import java.util.List;
  */
 @Data
 public class CommodityEntity {
-    private int id;
     private String name;
     private double price;
     private String summary;

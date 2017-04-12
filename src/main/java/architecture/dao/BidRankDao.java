@@ -1,5 +1,6 @@
 package architecture.dao;
 
+import architecture.bean.BidRankBean;
 import architecture.entity.BidRankEntity;
 
 import java.util.List;
@@ -13,21 +14,21 @@ public interface BidRankDao {
      * Find all bid rank info
      * @return list of bid rank info
      */
-    List<BidRankEntity> findAll();
+    List<BidRankBean> findAll();
 
     /**
      * find info by key word
      * @param keyword commodity key word
      * @return list of bid rank info
      */
-    List<BidRankEntity> findByKeyWord(String keyword);
+    List<BidRankBean> findByKeyWord(String keyword);
 
     /**
      * Create bid rank info
      * @param bidRankEntity entity to be created
      * @return created entity with document id
      */
-    BidRankEntity create(BidRankEntity bidRankEntity);
+    BidRankBean create(BidRankEntity bidRankEntity);
 
     /**
      * Update bid rank info
@@ -35,5 +36,5 @@ public interface BidRankDao {
      *                      MUST with document id
      * @return updated entity
      */
-    BidRankEntity save(BidRankEntity bidRankEntity);
+    BidRankBean save(BidRankBean bidRankEntity);
 }
