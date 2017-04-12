@@ -1,7 +1,7 @@
 package architecture.dao.impl;
 
+import architecture.bean.CommodityBean;
 import architecture.dao.CommodityDao;
-import architecture.entity.CommodityEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,10 +16,10 @@ public class CommodityDaoImpl implements CommodityDao {
      * Get detail info of a commodity by document id
      *
      * @param id id of DOCUMENT
-     * @return {@link CommodityEntity}
+     * @return {@link CommodityBean}
      */
     @Override
-    public CommodityEntity findById(int id) {
+    public CommodityBean findById(int id) {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class CommodityDaoImpl implements CommodityDao {
      * if keyword is null or empty, the list will be sorted by updated time.
      */
     @Override
-    public List<CommodityEntity> findByKeyWord(List<String> keyword, int offset, int limit) {
+    public List<CommodityBean> findByKeyWord(List<String> keyword, int offset, int limit) {
         return null;
     }
 
@@ -45,7 +45,7 @@ public class CommodityDaoImpl implements CommodityDao {
      * @return updated entity
      */
     @Override
-    public CommodityEntity save(CommodityEntity commodityEntity) {
+    public CommodityBean save(CommodityBean commodityEntity) {
         return null;
     }
 
@@ -56,7 +56,7 @@ public class CommodityDaoImpl implements CommodityDao {
      * @return deleted commodity
      */
     @Override
-    public CommodityEntity delete(int id) {
+    public CommodityBean delete(int id) {
         return null;
     }
 }
