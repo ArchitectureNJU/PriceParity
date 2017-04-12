@@ -199,10 +199,12 @@ transaction-logs/*
 
 ### NetBeans ###
 nbproject/private/
-build/
 nbbuild/
 dist/
 nbdist/
 .nb-gradle/
 .idea/
 priceparity.iml
+
+# node_modules
+src/main/resources/node_modules
