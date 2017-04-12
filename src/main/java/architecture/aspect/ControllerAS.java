@@ -27,7 +27,6 @@ public class ControllerAS {
 
 
     private static Logger logger=Logger.getLogger(ControllerAS.class);
-    @NotBlank
     private boolean debug;
     @Pointcut(value = "execution(* architecture.controller..*.*(..))")
     public void anyPublicMethod(){

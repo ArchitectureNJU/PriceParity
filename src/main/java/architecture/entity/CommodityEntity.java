@@ -2,7 +2,9 @@ package architecture.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +14,15 @@ import java.util.List;
  */
 @Data
 public class CommodityEntity {
+<<<<<<<
+
+=======
+//    @NotNull
+    private int id;
+//    @NotEmpty
+>>>>>>>
     private String name;
+
     private double price;
     private String summary;
     private String description;

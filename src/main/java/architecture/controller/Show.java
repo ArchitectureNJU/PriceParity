@@ -2,6 +2,7 @@ package architecture.controller;
 
 import architecture.dao.CommodityDao;
 import architecture.entity.CommodityEntity;
+import architecture.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller("/commodity")
 public class Show {
     @Autowired
-    CommodityDao commodityDao;
+    CommodityService commodityService;
 
 
     @RequestMapping(value = "info",method = RequestMethod.GET)
     public String info(@RequestParam(value = "id")int id){
-        CommodityEntity ce=commodityDao.findById(id);
+        CommodityEntity ce=commodityService.find(id);
         return "";
     }
 }
