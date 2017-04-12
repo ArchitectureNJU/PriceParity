@@ -1,5 +1,6 @@
-package architecture.jest;
+package architecture.jest.client;
 
+import architecture.jest.ApiIndex;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.delete.DeleteResponse;
@@ -14,6 +15,7 @@ import java.util.List;
 
 /**
  * Standard document operation
+ * @deprecated
  * @author cuihao
  */
 public class DocumentApi {

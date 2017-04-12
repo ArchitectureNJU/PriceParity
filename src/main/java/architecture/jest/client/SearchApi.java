@@ -1,5 +1,6 @@
-package architecture.jest;
+package architecture.jest.client;
 
+import architecture.jest.ApiIndex;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
@@ -9,6 +10,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 
 /**
  * elastic search api
+ * @deprecated
  * @author cuihao
  */
 public class SearchApi {

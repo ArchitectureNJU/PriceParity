@@ -5,5 +5,18 @@ spring:
 elasticsearch:
   cluster: elasticsearch-price-parity
   hosts:
-    - 10.105.36.220
-    - 10.105.239.92
+    - http://123.206.103.124:9200
+    - http://115.159.143.242:9200
+---
+system:
+  debug: false
+
+#server:
+#  port: 1111
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url.defaultZone: http://localhost:${server.port}/eureka/
+
+
