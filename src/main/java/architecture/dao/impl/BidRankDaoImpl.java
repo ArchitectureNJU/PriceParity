@@ -1,5 +1,6 @@
 package architecture.dao.impl;
 
+import architecture.bean.BidRankBean;
 import architecture.dao.BidRankDao;
 import architecture.entity.BidRankEntity;
 import org.springframework.stereotype.Repository;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * bid rank dao impl
+ * Bid rank dao impl
  * @author cuihao
  */
 @Repository
@@ -18,7 +19,7 @@ public class BidRankDaoImpl implements BidRankDao {
      * @return list of bid rank info
      */
     @Override
-    public List<BidRankEntity> findAll() {
+    public List<BidRankBean> findAll() {
         return null;
     }
 
@@ -29,7 +30,7 @@ public class BidRankDaoImpl implements BidRankDao {
      * @return list of bid rank info
      */
     @Override
-    public List<BidRankEntity> findByKeyWord(String keyword) {
+    public List<BidRankBean> findByKeyWord(String keyword) {
         return null;
     }
 
@@ -40,7 +41,7 @@ public class BidRankDaoImpl implements BidRankDao {
      * @return created entity with document id
      */
     @Override
-    public BidRankEntity create(BidRankEntity bidRankEntity) {
+    public BidRankBean create(BidRankEntity bidRankEntity) {
         return null;
     }
 
@@ -52,7 +53,7 @@ public class BidRankDaoImpl implements BidRankDao {
      * @return updated entity
      */
     @Override
-    public BidRankEntity save(BidRankEntity bidRankEntity) {
+    public BidRankBean save(BidRankBean bidRankEntity) {
         return null;
     }
 }
