@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,11 +20,7 @@ import java.util.stream.Collectors;
  * Connection pool
  * @author cuihao
  */
-@Component
 public class ClientPool {
-
-    @Resource
-    private ElasticConfig elasticConfig;
 
     /**
      * store client buffer
@@ -44,16 +41,15 @@ public class ClientPool {
 
     private ClientPool() {
         Settings settings = Settings.builder()
-                .put(CLUSTER_TAG,elasticConfig.getCluster())
+                .put(CLUSTER_TAG,"elasticsearch-price-parity")
                 .put(SNIFF_TAG,true).build();
-        List<InetSocketTransportAddress> addresses = elasticConfig.getHosts().stream()
-                .map(h -> {
-                    try {
-                        return new InetSocketTransportAddress(InetAddress.getByName(h), PORT);
-                    } catch (UnknownHostException e) {
-                        return null;
-                    }
-                }).collect(Collectors.toList());
+        List<InetSocketTransportAddress> addresses = new ArrayList<>();
+        try {
+            addresses.add(new InetSocketTransportAddress(InetAddress.getByName("123.206.103.124"),PORT));
+            addresses.add(new InetSocketTransportAddress(InetAddress.getByName("115.159.143.242"),PORT));
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         addClient(settings,addresses);
     }
 
@@ -62,7 +58,7 @@ public class ClientPool {
      * @return default elastic transport client
      */
     public Client getClient() {
-        return getClient(elasticConfig.getCluster());
+        return getClient("elasticsearch-price-parity");
     }
 
     /**
