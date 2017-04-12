@@ -1,13 +1,10 @@
 package architecture.jest;
 
 import architecture.PriceParityApplicationTests;
+import architecture.jest.client.ClientPool;
 import org.elasticsearch.client.Client;
 import org.junit.Assert;
 import org.junit.Test;
-
-import javax.annotation.Resource;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by cuihao on 2017/4/11.

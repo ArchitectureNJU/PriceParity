@@ -1,23 +1,20 @@
-package architecture.jest;
+package architecture.jest.client;
 
-import architecture.config.ElasticConfig;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
  * Connection pool
+ * @deprecated
  * @author cuihao
  */
 public class ClientPool {
