@@ -12,4 +12,6 @@ public class Index {
     public String index(){
         return "index";
     }
+    @RequestMapping("root/login")
+    public String rootLogin(){return "login";}
 }

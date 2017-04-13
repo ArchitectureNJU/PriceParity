@@ -29,8 +29,8 @@ public class Search {
             Model model
     ){
 
-        Iterator<CommodityBean> it=searchService.search(key, page, split);
-        model.addAttribute("beanIterator",it);
-        return "";
+        List<CommodityBean> it=searchService.search(key, page, split);
+        model.addAttribute("goodsList",it);
+        return "list";
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by cxworks on 17-4-13.
@@ -30,12 +31,12 @@ public class RootWord {
             Model model
     ){
         common(model,offset,size);
-        return "";
+        return "maskword-manage";
     }
 
     private void common(Model model,int offset,int size){
-        Iterator<BlockWordBean> it=manageService.getBlockWord(offset,size);
-        model.addAttribute("blockWord",it);
+        List<BlockWordBean> it=manageService.getBlockWord(offset,size);
+        model.addAttribute("maskword",it);
     }
     @RequestMapping(value = "update",method = RequestMethod.POST)
     public String update(
@@ -43,7 +44,7 @@ public class RootWord {
             Model model){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "maskword-manage";
     }
     @RequestMapping(value = "add",method = RequestMethod.POST)
     public String add(
@@ -52,12 +53,12 @@ public class RootWord {
     ){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "maskword-manage";
     }
     @RequestMapping(value = "delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
                 manageService.deleteWord(id);
                 common(model,0,10);
-                return "";
+                return "maskword-manage";
     }
 }

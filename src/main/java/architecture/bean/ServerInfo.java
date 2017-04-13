@@ -15,6 +15,7 @@ public class ServerInfo {
     long freeMemory;
     long totalMemory;
     long maxMemory;
+    boolean running;
 
 
     public ServerInfo(){
@@ -25,6 +26,7 @@ public class ServerInfo {
         maxMemory=runtime.maxMemory();
         try {
             String ip=Inet4Address.getLocalHost().getHostAddress();
+            running=true;
             this.ip=ip;
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -39,6 +41,7 @@ public class ServerInfo {
         req_payload.put("totalMemory",totalMemory);
         req_payload.put("maxMemory",maxMemory);
         req_payload.put("avaliableProcessors",availableProcessors);
+        req_payload.put("state",running);
         return req_payload;
     }
 
@@ -50,6 +53,7 @@ public class ServerInfo {
                 ", freeMemory=" + freeMemory +
                 ", totalMemory=" + totalMemory +
                 ", maxMemory=" + maxMemory +
+                ", running=" + running +
                 '}';
     }
 

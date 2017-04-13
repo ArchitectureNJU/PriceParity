@@ -23,7 +23,7 @@ public class Show {
     @RequestMapping(value = "info",method = RequestMethod.GET)
     public String info(@RequestParam(value = "id")String id, Model model){
         CommodityBean ce=commodityService.find(id);
-        model.addAttribute("commodityBean",ce);
-        return "";
+        model.addAttribute("goods",ce);
+        return "details";
     }
 }

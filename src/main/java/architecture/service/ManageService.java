@@ -3,7 +3,6 @@ package architecture.service;
 import architecture.bean.*;
 import architecture.entity.*;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ import java.util.List;
 public interface ManageService {
 
     //block ip
-    public Iterator<BlockIpBean> getBlockIP(int offset, int size);
+    public List<BlockIpBean> getBlockIP(int offset, int size);
 
     public BlockIpBean create(BlockIpEntity blockIpBean);
 
@@ -22,7 +21,7 @@ public interface ManageService {
 
 
     //block word
-    Iterator<BlockWordBean> getBlockWord(int offset, int size);
+    List<BlockWordBean> getBlockWord(int offset, int size);
 
 
     BlockWordBean create(BlockWordEntity entity);
@@ -34,7 +33,7 @@ public interface ManageService {
     BlockWordBean deleteWord(String id);
 
     //synonym???
-    Iterator<SynonymBean> getSynonym(int offset, int size);
+    List<SynonymBean> getSynonym(int offset, int size);
 
     SynonymBean create(SynonymEntity entity);
 
@@ -45,7 +44,7 @@ public interface ManageService {
     SynonymBean deleteSynonym(String id);
 
     //bidrank
-    Iterator<BidRankBean> getBidRank(int offset, int size);
+    List<BidRankBean> getBidRank(int offset, int size);
 
     BidRankBean create(BidRankEntity bidRankEntity);
 
@@ -55,7 +54,7 @@ public interface ManageService {
 
 
     //blockrecord
-    Iterator<BlockRecordBean> getBlockRecord(int offset, int size);
+    List<BlockRecordBean> getBlockRecord(int offset, int size);
 
     BlockRecordBean create(BlockRecordEntity entity);
 

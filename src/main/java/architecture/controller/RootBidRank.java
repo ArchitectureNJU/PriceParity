@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by cxworks on 17-4-13.
@@ -29,13 +30,13 @@ public class RootBidRank {
             Model model
     ){
        common(model, offset, size);
-        return "";
+        return "bid-manage";
     }
 
 
     private void common(Model model,int offset,int size){
-        Iterator<BidRankBean> it=manageService.getBidRank(offset,size);
-        model.addAttribute("bidRank",it);
+        List<BidRankBean> it=manageService.getBidRank(offset,size);
+        model.addAttribute("bidList",it);
     }
     @RequestMapping(value = "update",method = RequestMethod.POST)
     public String update(
@@ -43,7 +44,7 @@ public class RootBidRank {
             Model model){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "bid-manage";
     }
     @RequestMapping(value = "add",method = RequestMethod.POST)
     public String add(
@@ -52,12 +53,12 @@ public class RootBidRank {
     ){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "bid-manage";
     }
     @RequestMapping(value = "delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteBidRank(id);
         common(model,0,10);
-        return "";
+        return "bid-manage";
     }
 }

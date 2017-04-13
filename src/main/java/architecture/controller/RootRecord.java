@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by cxworks on 17-4-13.
@@ -28,13 +29,13 @@ public class RootRecord {
             Model model
     ){
         common(model, offset, size);
-        return "";
+        return "intercept-records";
     }
 
 
     private void common(Model model,int offset,int size){
-        Iterator<BlockRecordBean> it=manageService.getBlockRecord(offset,size);
-        model.addAttribute("blockrecord",it);
+        List<BlockRecordBean> it=manageService.getBlockRecord(offset,size);
+        model.addAttribute("interceptList",it);
     }
     @RequestMapping(value = "update",method = RequestMethod.POST)
     public String update(
@@ -42,7 +43,7 @@ public class RootRecord {
             Model model){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "intercept-records";
     }
     @RequestMapping(value = "add",method = RequestMethod.POST)
     public String add(
@@ -51,7 +52,7 @@ public class RootRecord {
     ){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "intercept-records";
     }
 
 }

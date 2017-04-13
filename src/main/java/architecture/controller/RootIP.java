@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by cxworks on 17-4-12.
@@ -39,7 +40,7 @@ public class RootIP {
 
 
     private void common(Model model,int offset,int size){
-        Iterator<BlockIpBean> it=manageService.getBlockIP(offset,size);
+        List<BlockIpBean> it=manageService.getBlockIP(offset,size);
         model.addAttribute("blockip",it);
     }
     @RequestMapping(value = "update",method = RequestMethod.POST)

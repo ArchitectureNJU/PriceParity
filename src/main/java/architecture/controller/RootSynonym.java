@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by cxworks on 17-4-13.
@@ -24,8 +25,8 @@ public class RootSynonym {
     ManageService manageService;
 
     private void common(Model model,int offset,int size){
-        Iterator<SynonymBean> it=manageService.getSynonym(offset,size);
-        model.addAttribute("synonym",it);
+        List<SynonymBean> it=manageService.getSynonym(offset,size);
+        model.addAttribute("synList",it);
     }
 
     @RequestMapping(value = "",method = RequestMethod.GET)
@@ -35,7 +36,7 @@ public class RootSynonym {
             Model model
     ){
         common(model, offset, size);
-        return "";
+        return "syn-manage";
     }
 
 
@@ -46,7 +47,7 @@ public class RootSynonym {
             Model model){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "syn-manage";
     }
     @RequestMapping(value = "add",method = RequestMethod.POST)
     public String add(
@@ -55,12 +56,12 @@ public class RootSynonym {
     ){
         manageService.save(bean);
         common(model,0,10);
-        return "";
+        return "syn-manage";
     }
     @RequestMapping(value = "delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteSynonym(id);
         common(model,0,10);
-        return "";
+        return "syn-manage";
     }
 }

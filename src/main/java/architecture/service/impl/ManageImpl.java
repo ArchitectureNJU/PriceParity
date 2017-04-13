@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -29,7 +28,7 @@ public class ManageImpl implements ManageService {
     BlockRecordDao blockRecordDao;
 
     @Override
-    public Iterator<BlockIpBean> getBlockIP(int offset, int size) {
+    public List<BlockIpBean> getBlockIP(int offset, int size) {
         return blockIpDao.findAll(offset, size).iterator();
     }
 
@@ -49,7 +48,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public Iterator<BlockWordBean> getBlockWord(int offset, int size) {
+    public List<BlockWordBean> getBlockWord(int offset, int size) {
         return blockWordDao.findAll(offset, size).iterator();
     }
 
@@ -69,7 +68,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public Iterator<SynonymBean> getSynonym(int offset, int size) {
+    public List<SynonymBean> getSynonym(int offset, int size) {
         return synonymDao.findAll(offset, size).iterator();
     }
 
@@ -89,7 +88,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public Iterator<BidRankBean> getBidRank(int offset, int size) {
+    public List<BidRankBean> getBidRank(int offset, int size) {
         return bidRankDao.findAll(offset, size).iterator();
     }
 
@@ -109,7 +108,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public Iterator<BlockRecordBean> getBlockRecord(int offset, int size) {
+    public List<BlockRecordBean> getBlockRecord(int offset, int size) {
         return blockRecordDao.findAll(offset, size).iterator();
     }
 
