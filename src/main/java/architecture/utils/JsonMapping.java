@@ -15,7 +15,7 @@ public class JsonMapping {
         try {
             return mapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            return "{}";
+            return "";
         }
     }
     public static Object toObject(String json, Class<?> clazz) {

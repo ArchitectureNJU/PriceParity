@@ -14,7 +14,7 @@ public interface BidRankDao {
      * Find all bid rank info
      * @return list of bid rank info
      */
-    List<BidRankBean> findAll();
+    List<BidRankBean> findAll(int offset, int size);
 
     /**
      * find info by key word

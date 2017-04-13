@@ -19,7 +19,7 @@ public class BidRankDaoImpl implements BidRankDao {
      * @return list of bid rank info
      */
     @Override
-    public List<BidRankBean> findAll() {
+    public List<BidRankBean> findAll(int offset, int size) {
         return null;
     }
 
