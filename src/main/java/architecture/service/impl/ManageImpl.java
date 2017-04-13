@@ -1,17 +1,8 @@
 package architecture.service.impl;
 
-import architecture.bean.BidRankBean;
-import architecture.bean.BlockIpBean;
-import architecture.bean.BlockWordBean;
-import architecture.bean.SynonymBean;
-import architecture.dao.BidRankDao;
-import architecture.dao.BlockIpDao;
-import architecture.dao.BlockWordDao;
-import architecture.dao.SynonymDao;
-import architecture.entity.BidRankEntity;
-import architecture.entity.BlockRecordEntity;
-import architecture.entity.BlockWordEntity;
-import architecture.entity.SynonymEntity;
+import architecture.bean.*;
+import architecture.dao.*;
+import architecture.entity.*;
 import architecture.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,13 +25,16 @@ public class ManageImpl implements ManageService {
     BidRankDao bidRankDao;
     @Autowired
     SynonymDao synonymDao;
+    @Autowired
+    BlockRecordDao blockRecordDao;
+
     @Override
     public Iterator<BlockIpBean> getBlockIP(int offset, int size) {
         return blockIpDao.findAll(offset, size).iterator();
     }
 
     @Override
-    public BlockIpBean create(BlockWordEntity blockIpBean) {
+    public BlockIpBean create(BlockIpEntity blockIpBean) {
         return blockIpDao.create(blockIpBean);
     }
 
@@ -50,7 +44,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public BlockIpBean deleteIP(long id) {
+    public BlockIpBean deleteIP(String id) {
         return blockIpDao.delete(id);
     }
 
@@ -60,7 +54,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public BlockWordBean create(BlockRecordEntity entity) {
+    public BlockWordBean create(BlockWordEntity entity) {
         return blockWordDao.create(entity);
     }
 
@@ -70,7 +64,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public BlockWordBean deleteWord(long id) {
+    public BlockWordBean deleteWord(String id) {
         return blockWordDao.delete(id);
     }
 
@@ -90,7 +84,7 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public SynonymBean delete(long id) {
+    public SynonymBean deleteSynonym(String id) {
         return synonymDao.delete(id);
     }
 
@@ -107,5 +101,25 @@ public class ManageImpl implements ManageService {
     @Override
     public BidRankBean save(BidRankBean bidRankEntity) {
         return bidRankDao.save(bidRankEntity);
+    }
+
+    @Override
+    public Iterator<BlockRecordBean> findAll(int offset, int size) {
+        return blockRecordDao.findAll(offset, size).iterator();
+    }
+
+    @Override
+    public BlockRecordBean create(BlockRecordEntity entity) {
+        return blockRecordDao.create(entity);
+    }
+
+    @Override
+    public BlockRecordBean save(BlockRecordBean bean) {
+        return blockRecordDao.save(bean);
+    }
+
+    @Override
+    public BlockRecordBean deleteRecord(String id) {
+        return blockRecordDao.delete(id);
     }
 }

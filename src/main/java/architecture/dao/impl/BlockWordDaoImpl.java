@@ -2,7 +2,7 @@ package architecture.dao.impl;
 
 import architecture.bean.BlockWordBean;
 import architecture.dao.BlockWordDao;
-import architecture.entity.BlockRecordEntity;
+import architecture.entity.BlockWordEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class BlockWordDaoImpl implements BlockWordDao {
      * @return {@link BlockWordBean}
      */
     @Override
-    public BlockWordBean create(BlockRecordEntity entity) {
+    public BlockWordBean create(BlockWordEntity entity) {
         return null;
     }
 

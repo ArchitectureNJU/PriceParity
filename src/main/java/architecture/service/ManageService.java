@@ -1,13 +1,7 @@
 package architecture.service;
 
-import architecture.bean.BidRankBean;
-import architecture.bean.BlockIpBean;
-import architecture.bean.BlockWordBean;
-import architecture.bean.SynonymBean;
-import architecture.entity.BidRankEntity;
-import architecture.entity.BlockRecordEntity;
-import architecture.entity.BlockWordEntity;
-import architecture.entity.SynonymEntity;
+import architecture.bean.*;
+import architecture.entity.*;
 
 import java.util.Iterator;
 import java.util.List;
@@ -20,24 +14,24 @@ public interface ManageService {
     //block ip
     public Iterator<BlockIpBean> getBlockIP(int offset, int size);
 
-    public BlockIpBean create(BlockWordEntity blockIpBean);
+    public BlockIpBean create(BlockIpEntity blockIpBean);
 
     BlockIpBean save(BlockIpBean bean);
 
-    BlockIpBean deleteIP(long id);
+    BlockIpBean deleteIP(String id);
 
 
     //block word
     Iterator<BlockWordBean> getBlockWord(int offset, int size);
 
 
-    BlockWordBean create(BlockRecordEntity entity);
+    BlockWordBean create(BlockWordEntity entity);
 
 
     BlockWordBean save(BlockWordBean bean);
 
 
-    BlockWordBean deleteWord(long id);
+    BlockWordBean deleteWord(String id);
 
     //synonym???
     Iterator<SynonymBean> getSynonym(int offset, int size);
@@ -48,7 +42,7 @@ public interface ManageService {
     SynonymBean save(SynonymBean bean);
 
 
-    SynonymBean delete(long id);
+    SynonymBean deleteSynonym(String id);
 
     //bidrank
     Iterator<BidRankBean> getBidRank(int offset, int size);
@@ -56,4 +50,15 @@ public interface ManageService {
     BidRankBean create(BidRankEntity bidRankEntity);
 
     BidRankBean save(BidRankBean bidRankEntity);
+
+    //blockrecord
+    Iterator<BlockRecordBean> findAll(int offset, int size);
+
+    BlockRecordBean create(BlockRecordEntity entity);
+
+    BlockRecordBean save(BlockRecordBean bean);
+
+    BlockRecordBean deleteRecord(String id);
+
+
 }

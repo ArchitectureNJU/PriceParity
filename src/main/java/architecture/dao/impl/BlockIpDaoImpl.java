@@ -2,7 +2,7 @@ package architecture.dao.impl;
 
 import architecture.bean.BlockIpBean;
 import architecture.dao.BlockIpDao;
-import architecture.entity.BlockWordEntity;
+import architecture.entity.BlockIpEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,11 +37,11 @@ public class BlockIpDaoImpl implements BlockIpDao {
     /**
      * Create block ip
      *
-     * @param entity entity without ip
-     * @return {@link BlockIpBean}
+     *
+     * @param blockIpEntity@return {@link BlockIpBean}
      */
     @Override
-    public BlockIpBean create(BlockWordEntity entity) {
+    public BlockIpBean create(BlockIpEntity blockIpEntity) {
         return null;
     }
 
