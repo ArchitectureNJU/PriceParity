@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by cxworks on 17-4-12.
@@ -19,6 +22,9 @@ public class SearchImpl implements SearchService {
     CommodityDao commodityDao;
     @Override
     public Iterator<CommodityBean> search(String keyword, int offset, int limit) {
-        return commodityDao.findByKeyWord(keyword, offset, limit).iterator();
+        List<String> keywords=new ArrayList<>();
+        String[] keys=keyword.split("\\+");
+        keywords.addAll(Arrays.asList(keys));
+        return commodityDao.findByKeyWord(keywords, offset, limit).iterator();
     }
 }

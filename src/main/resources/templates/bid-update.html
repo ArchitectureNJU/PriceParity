@@ -13,11 +13,11 @@
       <form class="login-form" action="#">
         <div class="form-item">
           <label for="id">竞价商品ID</label>
-          <input id="id" name="id" type="text" placeholder="请输入竞价商品ID"/>
+          <input id="id" name="id" type="text" th:value="${goods.id}" placeholder="请输入竞价商品ID"/>
         </div>
         <div class="form-item">
           <label for="price">竞价商品ID</label>
-          <input id="price" name="price" type="text" placeholder="请输入竞价金额"/>
+          <input id="price" name="price" type="text" th:value="${goods.price}" placeholder="请输入竞价金额"/>
         </div>
         <div class="btn-block">
           <button type="submit" class="btn btn-primary btn-big">确认修改</button>

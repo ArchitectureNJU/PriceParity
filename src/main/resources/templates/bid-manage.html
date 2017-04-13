@@ -8,7 +8,7 @@
 
 <div class="container">
   <div class="wrapper manage-wrapper">
-    <nav th:replace="base/fragment::nav(0)"></nav>
+    <nav th:replace="base/fragment::nav(2)"></nav>
     <div class="content">
       <div class="card manage-card">
         <div class="title-block"><h3 class="title">竞价排序管理</h3>
@@ -23,8 +23,10 @@
           </tr>
           <tbody th:each="bid:${bidList}">
           <tr>
-            <td th:text="${bid.id}">苹果官方授权</td>
-            <td><a class="link" href="#">修改词组内容</a><a class="link" href="#">移除</a></td>
+            <td th:text="${bid.id}">1</td>
+            <td th:text="${bid.name}">Apple Watch</td>
+            <td th:text="${bid.price}">100</td>
+            <td><a class="link" href="#">修改竞价金额</a><a class="link" href="#">移除</a></td>
           </tr>
           </tbody>
         </table>

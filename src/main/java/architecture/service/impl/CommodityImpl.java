@@ -18,7 +18,7 @@ public class CommodityImpl implements CommodityService {
     @Autowired
     CommodityDao commodityDao;
     @Override
-    public CommodityBean find(int id) {
+    public CommodityBean find(String id) {
         return commodityDao.findById(id);
     }
 
