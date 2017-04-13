@@ -19,7 +19,7 @@ public class CommodityDaoImpl implements CommodityDao {
      * @return {@link CommodityBean}
      */
     @Override
-    public CommodityBean findById(int id) {
+    public CommodityBean findById(String id) {
         return null;
     }
 
@@ -56,7 +56,7 @@ public class CommodityDaoImpl implements CommodityDao {
      * @return deleted commodity
      */
     @Override
-    public CommodityBean delete(int id) {
+    public CommodityBean delete(String id) {
         return null;
     }
 }

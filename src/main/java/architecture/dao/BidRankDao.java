@@ -18,10 +18,10 @@ public interface BidRankDao {
 
     /**
      * find info by key word
-     * @param keyword commodity key word
-     * @return list of bid rank info
+     * @param id commodity id
+     * @return bid rank info
      */
-    List<BidRankBean> findByKeyWord(String keyword);
+    BidRankBean findById(String id);
 
     /**
      * Create bid rank info
@@ -37,4 +37,6 @@ public interface BidRankDao {
      * @return updated entity
      */
     BidRankBean save(BidRankBean bidRankEntity);
+
+    BidRankBean delete(String id);
 }

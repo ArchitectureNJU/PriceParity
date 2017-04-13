@@ -32,7 +32,7 @@ public class SynonymDaoImpl implements SynonymDao {
      * @return {@link SynonymBean}
      */
     @Override
-    public SynonymBean findById(long id) {
+    public SynonymBean findById(String id) {
         return null;
     }
 
@@ -65,7 +65,7 @@ public class SynonymDaoImpl implements SynonymDao {
      * @return {@link SynonymBean}
      */
     @Override
-    public SynonymBean delete(long id) {
+    public SynonymBean delete(String id) {
         return null;
     }
 }

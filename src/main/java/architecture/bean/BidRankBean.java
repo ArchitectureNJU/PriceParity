@@ -9,11 +9,11 @@ import org.springframework.beans.BeanUtils;
  */
 @Data
 public class BidRankBean {
-    private long id;
-    private long commodityId;
+    private String id;
+    private String commodityId;
     private double money;
 
-    public BidRankBean(long id, BidRankEntity entity) {
+    public BidRankBean(String id, BidRankEntity entity) {
         this.id = id;
         BeanUtils.copyProperties(entity,this);
     }

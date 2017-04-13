@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('错误……')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="frequent-block">
+      <h3>访问太频繁了喔，请稍后再试试…</h3>
+      <p>（快说你是不是机器人！？）</p>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

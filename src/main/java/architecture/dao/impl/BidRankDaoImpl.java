@@ -3,16 +3,21 @@ package architecture.dao.impl;
 import architecture.bean.BidRankBean;
 import architecture.dao.BidRankDao;
 import architecture.entity.BidRankEntity;
+import architecture.jest.BeanResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Bid rank dao impl
  * @author cuihao
  */
 @Repository
-public class BidRankDaoImpl implements BidRankDao {
+public class BidRankDaoImpl extends BaseDaoImpl<BidRankEntity> implements BidRankDao {
+
+    private final String TYPE_NAME = "bidRank";
+
     /**
      * Find all bid rank info
      *
@@ -20,18 +25,20 @@ public class BidRankDaoImpl implements BidRankDao {
      */
     @Override
     public List<BidRankBean> findAll(int offset, int size) {
-        return null;
+        return super.findAll(offset,size,TYPE_NAME, BidRankEntity.class).stream()
+                .map(result -> new BidRankBean(result.getId(), result.getData()))
+                .collect(Collectors.toList());
     }
 
     /**
      * find info by key word
      *
-     * @param keyword commodity key word
+     * @param id commodity id
      * @return list of bid rank info
      */
     @Override
-    public List<BidRankBean> findByKeyWord(String keyword) {
-        return null;
+    public BidRankBean findById(String id) {
+        return new BidRankBean(id,super.findById(id,TYPE_NAME, BidRankEntity.class));
     }
 
     /**
@@ -42,7 +49,8 @@ public class BidRankDaoImpl implements BidRankDao {
      */
     @Override
     public BidRankBean create(BidRankEntity bidRankEntity) {
-        return null;
+        BeanResult<BidRankEntity> result = super.create(bidRankEntity, TYPE_NAME, BidRankEntity.class);
+        return new BidRankBean(result.getId(), result.getData());
     }
 
     /**
@@ -54,6 +62,12 @@ public class BidRankDaoImpl implements BidRankDao {
      */
     @Override
     public BidRankBean save(BidRankBean bidRankEntity) {
-        return null;
+        return new BidRankBean(bidRankEntity.getId(),
+                super.update(new BidRankEntity(bidRankEntity),bidRankEntity.getId(),TYPE_NAME, BidRankEntity.class));
+    }
+
+    @Override
+    public BidRankBean delete(String id) {
+        return new BidRankBean(id, super.delete(id,TYPE_NAME, BidRankEntity.class));
     }
 }

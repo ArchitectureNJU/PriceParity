@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('添加屏蔽词')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="card single-card">
+      <h3 class="title">添加同义词组</h3>
+      <form class="login-form" action="#">
+        <div class="form-item">
+          <label for="syn">同义词组</label>
+          <textarea id="syn" name="syn" placeholder="请输入同义词组" th:text="${syn}"></textarea>
+        </div>
+        <div class="btn-block">
+          <button type="submit" class="btn btn-primary btn-big">添加</button>
+          <button type="button" class="btn btn-big">取消</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

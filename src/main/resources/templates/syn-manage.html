@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('同义词管理')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper manage-wrapper">
+    <nav th:replace="base/fragment::nav(0)"></nav>
+    <div class="content">
+      <div class="card manage-card">
+        <div class="title-block"><h3 class="title">同义词表管理</h3>
+          <button class="btn btn-primary">添加同义词组</button>
+        </div>
+        <table class="manage-table">
+          <tr>
+            <th>同义词组</th>
+            <th>操作</th>
+          </tr>
+          <tbody th:each="syn:${synList}">
+          <tr>
+            <td th:text="${syn.value}">苹果官方授权</td>
+            <td><a class="link" href="#">修改词组内容</a><a class="link" href="#">移除</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

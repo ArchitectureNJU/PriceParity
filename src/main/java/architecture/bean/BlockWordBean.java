@@ -10,11 +10,11 @@ import lombok.Data;
  */
 @Data
 public class BlockWordBean {
-    private long id;
+    private String id;
     private String keyWord;
     private String endTime;
 
-    public BlockWordBean(long id, BlockWordEntity entity) {
+    public BlockWordBean(String id, BlockWordEntity entity) {
         this.id = id;
         this.keyWord = entity.getKeyWord();
         this.endTime = DateUtils.longToStringFull(entity.getEndTime());

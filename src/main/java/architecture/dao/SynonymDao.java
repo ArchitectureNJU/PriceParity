@@ -23,7 +23,7 @@ public interface SynonymDao {
      * @param id id
      * @return {@link SynonymBean}
      */
-    SynonymBean findById(long id);
+    SynonymBean findById(String id);
 
     /**
      * Create synonym word
@@ -44,5 +44,5 @@ public interface SynonymDao {
      * @param id id
      * @return {@link SynonymBean}
      */
-    SynonymBean delete(long id);
+    SynonymBean delete(String id);
 }

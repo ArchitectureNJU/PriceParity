@@ -24,7 +24,7 @@ public interface BlockWordDao {
      * @param id id
      * @return {@link BlockWordBean}
      */
-    BlockWordBean findById(long id);
+    BlockWordBean findById(String id);
 
     /**
      * Create block word
@@ -45,5 +45,5 @@ public interface BlockWordDao {
      * @param id id
      * @return {@link BlockWordBean}
      */
-    BlockWordBean delete(long id);
+    BlockWordBean delete(String id);
 }

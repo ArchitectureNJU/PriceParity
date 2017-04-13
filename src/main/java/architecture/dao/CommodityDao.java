@@ -16,7 +16,7 @@ public interface CommodityDao {
      * @param id id of DOCUMENT
      * @return {@link CommodityBean}
      */
-    CommodityBean findById(int id);
+    CommodityBean findById(String id);
 
     /**
      * Core search method of commodities.
@@ -41,5 +41,5 @@ public interface CommodityDao {
      * @param id id
      * @return deleted commodity
      */
-    CommodityBean delete(int id);
+    CommodityBean delete(String id);
 }

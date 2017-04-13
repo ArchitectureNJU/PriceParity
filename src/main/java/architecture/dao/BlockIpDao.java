@@ -21,7 +21,7 @@ public interface BlockIpDao {
      * @param id id
      * @return {@link BlockIpBean}
      */
-    BlockIpBean findById(long id);
+    BlockIpBean findById(String id);
 
     /**
      * Create block ip
@@ -42,5 +42,5 @@ public interface BlockIpDao {
      * @param id id
      * @return deleted {@link BlockIpBean}
      */
-    BlockIpBean delete(long id);
+    BlockIpBean delete(String id);
 }

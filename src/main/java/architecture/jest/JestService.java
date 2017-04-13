@@ -82,7 +82,7 @@ public class JestService {
      * @param objs objs need to be added.
      * @return {@link BulkResult}
      */
-    public BulkResult index(JestClient jestClient, String indexName, String typeName, List<Object> objs) {
+    public BulkResult index(JestClient jestClient, String indexName, String typeName, List objs) {
 
         Bulk.Builder bulk = new Bulk.Builder().defaultIndex(indexName).defaultType(typeName);
         for (Object obj : objs) {
@@ -96,6 +96,28 @@ public class JestService {
             e.printStackTrace();
         }
         return br;
+    }
+
+    public DocumentResult index(JestClient jestClient, String indexName, String typeName, String id, Object object) {
+        Index index = new Index.Builder(object).index(indexName).type(typeName).id(id).build();
+        DocumentResult result = null;
+        try {
+            result = jestClient.execute(index);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public DocumentResult index(JestClient jestClient, String indexName, String typeName, Object object) {
+        Index index = new Index.Builder(object).index(indexName).type(typeName).build();
+        DocumentResult result = null;
+        try {
+            result = jestClient.execute(index);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**
@@ -152,10 +174,15 @@ public class JestService {
      * @param id document id
      * @return {@link JestClient}
      */
-    public JestResult get(JestClient jestClient, String indexName, String typeName, String id) throws Exception {
+    public JestResult get(JestClient jestClient, String indexName, String typeName, String id) {
 
         Get get = new Get.Builder(indexName, id).type(typeName).build();
-        return jestClient.execute(get);
+        try {
+            return jestClient.execute(get);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
