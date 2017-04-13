@@ -23,8 +23,10 @@
           </tr>
           <tbody th:each="bid:${bidList}">
           <tr>
-            <td th:text="${bid.id}">苹果官方授权</td>
-            <td><a class="link" href="#">修改词组内容</a><a class="link" href="#">移除</a></td>
+            <td th:text="${bid.id}">1</td>
+            <td th:text="${bid.name}">Apple Watch</td>
+            <td th:text="${bid.price}">100</td>
+            <td><a class="link" href="#">修改竞价金额</a><a class="link" href="#">移除</a></td>
           </tr>
           </tbody>
         </table>
