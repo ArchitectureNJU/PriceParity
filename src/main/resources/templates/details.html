@@ -8,7 +8,7 @@
   <div class="container">
     <div class="wrapper">
       <div class="brief">
-        <img src="/build/img/demo3.png" alt="" class="goods-img">
+        <img src="/static/img/demo3.png" th:src="@{/img/demo3.png}" alt="" class="goods-img">
         <div class="brief-text">
           <div class="goods-name"><h2 class="goods-name-text" th:text="${goods.name}">Apple Watch</h2><p class="price">$<span th:text="${goods.price}">120</span></p></div>
           <p class="description" th:text="${goods.description}">Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good.</p>
@@ -28,7 +28,7 @@
         </form>
         <div class="comments-list" th:each="comments:${commentsList}">
           <div class="comments-item">
-            <img src="/build/img/avatar1.png" alt="" class="avatar">
+            <img src="/static/img/avatar1.png" th:src="@{/img/avatar1.png}" alt="" class="avatar">
             <div class="comments-item-content">
               <p class="username" th:text="${comments.name}">小哥</p>
               <p class="comments-content" th:text="${comments.content}">这个东西好啊。真的啊，没骗你们啊，这个东西真的好好用啊。这个东西好啊。真的啊，没骗你们啊，这个东西真的好好用啊。这个东西好啊。真的啊，没骗你们啊，这个东西真的好好用啊。</p>
