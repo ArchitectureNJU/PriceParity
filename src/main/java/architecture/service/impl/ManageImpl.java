@@ -104,7 +104,12 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
-    public Iterator<BlockRecordBean> findAll(int offset, int size) {
+    public BidRankBean deleteBidRank(String id) {
+        return bidRankDao.delete(id);
+    }
+
+    @Override
+    public Iterator<BlockRecordBean> getBlockRecord(int offset, int size) {
         return blockRecordDao.findAll(offset, size).iterator();
     }
 
@@ -118,8 +123,5 @@ public class ManageImpl implements ManageService {
         return blockRecordDao.save(bean);
     }
 
-    @Override
-    public BlockRecordBean deleteRecord(String id) {
-        return blockRecordDao.delete(id);
-    }
+
 }

@@ -51,14 +51,15 @@ public interface ManageService {
 
     BidRankBean save(BidRankBean bidRankEntity);
 
+    BidRankBean deleteBidRank(String id);
+
+
     //blockrecord
-    Iterator<BlockRecordBean> findAll(int offset, int size);
+    Iterator<BlockRecordBean> getBlockRecord(int offset, int size);
 
     BlockRecordBean create(BlockRecordEntity entity);
 
     BlockRecordBean save(BlockRecordBean bean);
-
-    BlockRecordBean deleteRecord(String id);
 
 
 }

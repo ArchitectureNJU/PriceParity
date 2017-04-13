@@ -13,6 +13,7 @@ elasticsearch:
 ---
 system:
   debug: false
+  heartURL: http://localhost:8020/beat
 
 #server:
 #  port: 1111

@@ -1,8 +1,5 @@
 package architecture.controller;
 
-import architecture.bean.BidRankBean;
-import architecture.bean.BlockIpBean;
-import architecture.bean.BlockRecordBean;
 import architecture.bean.BlockWordBean;
 import architecture.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,35 +13,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Iterator;
 
 /**
- * Created by cxworks on 17-4-12.
+ * Created by cxworks on 17-4-13.
  */
-@Controller("/root/ip/")
-public class RootIP {
+@Controller("/root/word/")
+public class RootWord {
+
     @Autowired
     ManageService manageService;
 
 
 
-
     @RequestMapping(value = "",method = RequestMethod.GET)
-    public String getBlockIP(
+    public String getBlockWord(
             @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
             @RequestParam(name = "size",defaultValue = "10",required = false)int size,
             Model model
     ){
-        common(model, offset, size);
+        common(model,offset,size);
         return "";
     }
 
-
-
     private void common(Model model,int offset,int size){
-        Iterator<BlockIpBean> it=manageService.getBlockIP(offset,size);
-        model.addAttribute("blockip",it);
+        Iterator<BlockWordBean> it=manageService.getBlockWord(offset,size);
+        model.addAttribute("blockWord",it);
     }
     @RequestMapping(value = "update",method = RequestMethod.POST)
     public String update(
-            @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
+            @ModelAttribute(name = "BlockWordBean")BlockWordBean bean,
             Model model){
         manageService.save(bean);
         common(model,0,10);
@@ -52,7 +47,7 @@ public class RootIP {
     }
     @RequestMapping(value = "add",method = RequestMethod.POST)
     public String add(
-            @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
+            @ModelAttribute(name = "BlockWordBean")BlockWordBean bean,
             Model model
     ){
         manageService.save(bean);
@@ -61,12 +56,8 @@ public class RootIP {
     }
     @RequestMapping(value = "delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
-        manageService.deleteIP(id);
-        common(model,0,10);
-        return "";
+                manageService.deleteWord(id);
+                common(model,0,10);
+                return "";
     }
-
-
-
-
 }
