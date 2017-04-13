@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('屏蔽词管理')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper manage-wrapper">
+    <nav th:replace="base/fragment::nav(1)"></nav>
+    <div class="content">
+      <div class="card manage-card">
+        <div class="title-block"><h3 class="title">屏蔽词表管理</h3>
+          <button class="btn btn-primary">添加屏蔽词</button>
+        </div>
+        <table class="manage-table">
+          <tr>
+            <th>屏蔽词</th>
+            <th>屏蔽时间</th>
+            <th>操作</th>
+          </tr>
+          <tbody th:each="maskword:${maskWordList}">
+          <tr>
+            <td th:text="${maskword.name}">苹果官方授权</td>
+            <td th:text="${maskword.time}">2017年04月11日23:11:36</td>
+            <td><a class="link" href="#">移除屏蔽词</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>
