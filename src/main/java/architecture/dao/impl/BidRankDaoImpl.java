@@ -38,7 +38,11 @@ public class BidRankDaoImpl extends BaseDaoImpl<BidRankEntity> implements BidRan
      */
     @Override
     public BidRankBean findById(String id) {
-        return new BidRankBean(id,super.findById(id,TYPE_NAME, BidRankEntity.class));
+        BidRankEntity entity = super.findById(id,TYPE_NAME, BidRankEntity.class);
+        if (entity!=null) {
+            new BidRankBean(id, entity);
+        }
+        return null;
     }
 
     /**
@@ -62,12 +66,21 @@ public class BidRankDaoImpl extends BaseDaoImpl<BidRankEntity> implements BidRan
      */
     @Override
     public BidRankBean save(BidRankBean bidRankEntity) {
-        return new BidRankBean(bidRankEntity.getId(),
-                super.update(new BidRankEntity(bidRankEntity),bidRankEntity.getId(),TYPE_NAME, BidRankEntity.class));
+        BidRankEntity entity =
+                super.update(new BidRankEntity(bidRankEntity),bidRankEntity.getId(),TYPE_NAME, BidRankEntity.class);
+        if (entity!=null) {
+            return new BidRankBean(bidRankEntity.getId(), entity);
+        }
+        return null;
     }
 
     @Override
     public BidRankBean delete(String id) {
-        return new BidRankBean(id, super.delete(id,TYPE_NAME, BidRankEntity.class));
+        BidRankEntity entity = super.delete(id,TYPE_NAME, BidRankEntity.class);
+        if (entity!=null) {
+            return new BidRankBean(id, entity);
+        } else {
+            return null;
+        }
     }
 }

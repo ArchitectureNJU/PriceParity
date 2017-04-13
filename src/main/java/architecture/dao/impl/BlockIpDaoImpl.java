@@ -3,16 +3,20 @@ package architecture.dao.impl;
 import architecture.bean.BlockIpBean;
 import architecture.dao.BlockIpDao;
 import architecture.entity.BlockIpEntity;
+import architecture.jest.BeanResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Block ip dao impl
  * @author cuihao
  */
 @Repository
-public class BlockIpDaoImpl implements BlockIpDao {
+public class BlockIpDaoImpl extends BaseDaoImpl<BlockIpEntity> implements BlockIpDao {
+
+    private final String TYPE_NAME = "blockIp";
     /**
      * Find all block ips
      *
@@ -20,7 +24,8 @@ public class BlockIpDaoImpl implements BlockIpDao {
      */
     @Override
     public List<BlockIpBean> findAll(int offset, int size) {
-        return null;
+        return super.findAll(offset,size,TYPE_NAME, BlockIpEntity.class).stream()
+                .map(blockIp->new BlockIpBean(blockIp.getId(), blockIp.getData())).collect(Collectors.toList());
     }
 
     /**
@@ -31,6 +36,10 @@ public class BlockIpDaoImpl implements BlockIpDao {
      */
     @Override
     public BlockIpBean findById(String id) {
+        BlockIpEntity entity = super.findById(id,TYPE_NAME,BlockIpEntity.class);
+        if (entity!=null) {
+            return new BlockIpBean(id, entity);
+        }
         return null;
     }
 
@@ -42,7 +51,8 @@ public class BlockIpDaoImpl implements BlockIpDao {
      */
     @Override
     public BlockIpBean create(BlockIpEntity blockIpEntity) {
-        return null;
+        BeanResult<BlockIpEntity> result = super.create(blockIpEntity,TYPE_NAME, BlockIpEntity.class);
+        return new BlockIpBean(result.getId(), result.getData());
     }
 
     /**
@@ -53,6 +63,11 @@ public class BlockIpDaoImpl implements BlockIpDao {
      */
     @Override
     public BlockIpBean save(BlockIpBean bean) {
+        BlockIpEntity entity =
+                super.update(new BlockIpEntity(bean),bean.getId(),TYPE_NAME, BlockIpEntity.class);
+        if (entity!=null) {
+            return new BlockIpBean(bean.getId(), entity);
+        }
         return null;
     }
 
@@ -64,6 +79,11 @@ public class BlockIpDaoImpl implements BlockIpDao {
      */
     @Override
     public BlockIpBean delete(String id) {
-        return null;
+        BlockIpEntity entity = super.delete(id,TYPE_NAME, BlockIpEntity.class);
+        if (entity!=null) {
+            return new BlockIpBean(id, entity);
+        } else {
+            return null;
+        }
     }
 }
