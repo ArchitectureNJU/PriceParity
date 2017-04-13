@@ -10,6 +10,6 @@ import java.util.Iterator;
 public interface CommodityService {
 
 
-    public CommodityBean find(int id);
+    public CommodityBean find(String id);
 
 }

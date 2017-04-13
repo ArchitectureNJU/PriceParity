@@ -3,6 +3,7 @@ spring:
     store-type: hash_map
   thymeleaf:
     cache: false
+    mode: LEGACYHTML5
 ---
 elasticsearch:
   cluster: elasticsearch-price-parity
