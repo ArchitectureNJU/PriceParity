@@ -17,8 +17,8 @@ gulp.task('server', ['build', 'browser-sync', 'watch']);
 
 gulp.task('build', ['build-js', 'build-css', 'build-img', 'build-font', 'build-normalize-css', 'build-jquery']);
 
-// Minify Custom JS: Run manually with: "gulp build-js"
-gulp.task('build-js', function () {
+// Minify Custom JS: Run manually with: "gulp static-js"
+gulp.task('static-js', function () {
     return gulp.src('assets/js/*.js')
         .pipe(plugins.jshint())
         .pipe(plugins.jshint.reporter('jshint-stylish'))
@@ -28,11 +28,11 @@ gulp.task('build-js', function () {
             }
         }))
         // .pipe(plugins.concat('scripts.min.js'))
-        .pipe(gulp.dest('build/js'));
+        .pipe(gulp.dest('static/js'));
 });
 
-// Less to CSS: Run manually with: "gulp build-css"
-gulp.task('build-css', function () {
+// Less to CSS: Run manually with: "gulp static-css"
+gulp.task('static-css', function () {
     return gulp.src('assets/less/*.less')
         .pipe(plugins.plumber())
         .pipe(plugins.less())
@@ -55,27 +55,27 @@ gulp.task('build-css', function () {
             cascade: false
         }))
         .pipe(plugins.cssmin())
-        .pipe(gulp.dest('build/css')).on('error', gutil.log);
+        .pipe(gulp.dest('static/css')).on('error', gutil.log);
 });
 
-gulp.task('build-img', function () {
+gulp.task('static-img', function () {
     return gulp.src('assets/img/*')
-        .pipe(gulp.dest('build/img')).on('error', gutil.log);
+        .pipe(gulp.dest('static/img')).on('error', gutil.log);
 });
 
-gulp.task('build-font', function () {
+gulp.task('static-font', function () {
     return gulp.src('assets/font/*')
-        .pipe(gulp.dest('build/font')).on('error', gutil.log);
+        .pipe(gulp.dest('static/font')).on('error', gutil.log);
 });
 
-gulp.task('build-normalize-css', function () {
+gulp.task('static-normalize-css', function () {
     return gulp.src('node_modules/normalize-css/normalize.css')
-        .pipe(gulp.dest('build/css')).on('error', gutil.log);
+        .pipe(gulp.dest('static/css')).on('error', gutil.log);
 });
 
-gulp.task('build-jquery', function () {
+gulp.task('static-jquery', function () {
     return gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest('build/js')).on('error', gutil.log);
+        .pipe(gulp.dest('static/js')).on('error', gutil.log);
 });
 
 // Static servers
@@ -92,6 +92,6 @@ gulp.task('browser-sync', function () {
 gulp.task('watch', function () {
     gulp.watch('*.html').on('change', reload);
     gulp.watch('templates/*.html').on('change', reload);
-    gulp.watch('assets/js/*.js', ['build-js']).on('change', reload);
-    gulp.watch('assets/less/**/*.less', ['build-css']).on('change', reload);
+    gulp.watch('assets/js/*.js', ['static-js']).on('change', reload);
+    gulp.watch('assets/less/**/*.less', ['static-css']).on('change', reload);
 });
