@@ -1,6 +1,6 @@
 package architecture.service;
 
-import architecture.entity.CommodityEntity;
+import architecture.bean.CommodityBean;
 
 import java.util.Iterator;
 
@@ -10,8 +10,6 @@ import java.util.Iterator;
 public interface CommodityService {
 
 
-    public CommodityEntity find(int id);
+    public CommodityBean find(int id);
 
-
-    public Iterator<CommodityEntity> list();
 }

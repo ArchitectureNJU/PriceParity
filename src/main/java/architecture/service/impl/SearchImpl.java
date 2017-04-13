@@ -1,7 +1,7 @@
 package architecture.service.impl;
 
+import architecture.bean.CommodityBean;
 import architecture.dao.CommodityDao;
-import architecture.entity.CommodityEntity;
 import architecture.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class SearchImpl implements SearchService {
     @Autowired
     CommodityDao commodityDao;
     @Override
-    public Iterator<CommodityEntity> search(String keyword, int offset, int limit) {
+    public Iterator<CommodityBean> search(String keyword, int offset, int limit) {
         return commodityDao.findByKeyWord(keyword, offset, limit).iterator();
     }
 }

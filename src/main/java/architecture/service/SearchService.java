@@ -1,6 +1,6 @@
 package architecture.service;
 
-import architecture.entity.CommodityEntity;
+import architecture.bean.CommodityBean;
 
 import java.util.Iterator;
 
@@ -9,5 +9,5 @@ import java.util.Iterator;
  */
 public interface SearchService {
 
-    public Iterator<CommodityEntity> search(String keyword, int offset, int limit);
+    public Iterator<CommodityBean> search(String keyword, int offset, int limit);
 }

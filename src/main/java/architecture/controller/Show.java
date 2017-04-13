@@ -1,10 +1,12 @@
 package architecture.controller;
 
+import architecture.bean.CommodityBean;
 import architecture.dao.CommodityDao;
 import architecture.entity.CommodityEntity;
 import architecture.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +21,9 @@ public class Show {
 
 
     @RequestMapping(value = "info",method = RequestMethod.GET)
-    public String info(@RequestParam(value = "id")int id){
-        CommodityEntity ce=commodityService.find(id);
+    public String info(@RequestParam(value = "id")int id, Model model){
+        CommodityBean ce=commodityService.find(id);
+        model.addAttribute("commodityBean",ce);
         return "";
     }
 }
