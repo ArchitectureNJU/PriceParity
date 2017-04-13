@@ -1,41 +1,47 @@
 package architecture.Interceptor;
 
+import architecture.bean.BlockIpBean;
+import architecture.bean.BlockWordBean;
+import architecture.dao.BlockIpDao;
+import architecture.entity.BlockWordEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by chentiange on 2017/4/12.
  */
-public class IPManager {
 
-    private static String filePath = System.getProperty("user.dir")+"/src/main/java/architecture/Interceptor/rejectedip";
+
+public class IPManager {
+    @Autowired
+    BlockIpDao blockIpDao;
+
+//    private static String filePath = System.getProperty("user.dir")+"/src/main/java/architecture/Interceptor/rejectedip";
     public boolean isIPVaild(String ip){
         boolean valid = true;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
-            String tmp = null;
-            while ((tmp=reader.readLine())!=null){
-                if (tmp.equals(ip)){
-                    valid = false;
-                    return valid;
-                }
+        List<BlockIpBean>  blockedipbeans = blockIpDao.findAll(-1,0);
+        for (BlockIpBean bean : blockedipbeans){
+            if (bean.getIp().equals(ip)){
+                valid = false;
+                return valid;
             }
-            reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return valid;
     }
 
     public boolean addRejectedIP(String ip){
         boolean success = true;
-        try {
-            FileWriter fileWriter = new FileWriter(filePath,true);
-            fileWriter.write(ip+"\n");
-            fileWriter.close();
-        } catch (IOException e) {
-            return false;
+        BlockWordEntity entity = new BlockWordEntity();
+        entity.setIp(ip);
+        BlockIpBean result = blockIpDao.create(entity);
+        String resip = result.getIp();
+        if (!ip.equals(resip)){
+            success = false;
         }
 
         return success;
