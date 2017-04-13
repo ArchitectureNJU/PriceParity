@@ -20,6 +20,7 @@ public class BidRankDaoImplTest extends PriceParityApplicationTests {
 
     @Test
     public void findAll1() throws Exception {
+        System.out.println(bidRankDao.findAll(-1,-1));
     }
 
     @Test

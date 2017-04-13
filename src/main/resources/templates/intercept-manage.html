@@ -8,7 +8,7 @@
 
 <div class="container">
   <div class="wrapper manage-wrapper">
-    <nav th:replace="base/fragment::nav(0)"></nav>
+    <nav th:replace="base/fragment::nav(3)"></nav>
     <div class="content">
       <div class="card manage-card">
         <div class="title-block"><h3 class="title">拦截管理</h3>
@@ -23,8 +23,13 @@
           <tbody th:each="intercept:${interceptList}">
           <tr>
             <td th:text="${intercept.ip}">192.168.1.1</td>
-            <td th:text="${intercept.time}">2017年4月13日23:11:36</td>
-            <td><a class="link" href="#">移除</a></td>
+            <td th:text="${intercept.endTime}">2017年4月13日23:11:36</td>
+            <td>
+              <form action="#" th:action="/ip/delete" method="post">
+                <input type="hidden" name="id" th:value="${intercept.id}">
+                <button class="link" type="submit">移除</button>
+              </form>
+            </td>
           </tr>
           </tbody>
         </table>

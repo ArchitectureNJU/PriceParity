@@ -3,16 +3,20 @@ package architecture.dao.impl;
 import architecture.bean.SynonymBean;
 import architecture.dao.SynonymDao;
 import architecture.entity.SynonymEntity;
+import architecture.jest.BeanResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * synonym dao impl
  * @author cuihao
  */
 @Repository
-public class SynonymDaoImpl implements SynonymDao {
+public class SynonymDaoImpl extends BaseDaoImpl<SynonymEntity> implements SynonymDao {
+
+    private final String TYPE_NAME = "synonym";
     /**
      * Find all synonym word
      *
@@ -22,7 +26,9 @@ public class SynonymDaoImpl implements SynonymDao {
      */
     @Override
     public List<SynonymBean> findAll(int offset, int size) {
-        return null;
+        return super.findAll(offset,size,TYPE_NAME, SynonymEntity.class).stream()
+                .map(result -> new SynonymBean(result.getId(), result.getData()))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -33,6 +39,10 @@ public class SynonymDaoImpl implements SynonymDao {
      */
     @Override
     public SynonymBean findById(String id) {
+        SynonymEntity entity = super.findById(id,TYPE_NAME, SynonymEntity.class);
+        if (entity!=null) {
+            new SynonymBean(id, entity);
+        }
         return null;
     }
 
@@ -44,7 +54,8 @@ public class SynonymDaoImpl implements SynonymDao {
      */
     @Override
     public SynonymBean create(SynonymEntity entity) {
-        return null;
+        BeanResult<SynonymEntity> result = super.create(entity, TYPE_NAME, SynonymEntity.class);
+        return new SynonymBean(result.getId(), result.getData());
     }
 
     /**
@@ -55,6 +66,11 @@ public class SynonymDaoImpl implements SynonymDao {
      */
     @Override
     public SynonymBean save(SynonymBean bean) {
+        SynonymEntity entity =
+                super.update(new SynonymEntity(bean),bean.getId(),TYPE_NAME, SynonymEntity.class);
+        if (entity!=null) {
+            return new SynonymBean(bean.getId(), entity);
+        }
         return null;
     }
 
@@ -66,6 +82,11 @@ public class SynonymDaoImpl implements SynonymDao {
      */
     @Override
     public SynonymBean delete(String id) {
-        return null;
+        SynonymEntity entity = super.delete(id,TYPE_NAME, SynonymEntity.class);
+        if (entity!=null) {
+            return new SynonymBean(id, entity);
+        } else {
+            return null;
+        }
     }
 }

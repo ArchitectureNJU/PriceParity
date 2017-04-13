@@ -6,9 +6,11 @@ import architecture.jest.ClientFactory;
 import architecture.jest.JestService;
 import architecture.utils.JsonMapping;
 import architecture.utils.SRSLogger;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
-import io.searchbox.core.BulkResult;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.SearchResult;
 import org.springframework.stereotype.Repository;
@@ -40,16 +42,25 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     public List<BeanResult<T>> findAll(int offset, int size, String type, Class<T> clazz) {
         JestClient client = clientFactory.getClient();
         Map<String,Object> query = new HashMap<>();
-        query.put("size",size);
-        query.put("from", offset);
+        if (offset>=0 && size>=0) {
+            query.put("size",size);
+            query.put("from", offset);
+        }
         String queryJson = JsonMapping.toJson(query);
         SearchResult result = jestService.search(client,INDEX_NAME,type,queryJson);
+        List<BeanResult<T>> results = new ArrayList<>();
         if (result!=null && result.isSucceeded()) {
-            //TODO
+            List<SearchResult.Hit<T,Void>> hits = result.getHits(clazz);
+            JsonObject jsonObject = result.getJsonObject();
+            JsonArray hitsArray = jsonObject.getAsJsonObject("hits").getAsJsonArray("hits");
+            for (int i = 0; i < result.getTotal(); i++) {
+                JsonObject object = hitsArray.get(i).getAsJsonObject();
+                results.add(new BeanResult<T>(hits.get(i).source,object.get("_id").getAsString()));
+            }
         } else {
             logger.log(BaseDaoImpl.class, result==null?"null result":result.getErrorMessage());
         }
-        return new ArrayList<BeanResult<T>>(0);
+        return results;
     }
 
     public BeanResult<T> create(T entity, String type, Class<T> clazz) {

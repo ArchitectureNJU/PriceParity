@@ -1,7 +1,7 @@
 package architecture.dao;
 
 import architecture.bean.BlockIpBean;
-import architecture.entity.BlockWordEntity;
+import architecture.entity.BlockIpEntity;
 
 import java.util.List;
 
@@ -25,10 +25,10 @@ public interface BlockIpDao {
 
     /**
      * Create block ip
-     * @param entity entity without ip
-     * @return {@link BlockIpBean}
+     *
+     * @param blockIpEntity@return {@link BlockIpBean}
      */
-    BlockIpBean create(BlockWordEntity entity);
+    BlockIpBean create(BlockIpEntity blockIpEntity);
 
     /**
      * Update block ip

@@ -24,6 +24,7 @@ public class CommodityBean {
     private String updated_at;
     private String url;
     private String source;
+    private String avatar;
     private List<CommentEntity> comments;
 
     public CommodityBean(String id, CommodityEntity entity) {

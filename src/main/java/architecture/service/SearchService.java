@@ -1,13 +1,13 @@
 package architecture.service;
 
-import architecture.entity.CommodityEntity;
+import architecture.bean.CommodityBean;
 
-import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by cxworks on 17-4-12.
  */
 public interface SearchService {
 
-    public Iterator<CommodityEntity> search(String keyword, int offset, int limit);
+    public List<CommodityBean> search(String keyword, int offset, int limit);
 }

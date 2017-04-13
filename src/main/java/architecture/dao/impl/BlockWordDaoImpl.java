@@ -2,17 +2,21 @@ package architecture.dao.impl;
 
 import architecture.bean.BlockWordBean;
 import architecture.dao.BlockWordDao;
-import architecture.entity.BlockRecordEntity;
+import architecture.entity.BlockWordEntity;
+import architecture.jest.BeanResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * block word dao impl
  * @author cuihao
  */
 @Repository
-public class BlockWordDaoImpl implements BlockWordDao {
+public class BlockWordDaoImpl extends BaseDaoImpl<BlockWordEntity> implements BlockWordDao {
+
+    private final String TYPE_NAME = "blockWord";
     /**
      * Find all block word
      *
@@ -22,7 +26,9 @@ public class BlockWordDaoImpl implements BlockWordDao {
      */
     @Override
     public List<BlockWordBean> findAll(int offset, int size) {
-        return null;
+        return super.findAll(offset,size,TYPE_NAME, BlockWordEntity.class).stream()
+                .map(result -> new BlockWordBean(result.getId(), result.getData()))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -33,6 +39,10 @@ public class BlockWordDaoImpl implements BlockWordDao {
      */
     @Override
     public BlockWordBean findById(String id) {
+        BlockWordEntity entity = super.findById(id,TYPE_NAME, BlockWordEntity.class);
+        if (entity!=null) {
+            new BlockWordBean(id, entity);
+        }
         return null;
     }
 
@@ -43,8 +53,9 @@ public class BlockWordDaoImpl implements BlockWordDao {
      * @return {@link BlockWordBean}
      */
     @Override
-    public BlockWordBean create(BlockRecordEntity entity) {
-        return null;
+    public BlockWordBean create(BlockWordEntity entity) {
+        BeanResult<BlockWordEntity> result = super.create(entity, TYPE_NAME, BlockWordEntity.class);
+        return new BlockWordBean(result.getId(), result.getData());
     }
 
     /**
@@ -55,6 +66,11 @@ public class BlockWordDaoImpl implements BlockWordDao {
      */
     @Override
     public BlockWordBean save(BlockWordBean bean) {
+        BlockWordEntity entity =
+                super.update(new BlockWordEntity(bean),bean.getId(),TYPE_NAME, BlockWordEntity.class);
+        if (entity!=null) {
+            return new BlockWordBean(bean.getId(), entity);
+        }
         return null;
     }
 
@@ -66,6 +82,11 @@ public class BlockWordDaoImpl implements BlockWordDao {
      */
     @Override
     public BlockWordBean delete(String id) {
-        return null;
+        BlockWordEntity entity = super.delete(id,TYPE_NAME, BlockWordEntity.class);
+        if (entity!=null) {
+            return new BlockWordBean(id, entity);
+        } else {
+            return null;
+        }
     }
 }

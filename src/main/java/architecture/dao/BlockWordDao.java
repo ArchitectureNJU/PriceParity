@@ -1,8 +1,7 @@
 package architecture.dao;
 
 import architecture.bean.BlockWordBean;
-import architecture.entity.BlockRecordEntity;
-import architecture.entity.CommodityEntity;
+import architecture.entity.BlockWordEntity;
 
 import java.util.List;
 
@@ -31,7 +30,7 @@ public interface BlockWordDao {
      * @param entity entity without id
      * @return {@link BlockWordBean}
      */
-    BlockWordBean create(BlockRecordEntity entity);
+    BlockWordBean create(BlockWordEntity entity);
 
     /**
      * Update block word

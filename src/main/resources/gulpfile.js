@@ -17,7 +17,7 @@ gulp.task('server', ['build', 'browser-sync', 'watch']);
 
 gulp.task('build', ['build-js', 'build-css', 'build-img', 'build-font', 'build-normalize-css', 'build-jquery']);
 
-// Minify Custom JS: Run manually with: "gulp build-js"
+// Minify Custom JS: Run manually with: "gulp static-js"
 gulp.task('build-js', function () {
     return gulp.src('assets/js/*.js')
         .pipe(plugins.jshint())
@@ -28,10 +28,10 @@ gulp.task('build-js', function () {
             }
         }))
         // .pipe(plugins.concat('scripts.min.js'))
-        .pipe(gulp.dest('build/js'));
+        .pipe(gulp.dest('static/js'));
 });
 
-// Less to CSS: Run manually with: "gulp build-css"
+// Less to CSS: Run manually with: "gulp static-css"
 gulp.task('build-css', function () {
     return gulp.src('assets/less/*.less')
         .pipe(plugins.plumber())
@@ -55,27 +55,27 @@ gulp.task('build-css', function () {
             cascade: false
         }))
         .pipe(plugins.cssmin())
-        .pipe(gulp.dest('build/css')).on('error', gutil.log);
+        .pipe(gulp.dest('static/css')).on('error', gutil.log);
 });
 
 gulp.task('build-img', function () {
     return gulp.src('assets/img/*')
-        .pipe(gulp.dest('build/img')).on('error', gutil.log);
+        .pipe(gulp.dest('static/img')).on('error', gutil.log);
 });
 
 gulp.task('build-font', function () {
     return gulp.src('assets/font/*')
-        .pipe(gulp.dest('build/font')).on('error', gutil.log);
+        .pipe(gulp.dest('static/font')).on('error', gutil.log);
 });
 
 gulp.task('build-normalize-css', function () {
     return gulp.src('node_modules/normalize-css/normalize.css')
-        .pipe(gulp.dest('build/css')).on('error', gutil.log);
+        .pipe(gulp.dest('static/css')).on('error', gutil.log);
 });
 
 gulp.task('build-jquery', function () {
     return gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest('build/js')).on('error', gutil.log);
+        .pipe(gulp.dest('static/js')).on('error', gutil.log);
 });
 
 // Static servers

@@ -19,21 +19,21 @@
   <link rel="canonical" href="">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/build/css/normalize.css">
-  <link rel="stylesheet" href="/build/css/style.css">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/style.css">
 
 </head>
 <body>
   <header>
     <div class="wrapper">
       <div class="logo">
-        <img src="/build/img/logo.png" alt="" class="logo-img">
+        <img src="/static/img/logo.png" alt="" class="logo-img">
         <p class="logo-title">爱比价</p>
         <p class="logo-sub-title">全网最惠商品集中地</p>
       </div>
       <form action="#" class="search-form">
         <input type="text" placeholder="请输入搜索关键词">
-        <button class="search-btn" type="submit"><img src="../build/img/search.png" alt=""></button>
+        <button class="search-btn" type="submit"><img src="../static/img/search.png" alt=""></button>
       </form>
     </div>
   </header>
@@ -60,7 +60,15 @@
               <tr>
                 <td>苹果官方授权</td>
                 <td>2017年04月11日23:11:36</td>
-                <td><a class="link" href="#">移除屏蔽词</a></td>
+                <td>
+                  <form action="#">
+                    <input type="hidden" name="id">
+                    <button class="link" type="submit">移除</button>
+                  </form>
+                  <form action="#">
+                    <button class="link" type="submit">移除</button>
+                  </form>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -70,7 +78,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="/build/js/jquery.min.js"></script>
-  <script src="/build/js/main.js"></script>
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/main.js"></script>
 </body>
 </html>

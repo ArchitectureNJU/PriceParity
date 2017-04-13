@@ -28,6 +28,7 @@ public class CommodityEntity {
     private Date updated_at;
     private String url;
     private String source;
+    private String avatar;
     private List<CommentEntity> comments;
 
     public CommodityEntity(CommodityBean bean) {

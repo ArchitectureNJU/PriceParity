@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller("/")
 public class Index {
-    @RequestMapping("")
+    @RequestMapping("index")
     public String index(){
-        return "redirect:http://software.nju.edu.cn";
+        return "index";
     }
+    @RequestMapping("root/login")
+    public String rootLogin(){return "login";}
 }

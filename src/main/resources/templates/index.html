@@ -2,18 +2,18 @@
 <html lang="zh-CN"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="base/fragment::head('商品详情')"></head>
+<head th:replace="base/fragment::head('首页')"></head>
 <body>
 <div class="search-block">
   <div class="logo">
-    <img src="../build/img/logo.png" alt="" class="logo-img">
+    <img src="../static/img/logo.png" th:src="@{/img/logo.png}" alt="" class="logo-img"/>
     <p class="logo-title">爱比价</p>
     <p class="logo-sub-title">全网最惠商品集中地</p>
   </div>
-  <div class="search-form">
-    <input type="text" placeholder="请输入搜索关键词">
-    <button class="search-btn" type="submit"><img src="../build/img/search.png" alt=""></button>
-  </div>
+  <form action="#" class="search-form">
+    <input type="text" placeholder="请输入搜索关键词"/>
+    <button class="search-btn" type="submit"><img src="../static/img/search.png" th:src="@{/img/search.png}" alt=""/></button>
+  </form>
 </div>
 <!-- Scripts -->
 <th:block th:replace="base/fragment::script"/>

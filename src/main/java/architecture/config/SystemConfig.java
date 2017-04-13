@@ -12,7 +12,15 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix="system")
 public class SystemConfig {
     private boolean debug;
+    private String heartURL;
 
+    public String getHeartURL() {
+        return heartURL;
+    }
+
+    public void setHeartURL(String heartURL) {
+        this.heartURL = heartURL;
+    }
 
     public boolean isDebug() {
         return debug;

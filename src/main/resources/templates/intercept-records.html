@@ -8,7 +8,7 @@
 
 <div class="container">
   <div class="wrapper manage-wrapper">
-    <nav th:replace="base/fragment::nav(0)"></nav>
+    <nav th:replace="base/fragment::nav(4)"></nav>
     <div class="content">
       <div class="card manage-card">
         <div class="title-block"><h3 class="title">拦截记录</h3>
@@ -22,8 +22,8 @@
           <tbody th:each="intercept:${interceptList}">
           <tr>
             <td th:text="${intercept.ip}">192.168.1.1</td>
-            <td th:text="${intercept.time}">2017年4月13日23:11:36</td>
-            <td th:text="${intercept.times}">13</td>
+            <td th:text="${intercept.lastBlockTime}">2017年4月13日23:11:36</td>
+            <td th:text="${intercept.blockTime}">13</td>
           </tr>
           </tbody>
         </table>
