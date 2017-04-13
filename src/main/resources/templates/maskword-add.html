@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('添加屏蔽词')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="card single-card">
+      <h3 class="title">添加屏蔽词</h3>
+      <form class="login-form" action="#" th:action="@{/word/add}" method="post">
+        <div class="form-item">
+          <label for="screen">屏蔽词</label>
+          <input id="screen" name="screen" type="text" placeholder="请输入屏蔽词">
+        </div>
+        <div class="btn-block">
+          <button type="submit" class="btn btn-primary btn-big">添加</button>
+          <a href="#" th:href="@{/word}" class="btn btn-big">取消</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

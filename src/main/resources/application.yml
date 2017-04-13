@@ -1,16 +1,19 @@
 spring:
   session:
     store-type: hash_map
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
 ---
 elasticsearch:
   cluster: elasticsearch-price-parity
   hosts:
-    - 10.105.36.220
-    - 10.105.239.92
-
+    - http://123.206.103.124:9200
+    - http://115.159.143.242:9200
 ---
 system:
   debug: false
+  heartURL: http://localhost:8020/beat
 
 #server:
 #  port: 1111

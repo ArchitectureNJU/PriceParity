@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('竞价排序管理')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper manage-wrapper">
+    <nav th:replace="base/fragment::nav(2)"></nav>
+    <div class="content">
+      <div class="card manage-card">
+        <div class="title-block"><h3 class="title">竞价排序管理</h3>
+          <button class="btn btn-primary">添加竞价商品</button>
+        </div>
+        <table class="manage-table">
+          <tr>
+            <th>ID</th>
+            <th>商品名称</th>
+            <th>竞价金额</th>
+            <th>操作</th>
+          </tr>
+          <tbody th:each="bid:${bidList}">
+          <tr>
+            <td th:text="${bid.id}">id</td>
+            <td th:text="${bid.name}">Apple Watch</td>
+            <td th:text="${bid.price}">100</td>
+            <td>
+              <a class="link" href="#" th:href="@{/bidrank/update}">修改竞价金额</a>
+              <form action="#" th:action="/bidrank/delete" method="post">
+                <input type="hidden" name="id" th:value="${bid.id}">
+                <button class="link" type="submit">移除</button>
+              </form>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

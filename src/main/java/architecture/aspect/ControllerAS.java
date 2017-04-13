@@ -1,5 +1,6 @@
 package architecture.aspect;
 
+import architecture.config.SystemConfig;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -7,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -21,17 +23,15 @@ import java.util.Arrays;
  */
 @Aspect
 @Component
-@Configuration
-@ConfigurationProperties(prefix = "system")
 public class ControllerAS {
 
 
     private static Logger logger=Logger.getLogger(ControllerAS.class);
-    @NotBlank
-    private boolean debug;
+    @Autowired
+    private SystemConfig systemConfig;
     @Pointcut(value = "execution(* architecture.controller..*.*(..))")
     public void anyPublicMethod(){
-        if (debug){
+        if (systemConfig.isDebug()){
             logger.debug("computing");
         }
     }
@@ -46,7 +46,7 @@ public class ControllerAS {
 
         logger.info("URL : " + request.getRequestURL().toString());
         logger.info("HTTP_METHOD : " + request.getMethod());
-        if (debug){
+        if (systemConfig.isDebug()){
             logger.debug("IP : " + request.getRemoteAddr());
             logger.debug("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
             logger.debug("ARGS : " + Arrays.toString(joinPoint.getArgs()));
@@ -55,7 +55,7 @@ public class ControllerAS {
     @AfterReturning(returning = "ret", pointcut = "anyPublicMethod()")
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容
-        if (debug) {
+        if (systemConfig.isDebug()) {
             logger.info("RESPONSE : " + ret);
         }
     }

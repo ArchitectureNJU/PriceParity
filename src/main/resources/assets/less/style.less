@@ -1,0 +1,373 @@
+@import "variables.less";
+@import "mixin.less";
+
+body {
+  font-family: 'Avenir Next';
+  font-size: @big-font-size;
+  color: @font-color;
+}
+p, h1, h2, h3, h4, h5 {
+  margin:0;
+  line-height: 1.5em;
+}
+
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 14px;
+  font-size: @title-size;
+}
+
+.btn {
+  .transition(all, 0.3s);
+  padding: 8px 34px;
+  border: none;
+  border-radius: 4px;
+  font-size: @small-font-size;
+
+  &:hover {
+    .transition(all, 0.3s);
+    background: darken(@primary-color, 20%);
+  }
+
+  &-primary {
+    background: @primary-color;
+    color: white;
+  }
+
+  &-big {
+    padding: 12px 34px;
+    font-size: @big-font-size;
+  }
+}
+
+input, textarea {
+  padding: 13px;
+  background: white;
+  border: 1px solid @border-color;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+    border-color: lighten(@primary-color, 10%);
+    box-shadow: lighten(@primary-color, 10%) 0 0 5px 0;
+  }
+}
+
+.search-form {
+  position: relative;
+
+  input {
+    width: 654px;
+    font: @normal-font-size;
+  }
+
+  .search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+    height: 24px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+}
+
+.link {
+  .transition(all, 0.3s);
+  color: @primary-color;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  text-decoration: underline;
+
+  &:hover {
+    .transition(all, 0.3s);
+    color: @primary-dark-color;
+  }
+}
+
+.logo {
+  .flex(row, flex-start, flex-end);
+
+  .logo-img {
+    display: block;
+    height: 24px;
+    width: 24px;
+  }
+
+  .logo-title {
+    margin-right: 6px;
+    font-size: @logo-font-size;
+    // font-weight: bold;
+    line-height: @logo-font-size;
+    color: @primary-color;
+  }
+
+  .logo-sub-title {
+    color: @light-font-color;
+    font-size: @small-font-size;
+    line-height: @small-font-size;
+  }
+}
+
+header {
+  background: #F0F0F0;
+
+  .wrapper {
+    .flex(row, flex-start, center);
+    height: 72px;
+  }
+
+  .logo {
+    flex-grow: 1;
+  }
+  .search-form {
+    flex-grow: 0;
+  }
+}
+
+.container {
+  .wrapper {
+    padding-top: 30px;
+  }
+  .brief {
+    .flex(row, flex-start, flex-start);
+
+    .goods-img {
+      width: 256px;
+      height: 256px;
+      margin-right: 22px;
+    }
+    .brief-text {
+      position: relative;
+      height: 256px;
+
+      .goods-name {
+        p, h2 {
+          display: inline-block;
+        }
+        .goods-name-text {
+          margin-right: 7px;
+          font-size: @huge-font-size;
+        }
+        .price {
+          color: @primary-color;
+          font-size: @logo-font-size;
+        }
+      }
+      .description {
+        margin-top: 16px;
+
+      }
+      .update {
+        margin-top: 16px;
+        font-size: @small-font-size;
+        color: @light-font-color;
+      }
+      .goods-link-btn {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+
+  .goods-list .brief {
+    margin-bottom: 30px;
+  }
+
+  .description {
+    margin-top: 30px;
+  }
+
+  .comments {
+    margin-top: 30px;
+    font-size: @small-font-size;
+
+    .comments-form {
+      .flex(column, flex-start, flex-end);
+
+      textarea {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 12px;
+        border-color: #DDDDDD;
+        border-radius: 4px;
+      }
+      button {
+        margin-top: 10px;
+      }
+    }
+    .comments-list {
+      margin-top: 20px;
+
+      .comments-item {
+        .flex(row, flex-start, flex-start);
+        margin-bottom: 18px;
+
+        .avatar {
+          width: 64px;
+          height: 64px;
+          margin-right: 10px;
+        }
+
+        .comments-item-content {
+          .username {
+            margin-bottom: 4px;
+            font-weight: bold;
+          }
+          .create-time {
+            color: @light-font-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.card {
+  padding: 28px 18px;
+  border: 1px solid @border-color;
+  border-radius: 4px;
+  background-color: @background-color;
+
+  .title {
+    color: @primary-color;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  form {
+    .form-item {
+      .flex(column, flex-start, stretch);
+      margin-bottom: 12px;
+
+      label {
+        margin-bottom: 5px;
+        font-size: @small-font-size;
+      }
+    }
+
+    .btn {
+      width: 127px;
+      margin-top: 24px;
+    }
+  }
+}
+
+.login-card {
+  .absolute-center();
+  width: 542px;
+  height: 310px;
+}
+
+.single-card {
+  .absolute-center();
+  width: 542px;
+
+  .btn-block {
+    .btn {
+      margin-right: 10px;
+    }
+  }
+}
+
+.manage-wrapper {
+  .flex(row, flex-start, flex-start);
+
+  .nav {
+    margin-right: 20px;
+    width: 250px;
+    border: 1px solid @border-color;
+    border-radius: 4px;
+    background-color: @background-color;
+    flex-grow: 0;
+
+    .nav-item {
+      .transition(all, 0.3s);
+      display: block;
+      padding: 8px 20px;
+      border: 1px solid @border-color;
+      cursor: pointer;
+
+      &-active {
+        border-left: 5px solid @primary-color;
+        background-color: @primary-light-color;
+      }
+
+      &:hover {
+        .transition(all, 0.3s);
+        border-left: 5px solid @primary-color;
+        background-color: @primary-light-color;
+      }
+    }
+  }
+
+  .content {
+    flex-grow: 1;
+  }
+}
+
+.manage-card {
+  .title-block {
+    .flex(row, flex-start, flex-start);
+    // margin-bottom: 20px;
+
+    .title {
+      flex-grow: 1;
+    }
+
+    button {
+      flex-grow: 0;
+    }
+  }
+
+  .manage-table {
+    text-align: left;
+    width: 660px;
+
+    th {
+      padding: 5px 0;
+      border-bottom: 2px solid @primary-color;
+    }
+
+    td {
+      padding: 5px 0;
+      border-bottom: 2px solid @border-color;
+
+      form{
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.search-block {
+  .absolute-center();
+  .flex(column, flex-start, center);
+
+  .logo {
+    margin-bottom: 20px;
+  }
+}
+
+.frequent-block {
+  .absolute-center();
+  .flex(column, flex-start, center);
+
+  h3 {
+    color: @primary-color;
+    font-size: 30px;
+  }
+}

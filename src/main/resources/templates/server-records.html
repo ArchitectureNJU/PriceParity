@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('服务器状态')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper manage-wrapper">
+    <nav th:replace="base/fragment::nav(5)"></nav>
+    <div class="content">
+      <div class="card manage-card">
+        <div class="title-block"><h3 class="title">服务器状态</h3>
+        </div>
+        <table class="manage-table">
+          <tr>
+            <th>服务器IP</th>
+            <th>状态</th>
+            <th>更新时间</th>
+          </tr>
+          <tbody th:each="server:${serverList}">
+          <tr>
+            <td th:text="${server.ip}">192.168.1.1</td>
+            <td th:text="${server.status}">运行中</td>
+            <td th:text="${server.time}">2017年4月13日23:11:36</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

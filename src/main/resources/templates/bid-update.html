@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('修改竞价规则')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="card single-card">
+      <h3 class="title">修改竞价商品</h3>
+      <form class="login-form" action="#" th:action="@{/bidrank/update}" method="post">
+        <div class="form-item">
+          <label for="id">竞价商品ID</label>
+          <input id="id" name="id" type="text" th:value="${goods.id}" placeholder="请输入竞价商品ID"/>
+        </div>
+        <div class="form-item">
+          <label for="price">竞价商品ID</label>
+          <input id="price" name="price" type="text" th:value="${goods.price}" placeholder="请输入竞价金额"/>
+        </div>
+        <div class="btn-block">
+          <button type="submit" class="btn btn-primary btn-big">确认修改</button>
+          <a href="/bidrank" th:href="@{/bidrank}" class="btn btn-big">取消</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

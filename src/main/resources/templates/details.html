@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('商品详情')"></head>
+<body>
+  <header th:replace="base/fragment::header"></header>
+  <div class="container">
+    <div class="wrapper">
+      <div class="brief">
+        <img src="/static/img/demo3.png" th:src="@{/img/demo3.png}" alt="" class="goods-img">
+        <div class="brief-text">
+          <div class="goods-name"><h2 class="goods-name-text" th:text="${goods.name}">Apple Watch</h2><p class="price">$<span th:text="${goods.price}">120</span></p></div>
+          <p class="description" th:text="${goods.sumary}">Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good.</p>
+          <p class="update">更新时间：<span th:text="${goods.updated_at}">2017 年 3 月 23 日 13:12</span></p>
+          <a class="btn btn-primary btn-big goods-link-btn" th:href="${goods.url}">直达链接<span th:text="${goods.source}">(京东)</span></a>
+        </div>
+      </div>
+      <div class="description">
+        <h2 class="title">详细描述</h2>
+        <p class="description-text" th:text="${goods.description}">Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good.</p>
+      </div>
+      <div class="comments">
+        <h2 class="title">用户评论</h2>
+        <form action="" class="comments-form">
+          <textarea class="comments-textarea" name="comment" rows="3" placeholder="说点什么吧"></textarea>
+          <button class="btn btn-primary">发表评论</button>
+        </form>
+        <div class="comments-list" th:each="comments:${goods.comments}">
+          <div class="comments-item">
+            <img src="/static/img/avatar1.png" th:src="@{/img/avatar1.png}" alt="" class="avatar">
+            <div class="comments-item-content">
+              <p class="username" th:text="${comments.user}">小哥</p>
+              <p class="comments-content" th:text="${comments.content}">这个东西好啊。真的啊，没骗你们啊，这个东西真的好好用啊。这个东西好啊。真的啊，没骗你们啊，这个东西真的好好用啊。这个东西好啊。真的啊，没骗你们啊，这个东西真的好好用啊。</p>
+              <p class="create-time">发表于 <span th:text="${comments.created_at}">2017 年 3 月 23 日 13:12</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <th:block th:replace="base/fragment::script"></th:block>
+</body>
+</html>

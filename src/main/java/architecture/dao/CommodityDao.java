@@ -1,5 +1,6 @@
 package architecture.dao;
 
+import architecture.bean.CommodityBean;
 import architecture.entity.CommodityEntity;
 
 import java.util.List;
@@ -13,9 +14,9 @@ public interface CommodityDao {
     /**
      * Get detail info of a commodity by document id
      * @param id id of DOCUMENT
-     * @return {@link CommodityEntity}
+     * @return {@link CommodityBean}
      */
-    CommodityEntity findById(int id);
+    CommodityBean findById(String id);
 
     /**
      * Core search method of commodities.
@@ -26,19 +27,19 @@ public interface CommodityDao {
      *      if keyword is provided, the list will be sorted by correlation.<br/>
      *      if keyword is null or empty, the list will be sorted by updated time.
      */
-    List<CommodityEntity> findByKeyWord(String keyword, int offset, int limit);
+    List<CommodityBean> findByKeyWord(List<String> keyword, int offset, int limit);
 
     /**
      * Update commodity entity
      * @param commodityEntity commodity entity with ID
      * @return updated entity
      */
-    CommodityEntity save(CommodityEntity commodityEntity);
+    CommodityBean save(CommodityBean commodityEntity);
 
     /**
      * Delete a commodity by id
      * @param id id
      * @return deleted commodity
      */
-    CommodityEntity delete(int id);
+    CommodityBean delete(String id);
 }

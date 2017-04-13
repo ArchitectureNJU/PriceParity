@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/fragment::head('商品详情')"></head>
+<body>
+<header th:replace="base/fragment::header"></header>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="card login-card">
+      <h3 class="title">管理员登录</h3>
+      <form class="login-form" action="#">
+        <div class="form-item">
+          <label for="username">用户名</label>
+          <input id="username" name="username" type="text" placeholder="用户名">
+        </div>
+        <div class="form-item">
+          <label for="username">密码</label>
+          <input id="password" name="password" type="password" placeholder="密码">
+        </div>
+        <button type="submit" class="btn btn-primary btn-big">登录</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<th:block th:replace="base/fragment::script"/>
+</body>
+</html>

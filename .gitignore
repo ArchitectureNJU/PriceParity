@@ -36,6 +36,7 @@ buildNumber.properties
 !/.mvn/wrapper/maven-wrapper.jar
 
 *~
+*.iml
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
@@ -199,10 +200,12 @@ transaction-logs/*
 
 ### NetBeans ###
 nbproject/private/
-build/
 nbbuild/
 dist/
 nbdist/
 .nb-gradle/
 .idea/
 priceparity.iml
+
+# node_modules
+src/main/resources/node_modules
