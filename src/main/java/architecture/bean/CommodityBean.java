@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Data
 public class CommodityBean {
-    private long id;
+    private String id;
     private String name;
     private double price;
     private String summary;
@@ -26,7 +26,7 @@ public class CommodityBean {
     private String source;
     private List<CommentEntity> comments;
 
-    public CommodityBean(long id, CommodityEntity entity) {
+    public CommodityBean(String id, CommodityEntity entity) {
         this.id = id;
         BeanUtils.copyProperties(entity,this,"updated_at","comments");
         this.updated_at = DateUtils.dateToString(entity.getUpdated_at());

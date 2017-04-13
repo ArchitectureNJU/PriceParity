@@ -32,7 +32,7 @@ public class BlockWordDaoImpl implements BlockWordDao {
      * @return {@link BlockWordBean}
      */
     @Override
-    public BlockWordBean findById(long id) {
+    public BlockWordBean findById(String id) {
         return null;
     }
 
@@ -65,7 +65,7 @@ public class BlockWordDaoImpl implements BlockWordDao {
      * @return {@link BlockWordBean}
      */
     @Override
-    public BlockWordBean delete(long id) {
+    public BlockWordBean delete(String id) {
         return null;
     }
 }

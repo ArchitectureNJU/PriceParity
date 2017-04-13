@@ -19,9 +19,9 @@ public interface BidRankDao {
     /**
      * find info by key word
      * @param id commodity id
-     * @return list of bid rank info
+     * @return bid rank info
      */
-    List<BidRankBean> findById(long id);
+    BidRankBean findById(String id);
 
     /**
      * Create bid rank info
@@ -38,5 +38,5 @@ public interface BidRankDao {
      */
     BidRankBean save(BidRankBean bidRankEntity);
 
-    BidRankBean delete(long id);
+    BidRankBean delete(String id);
 }

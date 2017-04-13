@@ -109,6 +109,17 @@ public class JestService {
         return result;
     }
 
+    public DocumentResult index(JestClient jestClient, String indexName, String typeName, Object object) {
+        Index index = new Index.Builder(object).index(indexName).type(typeName).build();
+        DocumentResult result = null;
+        try {
+            result = jestClient.execute(index);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /**
      * Search document
      * @param jestClient jestClient

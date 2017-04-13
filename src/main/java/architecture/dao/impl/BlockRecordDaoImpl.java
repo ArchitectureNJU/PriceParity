@@ -29,7 +29,7 @@ public class BlockRecordDaoImpl implements BlockRecordDao {
      * @return {@link BlockRecordBean}
      */
     @Override
-    public BlockRecordBean findById(long id) {
+    public BlockRecordBean findById(String id) {
         return null;
     }
 
@@ -62,7 +62,7 @@ public class BlockRecordDaoImpl implements BlockRecordDao {
      * @return deleted {@link BlockRecordBean}
      */
     @Override
-    public BlockRecordBean delete(long id) {
+    public BlockRecordBean delete(String id) {
         return null;
     }
 }

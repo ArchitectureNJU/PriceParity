@@ -30,7 +30,7 @@ public class BlockIpDaoImpl implements BlockIpDao {
      * @return {@link BlockIpBean}
      */
     @Override
-    public BlockIpBean findById(long id) {
+    public BlockIpBean findById(String id) {
         return null;
     }
 
@@ -63,7 +63,7 @@ public class BlockIpDaoImpl implements BlockIpDao {
      * @return deleted {@link BlockIpBean}
      */
     @Override
-    public BlockIpBean delete(long id) {
+    public BlockIpBean delete(String id) {
         return null;
     }
 }

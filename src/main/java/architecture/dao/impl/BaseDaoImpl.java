@@ -1,6 +1,7 @@
 package architecture.dao.impl;
 
 import architecture.dao.BaseDao;
+import architecture.jest.BeanResult;
 import architecture.jest.ClientFactory;
 import architecture.jest.JestService;
 import architecture.utils.JsonMapping;
@@ -13,7 +14,6 @@ import io.searchbox.core.SearchResult;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,9 +37,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     private final String INDEX_NAME = "srs";
 
-    private Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-
-    public List<T> findAll(int offset, int size, String type) {
+    public List<BeanResult<T>> findAll(int offset, int size, String type, Class<T> clazz) {
         JestClient client = clientFactory.getClient();
         Map<String,Object> query = new HashMap<>();
         query.put("size",size);
@@ -47,25 +45,25 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         String queryJson = JsonMapping.toJson(query);
         SearchResult result = jestService.search(client,INDEX_NAME,type,queryJson);
         if (result!=null && result.isSucceeded()) {
-            return result.getSourceAsObjectList(clazz);
+            //TODO
         } else {
             logger.log(BaseDaoImpl.class, result==null?"null result":result.getErrorMessage());
         }
-        return new ArrayList<T>(0);
+        return new ArrayList<BeanResult<T>>(0);
     }
-    public long create(T entity, String type) {
+
+    public BeanResult<T> create(T entity, String type, Class<T> clazz) {
         JestClient client = clientFactory.getClient();
-        List<T> list = new ArrayList<T>(1);
-        list.add(entity);
-        BulkResult bulkResult = jestService.index(client,INDEX_NAME, type, list);
-        if (bulkResult!=null && bulkResult.isSucceeded()) {
-            return Long.parseLong(bulkResult.getItems().get(0).id);
+        DocumentResult result = jestService.index(client,INDEX_NAME, type, entity);
+        if (result!=null && result.isSucceeded()) {
+            return new BeanResult<T>(findById(result.getId(), type, clazz),result.getId());
         } else {
-            logger.log(BaseDaoImpl.class, bulkResult==null?"null result":bulkResult.getErrorMessage());
+            logger.log(BaseDaoImpl.class, result==null?"null result":result.getErrorMessage());
         }
-        return 0;
+        return null;
     }
-    public T update(T entity, long id, String type) {
+
+    public T update(T entity, String id, String type, Class<T> clazz) {
         JestClient client = clientFactory.getClient();
         DocumentResult result = jestService.index(client,INDEX_NAME, type, id+"", entity);
         if (result!=null && result.isSucceeded()) {
@@ -75,7 +73,8 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         }
         return null;
     }
-    public T findById(long id, String type) {
+
+    public T findById(String id, String type, Class<T> clazz) {
         JestClient client = clientFactory.getClient();
         JestResult result = jestService.get(client,INDEX_NAME, type, id+"");
         if (result!=null && result.isSucceeded()) {
@@ -85,11 +84,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         }
         return null;
     }
-    public T delete(long id, String type) {
+
+    public T delete(String id, String type, Class<T> clazz) {
         JestClient client = clientFactory.getClient();
-        JestResult result = jestService.delete(client, INDEX_NAME, type, id+"");
+        T data = findById(id, type, clazz);
+        JestResult result = jestService.delete(client, INDEX_NAME, type, id);
         if (result!=null && result.isSucceeded()) {
-            return result.getSourceAsObject(clazz);
+            return data;
         } else {
             logger.log(BaseDaoImpl.class, result==null?"null result":result.getErrorMessage());
         }

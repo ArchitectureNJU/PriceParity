@@ -11,12 +11,12 @@ import org.springframework.beans.BeanUtils;
  */
 @Data
 public class BlockRecordBean {
-    private long id;
+    private String id;
     private String ip;
     private String lastBlockTime;
     private long blockTime;
 
-    public BlockRecordBean(long id, BlockRecordEntity entity) {
+    public BlockRecordBean(String id, BlockRecordEntity entity) {
         this.id = id;
         BeanUtils.copyProperties(entity, this, "lastBlockTime");
         this.lastBlockTime = DateUtils.longToStringFull(entity.getBlockTime());

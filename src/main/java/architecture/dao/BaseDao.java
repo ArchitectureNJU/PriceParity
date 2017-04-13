@@ -1,5 +1,7 @@
 package architecture.dao;
 
+import architecture.jest.BeanResult;
+
 import java.util.List;
 
 /**
@@ -8,9 +10,9 @@ import java.util.List;
  * @author cuihao
  */
 public interface BaseDao<T> {
-    List<T> findAll(int offset, int size, String type);
-    long create(T entity, String type);
-    T update(T bean,long id,  String type);
-    T findById(long id, String type);
-    T delete(long id, String type);
+    List<BeanResult<T>> findAll(int offset, int size, String type, Class<T> clazz);
+    BeanResult<T> create(T entity, String type, Class<T> clazz);
+    T update(T bean,String id,  String type, Class<T> clazz);
+    T findById(String id, String type, Class<T> clazz);
+    T delete(String id, String type, Class<T> clazz);
 }

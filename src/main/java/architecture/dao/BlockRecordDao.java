@@ -21,7 +21,7 @@ public interface BlockRecordDao {
      * @param id id
      * @return {@link BlockRecordBean}
      */
-    BlockRecordBean findById(long id);
+    BlockRecordBean findById(String id);
 
     /**
      * Create block record
@@ -42,5 +42,5 @@ public interface BlockRecordDao {
      * @param id record
      * @return deleted {@link BlockRecordBean}
      */
-    BlockRecordBean delete(long id);
+    BlockRecordBean delete(String id);
 }
