@@ -19,6 +19,6 @@ public class SearchImpl implements SearchService {
     CommodityDao commodityDao;
     @Override
     public Iterator<CommodityEntity> search(String keyword, int offset, int limit) {
-        return commodityDao.findByKeyWord(keyword, offset, limit).iterator();
+        return null;
     }
 }

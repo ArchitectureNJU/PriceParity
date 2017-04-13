@@ -14,13 +14,8 @@ import java.util.List;
  */
 @Data
 public class CommodityEntity {
-<<<<<<<
 
-=======
-//    @NotNull
     private int id;
-//    @NotEmpty
->>>>>>>
     private String name;
 
     private double price;

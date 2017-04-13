@@ -19,7 +19,7 @@ public class CommodityImpl implements CommodityService {
     CommodityDao commodityDao;
     @Override
     public CommodityEntity find(int id) {
-        return commodityDao.findById(id);
+        return null;
     }
 
     @Override

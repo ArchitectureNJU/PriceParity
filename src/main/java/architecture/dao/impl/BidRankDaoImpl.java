@@ -12,7 +12,10 @@ import java.util.List;
  * @author cuihao
  */
 @Repository
-public class BidRankDaoImpl implements BidRankDao {
+public class BidRankDaoImpl extends BaseDaoImpl<BidRankEntity> implements BidRankDao {
+
+    private final String TYPE_NAME = "bidRank";
+
     /**
      * Find all bid rank info
      *
@@ -26,11 +29,11 @@ public class BidRankDaoImpl implements BidRankDao {
     /**
      * find info by key word
      *
-     * @param keyword commodity key word
+     * @param id commodity id
      * @return list of bid rank info
      */
     @Override
-    public List<BidRankBean> findByKeyWord(String keyword) {
+    public List<BidRankBean> findById(long id) {
         return null;
     }
 
@@ -42,7 +45,8 @@ public class BidRankDaoImpl implements BidRankDao {
      */
     @Override
     public BidRankBean create(BidRankEntity bidRankEntity) {
-        return null;
+        long id = super.create(bidRankEntity, TYPE_NAME);
+        return new BidRankBean(id, super.findById(id, TYPE_NAME));
     }
 
     /**
@@ -54,6 +58,11 @@ public class BidRankDaoImpl implements BidRankDao {
      */
     @Override
     public BidRankBean save(BidRankBean bidRankEntity) {
+        return null;
+    }
+
+    @Override
+    public BidRankBean delete(long id) {
         return null;
     }
 }

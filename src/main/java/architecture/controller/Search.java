@@ -26,11 +26,7 @@ public class Search {
             @RequestParam(name = "page",defaultValue = "1")int page,
             @RequestParam(name = "split",defaultValue = "10")int split
     ){
-<<<<<<<
-        //List<CommodityEntity> results= commodityDao.findByKeyWord(key, (page-1)*split, split);
-=======
         Iterator<CommodityEntity> it=searchService.search(key, page, split);
->>>>>>>
         return "";
     }
 }
