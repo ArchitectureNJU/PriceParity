@@ -24,6 +24,6 @@ public class SearchImpl implements SearchService {
         List<String> keywords=new ArrayList<>();
         String[] keys=keyword.split("\\+");
         keywords.addAll(Arrays.asList(keys));
-        return commodityDao.findByKeyWord(keywords, offset, limit).iterator();
+        return commodityDao.findByKeyWord(keywords, offset, limit);
     }
 }

@@ -29,7 +29,7 @@ public class ManageImpl implements ManageService {
 
     @Override
     public List<BlockIpBean> getBlockIP(int offset, int size) {
-        return blockIpDao.findAll(offset, size).iterator();
+        return blockIpDao.findAll(offset, size);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ManageImpl implements ManageService {
 
     @Override
     public List<BlockWordBean> getBlockWord(int offset, int size) {
-        return blockWordDao.findAll(offset, size).iterator();
+        return blockWordDao.findAll(offset, size);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class ManageImpl implements ManageService {
 
     @Override
     public List<SynonymBean> getSynonym(int offset, int size) {
-        return synonymDao.findAll(offset, size).iterator();
+        return synonymDao.findAll(offset, size);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class ManageImpl implements ManageService {
 
     @Override
     public List<BidRankBean> getBidRank(int offset, int size) {
-        return bidRankDao.findAll(offset, size).iterator();
+        return bidRankDao.findAll(offset, size);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class ManageImpl implements ManageService {
 
     @Override
     public List<BlockRecordBean> getBlockRecord(int offset, int size) {
-        return blockRecordDao.findAll(offset, size).iterator();
+        return blockRecordDao.findAll(offset, size);
     }
 
     @Override

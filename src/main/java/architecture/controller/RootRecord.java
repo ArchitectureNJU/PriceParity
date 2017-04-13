@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-13.
  */
-@Controller("/root/record/")
+@Controller("/record")
 public class RootRecord {
 
     @Autowired

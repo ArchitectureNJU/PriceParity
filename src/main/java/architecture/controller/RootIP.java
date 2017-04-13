@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-12.
  */
-@Controller("/root/ip/")
+@Controller("/ip")
 public class RootIP {
     @Autowired
     ManageService manageService;
