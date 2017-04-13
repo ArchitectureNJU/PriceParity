@@ -10,14 +10,14 @@
   <div class="wrapper">
     <div class="card single-card">
       <h3 class="title">添加拦截IP</h3>
-      <form class="login-form" action="#">
+      <form class="login-form" action="#"  th:action="@{/ip/add}" method="post">
         <div class="form-item">
           <label for="ip">拦截IP</label>
           <textarea id="ip" name="ip" placeholder="请输入拦截IP"></textarea>
         </div>
         <div class="btn-block">
           <button type="submit" class="btn btn-primary btn-big">添加</button>
-          <button type="button" class="btn btn-big">取消</button>
+          <a href="#" th:href="@{/ip}" class="btn btn-big">取消</a>
         </div>
       </form>
     </div>

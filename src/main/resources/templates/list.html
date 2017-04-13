@@ -13,9 +13,9 @@
         <img src="/static/img/demo3.png" th:src="@{/img/demo3.png}" alt="" class="goods-img">
         <div class="brief-text">
           <div class="goods-name"><h2 class="goods-name-text" th:text="${goods.name}">Apple Watch</h2><p class="price">$<span th:text="${goods.price}">120</span></p></div>
-          <p class="description" th:text="${goods.description}">Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good.</p>
-          <p class="update">更新时间：<span th:text="${goods.updateTime}">2017 年 3 月 23 日 13:12</span></p>
-          <a class="btn btn-primary btn-big goods-link-btn" th:href="${goods.link}">直达链接(京东)</a>
+          <p class="description" th:text="${goods.summary}">Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good.</p>
+          <p class="update">更新时间：<span th:text="${goods.updated_at}">2017 年 3 月 23 日 13:12</span></p>
+          <a class="btn btn-primary btn-big goods-link-btn" th:href="${goods.url}">直达链接<span th:text="${goods.source}">(京东)</span></a>
         </div>
       </div>
     </div>

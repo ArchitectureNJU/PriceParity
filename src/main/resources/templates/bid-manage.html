@@ -23,10 +23,16 @@
           </tr>
           <tbody th:each="bid:${bidList}">
           <tr>
-            <td th:text="${bid.id}">1</td>
+            <td th:text="${bid.id}">id</td>
             <td th:text="${bid.name}">Apple Watch</td>
             <td th:text="${bid.price}">100</td>
-            <td><a class="link" href="#">修改竞价金额</a><a class="link" href="#">移除</a></td>
+            <td>
+              <a class="link" href="#" th:href="@{/bidrank/update}">修改竞价金额</a>
+              <form action="#" th:action="/bidrank/delete" method="post">
+                <input type="hidden" name="id" th:value="${bid.id}">
+                <button class="link" type="submit">移除</button>
+              </form>
+            </td>
           </tr>
           </tbody>
         </table>
