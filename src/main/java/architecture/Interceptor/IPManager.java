@@ -39,6 +39,7 @@ public class IPManager {
         boolean success = true;
         BlockIpEntity entity = new BlockIpEntity();
         entity.setIp(ip);
+        entity.setEndTime(System.currentTimeMillis());
         BlockIpBean result = blockIpDao.create(entity);
         if (result == null){
             success = false;
