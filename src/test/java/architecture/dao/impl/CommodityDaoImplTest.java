@@ -39,7 +39,7 @@ public class CommodityDaoImplTest extends PriceParityApplicationTests{
     @Test
     public void findByKeyWord() throws Exception {
         List<String> keywords = new ArrayList<>();
-        List<CommodityBean> commodityBeans = commodityDao.findByKeyWord(keywords, -1, -1);
+        List<CommodityBean> commodityBeans = commodityDao.findByKeyWord(keywords, 10, 10);
         System.out.println(commodityBeans);
     }
 
@@ -65,7 +65,7 @@ public class CommodityDaoImplTest extends PriceParityApplicationTests{
         commentEntity.setUrl("京东买家1211");
         commentEntities.add(commentEntity);
         entity.setComments(commentEntities);
-        entity.setDescription("【好产品值得推荐】(HP)惠普商用360°翻转轻薄触控笔记本新品上市！接口齐全！带触控笔！");
+        entity.setDescription("【新加的数据】(HP)惠普商用360°翻转轻薄触控笔记本新品上市！接口齐全！带触控笔！");
         entity.setName("This is a test title");
         entity.setPrice(5999.0);
         entity.setSource("京东");

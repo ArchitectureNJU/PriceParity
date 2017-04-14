@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * Jest client factory
@@ -36,7 +38,8 @@ public class ClientFactory {
                 if (client == null) {
                     JestClientFactory factory = new JestClientFactory();
                     factory.setHttpClientConfig(new HttpClientConfig.Builder(config.getHosts())
-                            .multiThreaded(true).build());
+                            .multiThreaded(true).discoveryEnabled(true)
+                            .discoveryFrequency(1L, TimeUnit.MINUTES).build());
                     client = factory.getObject();
                 }
             }
