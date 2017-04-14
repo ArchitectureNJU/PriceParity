@@ -64,7 +64,7 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
                 }
             }
             BlockRecordBean bean = blockRecordDao.findById(id);
-            long rejectedTime = bean.getBlockTime()-System.currentTimeMillis();
+            long rejectedTime = Long.parseLong(bean.getBlockTime())-System.currentTimeMillis();
             //remaining time
             request.setAttribute("remainingTime", ((rejectedTime / 1000) + (rejectedTime % 1000 > 0 ? 1 : 0)));
             return false;
@@ -130,7 +130,7 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
             return;
         }
         for (BlockRecordBean record: records){
-            long expireTime = record.getBlockTime();
+            long expireTime = Long.parseLong(record.getBlockTime());
             long currentTime = System.currentTimeMillis();
             if (expireTime <= currentTime){
                 String id = record.getId();

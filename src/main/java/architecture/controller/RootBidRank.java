@@ -61,4 +61,8 @@ public class RootBidRank {
         common(model,0,10);
         return "bid-manage";
     }
+
+
+
+
 }
