@@ -53,16 +53,16 @@ public class SearchImpl implements SearchService {
         List<String> blockRules=blockWordDao.findAll(0,500).stream()
                 .map(b->b.getKeyWord()).collect(Collectors.toList());
         List<CommodityBean> sorted=preResult.stream().filter(b->!b.blocked(blockRules)).sorted((b1,b2)->{
-            String bs1=b1.getCommodityId();
-            String bs2=b2.getCommodityId();
+            String bs1=b1.getId();
+            String bs2=b2.getId();
             if (map.containsKey(bs1)&&map.containsKey(bs2)){
-                return map.get(bs1)-map.get(bs2);
+                return map.get(bs1).compareTo(map.get(bs2));
             }else if (map.containsKey(bs1)){
                 return 1;
             }else if (map.containsKey(bs2)){
                 return -1;
             }else {
-                return b1.getMoney()-b2.getMoney();
+                return ((Double)b1.getPrice()).compareTo(b2.getPrice());
             }
         }).collect(Collectors.toList());
         return sorted;

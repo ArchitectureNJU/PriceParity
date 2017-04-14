@@ -25,4 +25,10 @@ public class BlockRecordBean {
         BeanUtils.copyProperties(entity, this, "lastBlockTime");
         this.lastBlockTime = DateUtils.longToStringFull(entity.getLastBlockTime());
     }
+
+    public String getId() {
+        return id;
+    }
+
+
 }
