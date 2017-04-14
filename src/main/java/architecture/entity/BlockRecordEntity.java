@@ -22,6 +22,6 @@ public class BlockRecordEntity {
         this.ip = bean.getIp();
         this.times = bean.getTimes();
         this.lastBlockTime = new Date(bean.getLastBlockTime()).getTime();
-        this.blockTime = new Date(bean.getBlockTime()).getTime();
+        this.blockTime = bean.getBlockTime();
     }
 }

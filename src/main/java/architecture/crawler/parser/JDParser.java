@@ -114,7 +114,7 @@ public class JDParser implements Parser{
                 FileUtil.printToFile("  "+c.getContent());
                 FileUtil.printToFile("  "+c.getTime());
             }
-            System.out.println("------------------------------------------------------");
+            FileUtil.printToFile("------------------------------------------------------");
         }
     }
 

@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * commodity bean fot display
@@ -31,7 +32,6 @@ public class CommodityBean {
         this.id = id;
         BeanUtils.copyProperties(entity,this,"updated_at","comments");
         this.updated_at = DateUtils.dateToString(entity.getUpdated_at());
-        comments = new ArrayList<>(entity.getComments().size());
-        Collections.copy(comments,entity.getComments());
+        comments = new ArrayList<>(entity.getComments());
     }
 }

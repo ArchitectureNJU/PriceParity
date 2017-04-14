@@ -1,7 +1,11 @@
 package architecture.bean;
 
+import architecture.utils.JsonMapping;
+
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +20,7 @@ public class ServerInfo {
     long totalMemory;
     long maxMemory;
     boolean running;
+    Date date;
 
 
     public ServerInfo(){
@@ -28,6 +33,7 @@ public class ServerInfo {
             String ip=Inet4Address.getLocalHost().getHostAddress();
             running=true;
             this.ip=ip;
+            date=new Date(Calendar.getInstance().getTimeInMillis());
         } catch (UnknownHostException e) {
             e.printStackTrace();
             this.ip="0.0.0.0";
@@ -42,19 +48,13 @@ public class ServerInfo {
         req_payload.put("maxMemory",maxMemory);
         req_payload.put("avaliableProcessors",availableProcessors);
         req_payload.put("state",running);
+        req_payload.put("date",date);
         return req_payload;
     }
 
     @Override
     public String toString() {
-        return "ServerInfo{" +
-                "ip='" + ip + '\'' +
-                ", availableProcessors=" + availableProcessors +
-                ", freeMemory=" + freeMemory +
-                ", totalMemory=" + totalMemory +
-                ", maxMemory=" + maxMemory +
-                ", running=" + running +
-                '}';
+        return JsonMapping.toJson(this);
     }
 
     public String getIp() {
@@ -95,5 +95,21 @@ public class ServerInfo {
 
     public void setMaxMemory(long maxMemory) {
         this.maxMemory = maxMemory;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

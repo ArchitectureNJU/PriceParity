@@ -14,7 +14,7 @@ import org.springframework.beans.BeanUtils;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BidRankEntity {
-    private long commodityId;
+    private String commodityId;
     private double money;
 
     public BidRankEntity(BidRankBean bean) {
