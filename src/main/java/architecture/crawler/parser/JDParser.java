@@ -4,6 +4,9 @@ import architecture.crawler.model.Comment;
 import architecture.crawler.model.Product;
 import architecture.crawler.util.CrawlerUtil;
 import architecture.crawler.util.FileUtil;
+import architecture.dao.CommodityDao;
+import architecture.dao.impl.CommodityDaoImpl;
+import architecture.entity.CommodityEntity;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -99,22 +102,17 @@ public class JDParser implements Parser{
 
     @Override
     public void addToDatabase(List<Product> products) {
-        for (Product p: products) {
-            FileUtil.printToFile(p.getId());
-            FileUtil.printToFile(p.getTime());
-            FileUtil.printToFile(p.getAvatar());
-            FileUtil.printToFile(p.getDepict());
-            FileUtil.printToFile(p.getPrice()+"");
-            FileUtil.printToFile(p.getSource());
-            FileUtil.printToFile(p.getTitle());
-            FileUtil.printToFile(p.getUrl());
-            for (Comment c: p.getComments()) {
-                FileUtil.printToFile("  "+c.getUser());
-                FileUtil.printToFile("  "+c.getAvatar());
-                FileUtil.printToFile("  "+c.getContent());
-                FileUtil.printToFile("  "+c.getTime());
-            }
-            FileUtil.printToFile("------------------------------------------------------");
+        CommodityDao dao = new CommodityDaoImpl();
+        for (Product pr: products) {
+            CommodityEntity entity = new CommodityEntity();
+            entity.setSource(pr.getSource());
+            entity.setAvatar(pr.getAvatar());
+            entity.setComments(new ArrayList<>());
+            entity.setPrice(Double.parseDouble(pr.getPrice()));
+            entity.setName(pr.getTitle());
+            entity.setUpdated_at(new Date(pr.getTime()));
+            entity.setUrl(pr.getUrl());
+            dao.create(entity);
         }
     }
 
