@@ -13,15 +13,15 @@
       <form class="login-form" action="#" th:action="@{/root/bidrank/update}" method="post">
         <div class="form-item">
           <label for="id">竞价商品ID</label>
-          <input id="id" name="commodityId" type="text" th:value="${goods.id}" placeholder="请输入竞价商品ID"/>
+          <input id="id" name="commodityId" type="text" th:value="${goods.commodityId}" placeholder="请输入竞价商品ID"/>
         </div>
         <div class="form-item">
           <label for="price">竞价金额</label>
-          <input id="price" name="money" type="text" th:value="${goods.price}" placeholder="请输入竞价金额"/>
+          <input id="price" name="money" type="text" th:value="${goods.money}" placeholder="请输入竞价金额"/>
         </div>
         <div class="btn-block">
           <button type="submit" class="btn btn-primary btn-big">确认修改</button>
-          <a href="/robidrank" th:href="@{/root/bidrank}" class="btn btn-big">取消</a>
+          <a href="/bidrank" th:href="@{/root/bidrank}" class="btn btn-big">取消</a>
         </div>
       </form>
     </div>

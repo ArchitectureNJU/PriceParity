@@ -27,7 +27,7 @@
             <td th:text="${bid.commodityId}">Apple Watch</td>
             <td th:text="${bid.money}">100</td>
             <td>
-              <a class="link" href="#" th:href="@{/root/bidrank/update}">修改竞价金额</a>
+              <a class="link" href="#" th:href="@{'/root/bidrank/update?id='+${bid.id}}">修改竞价金额</a>
               <form action="#" th:action="@{/root/bidrank/delete}" method="post">
                 <input type="hidden" name="id" th:value="${bid.id}">
                 <button class="link" type="submit">移除</button>
