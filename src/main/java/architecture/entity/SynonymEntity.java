@@ -18,8 +18,6 @@ public class SynonymEntity {
         words = new ArrayList<>(bean.getWords());
     }
 
-    public SynonymEntity() {
-    }
     public SynonymEntity(String word){
         if (word==null||word.length()==0){
             words=new ArrayList<>();

@@ -38,6 +38,5 @@ public class CommodityEntity {
         comments = new ArrayList<>(bean.getComments());
     }
 
-    public CommodityEntity() {
-    }
+
 }

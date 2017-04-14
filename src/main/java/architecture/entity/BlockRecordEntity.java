@@ -25,6 +25,5 @@ public class BlockRecordEntity {
         this.blockTime = bean.getBlockTime();
     }
 
-    public BlockRecordEntity() {
-    }
+
 }

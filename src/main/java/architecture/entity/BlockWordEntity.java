@@ -20,6 +20,5 @@ public class BlockWordEntity {
         this.endTime = new Date(bean.getEndTime()).getTime();
     }
 
-    public BlockWordEntity() {
-    }
+
 }

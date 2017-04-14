@@ -21,6 +21,5 @@ public class BlockIpEntity {
         this.endTime = new Date(bean.getEndTime()).getTime();
     }
 
-    public BlockIpEntity() {
-    }
+
 }

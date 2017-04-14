@@ -21,6 +21,5 @@ public class BidRankEntity {
         BeanUtils.copyProperties(bean,this);
     }
 
-    public BidRankEntity() {
-    }
+
 }
