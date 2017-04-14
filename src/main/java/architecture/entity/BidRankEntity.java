@@ -20,4 +20,7 @@ public class BidRankEntity {
     public BidRankEntity(BidRankBean bean) {
         BeanUtils.copyProperties(bean,this);
     }
+
+    public BidRankEntity() {
+    }
 }

@@ -2,6 +2,7 @@ package architecture.controller;
 
 import architecture.bean.BidRankBean;
 import architecture.bean.BlockRecordBean;
+import architecture.entity.BidRankEntity;
 import architecture.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,11 +63,10 @@ public class RootBidRank {
 
     @RequestMapping(value = "/root/bidrank/add",method = RequestMethod.POST)
     public String add(
-            @ModelAttribute(name = "BidRankBean")BidRankBean bean,
+            @ModelAttribute(name = "BidRankEntity")BidRankEntity entity,
             Model model
     ){
-        manageService.save(bean);
-//        common(model,0,10);
+        manageService.create(entity);
         return "redirect:/root/bidrank";
     }
     @RequestMapping(value = "/root/bidrank/delete",method = RequestMethod.POST)

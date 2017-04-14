@@ -20,4 +20,7 @@ public class BlockIpEntity {
         this.ip = bean.getIp();
         this.endTime = new Date(bean.getEndTime()).getTime();
     }
+
+    public BlockIpEntity() {
+    }
 }

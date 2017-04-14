@@ -24,4 +24,7 @@ public class BlockRecordEntity {
         this.lastBlockTime = new Date(bean.getLastBlockTime()).getTime();
         this.blockTime = bean.getBlockTime();
     }
+
+    public BlockRecordEntity() {
+    }
 }

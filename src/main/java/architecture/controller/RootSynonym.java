@@ -2,6 +2,7 @@ package architecture.controller;
 
 import architecture.bean.BlockWordBean;
 import architecture.bean.SynonymBean;
+import architecture.entity.SynonymEntity;
 import architecture.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,7 +60,7 @@ public class RootSynonym {
             @RequestParam(name = "syn")String blockWord,
             Model model
     ){
-        manageService.save(new SynonymBean(blockWord));
+        manageService.create(new SynonymEntity(blockWord));
         return "redirect:/root/synonym";
     }
 

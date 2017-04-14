@@ -4,6 +4,7 @@ import architecture.bean.BidRankBean;
 import architecture.bean.BlockIpBean;
 import architecture.bean.BlockRecordBean;
 import architecture.bean.BlockWordBean;
+import architecture.entity.BlockIpEntity;
 import architecture.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,10 +55,10 @@ public class RootIP {
 
     @RequestMapping(value = "/root/ip/add",method = RequestMethod.POST)
     public String add(
-            @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
+            @ModelAttribute(name = "BlockIpEntity")BlockIpEntity entity,
             Model model
     ){
-        manageService.save(bean);
+        manageService.create(entity);
 //        common(model,0,10);
         return "redirect:/root/ip";
     }

@@ -37,4 +37,7 @@ public class CommodityEntity {
         this.updated_at = new Date(bean.getUpdated_at());
         comments = new ArrayList<>(bean.getComments());
     }
+
+    public CommodityEntity() {
+    }
 }

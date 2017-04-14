@@ -19,4 +19,7 @@ public class BlockWordEntity {
         this.keyWord = bean.getKeyWord();
         this.endTime = new Date(bean.getEndTime()).getTime();
     }
+
+    public BlockWordEntity() {
+    }
 }

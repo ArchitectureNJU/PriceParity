@@ -18,4 +18,7 @@ public class CommentEntity {
     private Date created_at;
     private String source;
     private int status;
+
+    public CommentEntity() {
+    }
 }

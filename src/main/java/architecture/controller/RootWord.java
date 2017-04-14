@@ -2,6 +2,7 @@ package architecture.controller;
 
 import architecture.bean.BlockWordBean;
 import architecture.bean.SynonymBean;
+import architecture.entity.BlockWordEntity;
 import architecture.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,11 +48,11 @@ public class RootWord {
 
     @RequestMapping(value = "/root/word/add",method = RequestMethod.POST)
     public String add(
-            @ModelAttribute("BlockWordBean")BlockWordBean bean,
+            @ModelAttribute("BlockWordEntity")BlockWordEntity entity,
             Model model
     ){
 
-        manageService.save(bean);
+        manageService.create(entity);
         return "redirect:/root/word";
     }
     @RequestMapping(value = "/root/word/delete",method = RequestMethod.POST)
