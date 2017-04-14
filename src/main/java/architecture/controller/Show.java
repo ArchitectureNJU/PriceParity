@@ -23,7 +23,6 @@ public class Show {
     @Autowired
     CommodityService commodityService;
 
-
     @RequestMapping(value = "/commodity/info",method = RequestMethod.GET)
     public String info(@RequestParam(value = "id")String id, Model model){
         CommodityBean ce=commodityService.find(id);

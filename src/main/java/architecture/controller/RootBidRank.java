@@ -26,8 +26,8 @@ public class RootBidRank {
 
     @RequestMapping(value = "/root/bidrank",method = RequestMethod.GET)
     public String getBidRank(
-            @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
-            @RequestParam(name = "size",defaultValue = "10",required = false)int size,
+            @RequestParam(name = "offset",defaultValue = "-1",required = false)int offset,
+            @RequestParam(name = "size",defaultValue = "-1",required = false)int size,
             Model model
     ){
         common(model, offset, size);
@@ -43,7 +43,8 @@ public class RootBidRank {
     @RequestMapping(value = "/root/bidrank/update",method = RequestMethod.GET)
     public String updatePage(@RequestParam String id,Model model)
     {
-        model.addAttribute("goods",manageService.findBidRankByid(id));
+        BidRankBean bidRankBean=manageService.findBidRankByid(id);
+        model.addAttribute("goods",bidRankBean);
         return "bid-update";
     }
 
@@ -52,7 +53,6 @@ public class RootBidRank {
             @ModelAttribute(name = "BidRankBean")BidRankBean bean,
             Model model){
         manageService.save(bean);
-//        common(model,0,10);
         return "redirect:/root/bidrank";
     }
 
@@ -72,7 +72,6 @@ public class RootBidRank {
     @RequestMapping(value = "/root/bidrank/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteBidRank(id);
-//        common(model,0,10);
         return "redirect:/root/bidrank";
     }
 }

@@ -17,8 +17,6 @@ public class BlockWordBean {
     private String keyWord;
     private String endTime;
 
-
-
     public BlockWordBean() {
 
         Calendar calendar=Calendar.getInstance();

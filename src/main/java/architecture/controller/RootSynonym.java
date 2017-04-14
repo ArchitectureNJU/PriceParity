@@ -32,8 +32,8 @@ public class RootSynonym {
 
     @RequestMapping(value = "/root/synonym",method = RequestMethod.GET)
     public String getSynonym(
-            @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
-            @RequestParam(name = "size",defaultValue = "10",required = false)int size,
+            @RequestParam(name = "offset",defaultValue = "-1",required = false)int offset,
+            @RequestParam(name = "size",defaultValue = "-1",required = false)int size,
             Model model
     ){
         common(model, offset, size);
@@ -42,8 +42,11 @@ public class RootSynonym {
 
     @RequestMapping(value = "/root/synonym/update",method = RequestMethod.POST)
     public String update(
-            @ModelAttribute(name = "SynonymBean")SynonymBean bean,
+            @RequestParam(name = "id")String id,
+            @RequestParam(name = "syn")String syn,
             Model model){
+                SynonymEntity entity=new SynonymEntity(syn);
+                SynonymBean bean=new SynonymBean(id,entity);
         manageService.save(bean);
 //        common(model,0,10);
         return "redirect:/root/synonym";

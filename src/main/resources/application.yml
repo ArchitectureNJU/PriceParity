@@ -4,6 +4,8 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGACYHTML5
+  template:
+    cache: false
 ---
 elasticsearch:
   cluster: elasticsearch-price-parity

@@ -41,7 +41,7 @@ public class BlockWordDaoImpl extends BaseDaoImpl<BlockWordEntity> implements Bl
     public BlockWordBean findById(String id) {
         BlockWordEntity entity = super.findById(id,TYPE_NAME, BlockWordEntity.class);
         if (entity!=null) {
-            new BlockWordBean(id, entity);
+            return new BlockWordBean(id, entity);
         }
         return null;
     }

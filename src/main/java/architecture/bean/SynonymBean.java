@@ -13,16 +13,14 @@ import java.util.stream.Collectors;
 @Data
 public class SynonymBean {
     private String id;
-    private Set<String> words;
-
-
-
-
-    public SynonymBean() {
-    }
+    private List<String> words;
 
     public SynonymBean(String id, SynonymEntity entity) {
         this.id = id;
-        this.words = new HashSet<>(entity.getWords());
+        this.words = new ArrayList<>(entity.getWords());
     }
+
+    public boolean has(String str){return words.contains(str);}
+    public String getZero(){return words==null||words.isEmpty()?"":words.get(0);}
+
 }

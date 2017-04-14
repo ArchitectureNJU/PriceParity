@@ -20,7 +20,8 @@
           <input id="price" name="money" type="text" th:value="${goods.money}" placeholder="请输入竞价金额"/>
         </div>
         <div class="btn-block">
-          <button type="submit" class="btn btn-primary btn-big">确认修改</button>
+          <input type="hidden" name="id" th:value="${goods.id}">
+          <button type="submit" class="btn btn-primary btn-big">修改</button>
           <a href="/bidrank" th:href="@{/root/bidrank}" class="btn btn-big">取消</a>
         </div>
       </form>

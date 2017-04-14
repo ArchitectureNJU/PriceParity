@@ -13,9 +13,6 @@ public class BidRankBean {
     private String commodityId;
     private double money;
 
-    public BidRankBean() {
-    }
-
     public BidRankBean(String id, BidRankEntity entity) {
         this.id = id;
         BeanUtils.copyProperties(entity,this);

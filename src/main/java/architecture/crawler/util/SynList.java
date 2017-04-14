@@ -8,7 +8,7 @@ import java.util.Set;
 public class SynList {
     public static String[] hp = {"惠普", "hp", "hui pu", "huipu"};
     public static String[] lx = {"联想", "lenovo","lianxiang"," lian xiang"," ThinkPad"};
-    public static String[] dl = {"dell","戴尔"};
+    public static String[] dl = {"戴尔","dell"};
     public static String[] xm = {"小米","mi","xiaomi","xiao mi"};
     public static String[] qh = {"清华同方","thtf","qhtf"};
     public static String[] hw = {"华为","huawei"};

@@ -28,13 +28,19 @@ public class CommodityBean {
     private String avatar;
     private List<CommentEntity> comments;
 
-    public CommodityBean() {
-    }
 
     public CommodityBean(String id, CommodityEntity entity) {
         this.id = id;
         BeanUtils.copyProperties(entity,this,"updated_at","comments");
         this.updated_at = DateUtils.dateToString(entity.getUpdated_at());
         comments = new ArrayList<>(entity.getComments());
+    }
+
+    public boolean blocked(List<String> rules){
+        for (String s:rules){
+            if (summary.contains(s)||description.contains(s))
+                return true;
+        }
+        return false;
     }
 }

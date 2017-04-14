@@ -20,6 +20,7 @@ public class BlockWordDaoImplTest extends PriceParityApplicationTests {
 
     @Test
     public void findAll() throws Exception {
+        System.out.println(blockWordDao.findAll(0,10));
     }
 
     @Test
@@ -30,7 +31,7 @@ public class BlockWordDaoImplTest extends PriceParityApplicationTests {
     public void create() throws Exception {
         BlockWordEntity entity = new BlockWordEntity();
         entity.setEndTime(System.currentTimeMillis());
-        entity.setKeyWord("习近平");
+        entity.setKeyWord("胡锦涛");
         BlockWordBean bean = blockWordDao.create(entity);
     }
 

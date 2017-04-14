@@ -18,9 +18,6 @@ public class BlockIpBean {
     private String ip;
     private String endTime;
 
-    public BlockIpBean() {
-    }
-
     public BlockIpBean(String id, BlockIpEntity entity) {
         this.id = id;
         this.ip = entity.getIp();

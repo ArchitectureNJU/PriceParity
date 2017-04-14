@@ -38,7 +38,7 @@ public class BlockRecordDaoImpl extends BaseDaoImpl<BlockRecordEntity> implement
     public BlockRecordBean findById(String id) {
         BlockRecordEntity entity = super.findById(id,TYPE_NAME, BlockRecordEntity.class);
         if (entity!=null) {
-            new BlockRecordBean(id, entity);
+            return new BlockRecordBean(id, entity);
         }
         return null;
     }

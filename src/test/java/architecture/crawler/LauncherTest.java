@@ -66,14 +66,56 @@ public class LauncherTest extends PriceParityApplicationTests{
     @Test
     public void addSyn(){
 
-        SynonymEntity entity = new SynonymEntity();
-        List<String> list = new ArrayList<String>();
-        list.add("hp");
-        list.add("惠普");
-        list.add("hui pu");
-        list.add("huipu");
-        entity.setWords(list);
-        synonymDao.create(entity);
+
+        String[][] l = {
+                {"联想", "lenovo","lianxiang"," lian xiang"," ThinkPad"},
+                {"戴尔","dell"},
+                {"小米","mi","xiaomi","xiao mi"},
+                {"清华同方","thtf","qhtf"},
+                {"华为","huawei"},
+                {"苹果","apple","pingguo","ping guo"},
+                {"三星","samsung"},
+                {"华硕","asus","huashuo","hua shuo"},
+                {"海尔","haier"},
+                {"中柏","jumper"},
+                {"富士通","fujitsu"},
+                {"微软","microsoft"},
+                {"镭蛇","razer"}
+        };
+
+
+        for (int i = 0;i < 13;i++){
+            SynonymEntity entity = new SynonymEntity();
+            List<String> list = new ArrayList<String>();
+
+            for (int j = 0;j < l[i].length;j++){
+                if (j == 0)
+                    list.add(l[i][1]);
+                if (j == 1)
+                    list.add(l[i][0]);
+                else
+                    list.add(l[i][j]);
+            }
+//
+//
+//            list.add("hp");
+//            list.add("惠普");
+//            list.add("hui pu");
+//            list.add("huipu");
+            entity.setWords(list);
+            synonymDao.create(entity);
+
+
+        }
+
+//        SynonymEntity entity = new SynonymEntity();
+//        List<String> list = new ArrayList<String>();
+//        list.add("hp");
+//        list.add("惠普");
+//        list.add("hui pu");
+//        list.add("huipu");
+//        entity.setWords(list);
+//        synonymDao.create(entity);
 
 
 
