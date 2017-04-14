@@ -37,22 +37,23 @@ public class RootRecord {
         List<BlockRecordBean> it=manageService.getBlockRecord(offset,size);
         model.addAttribute("interceptList",it);
     }
-    @RequestMapping(value = "/root/record/update",method = RequestMethod.POST)
-    public String update(
-            @ModelAttribute(name = "BlockRecordBean")BlockRecordBean bean,
-            Model model){
-        manageService.save(bean);
-        common(model,0,10);
-        return "intercept-records";
-    }
-    @RequestMapping(value = "/root/record/add",method = RequestMethod.POST)
-    public String add(
-            @ModelAttribute(name = "BlockRecordBean")BlockRecordBean bean,
-            Model model
-    ){
-        manageService.save(bean);
-        common(model,0,10);
-        return "intercept-records";
-    }
+
+//    @RequestMapping(value = "/root/record/update",method = RequestMethod.POST)
+//    public String update(
+//            @ModelAttribute(name = "BlockRecordBean")BlockRecordBean bean,
+//            Model model){
+//        manageService.save(bean);
+//        common(model,0,10);
+//        return "intercept-records";
+//    }
+//    @RequestMapping(value = "/root/record/add",method = RequestMethod.POST)
+//    public String add(
+//            @ModelAttribute(name = "BlockRecordBean")BlockRecordBean bean,
+//            Model model
+//    ){
+//        manageService.save(bean);
+//        common(model,0,10);
+//        return "intercept-records";
+//    }
 
 }

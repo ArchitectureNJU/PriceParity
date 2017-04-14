@@ -24,9 +24,6 @@ public class RootIP {
     @Autowired
     ManageService manageService;
 
-
-
-
     @RequestMapping(value = "/root/ip",method = RequestMethod.GET)
     public String getBlockIP(
             @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
@@ -37,34 +34,44 @@ public class RootIP {
         return "intercept-manage";
     }
 
-
-
     private void common(Model model,int offset,int size){
         List<BlockIpBean> it=manageService.getBlockIP(offset,size);
         model.addAttribute("blockip",it);
     }
-    @RequestMapping(value = "/root/ip/update",method = RequestMethod.POST)
-    public String update(
-            @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
-            Model model){
-        manageService.save(bean);
-        common(model,0,10);
-        return "";
-    }
+
+//    @RequestMapping(value = "/root/ip/update",method = RequestMethod.POST)
+//    public String update(
+//            @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
+//            Model model){
+//        manageService.save(bean);
+//        return "redirect:/root/ip";
+//    }
+//
+//    @RequestMapping(value = "/root/ip/update",method = RequestMethod.GET)
+//    public String updatePage(@RequestParam String id) {
+//        return "intercept-update";
+//    }
+
     @RequestMapping(value = "/root/ip/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
             Model model
     ){
         manageService.save(bean);
-        common(model,0,10);
-        return "";
+//        common(model,0,10);
+        return "redirect:/root/ip";
     }
+
+    @RequestMapping(value = "/root/ip/add",method = RequestMethod.GET)
+    public String addPage() {
+        return "intercept-add";
+    }
+
     @RequestMapping(value = "/root/ip/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteIP(id);
-        common(model,0,10);
-        return "";
+//        common(model,0,10);
+        return "redirect:/root/ip";
     }
 
 

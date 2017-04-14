@@ -38,27 +38,24 @@ public class RootWord {
         List<BlockWordBean> it=manageService.getBlockWord(offset,size);
         model.addAttribute("maskword",it);
     }
-    @RequestMapping(value = "/root/word/update",method = RequestMethod.POST)
-    public String update(
-            @ModelAttribute(name = "BlockWordBean")BlockWordBean bean,
-            Model model){
-        manageService.save(bean);
-        common(model,0,10);
-        return "maskword-manage";
+
+    public String addPage() {
+        return "maskword-add";
     }
+
     @RequestMapping(value = "/root/word/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "BlockWordBean")BlockWordBean bean,
             Model model
     ){
         manageService.save(bean);
-        common(model,0,10);
-        return "maskword-manage";
+//        common(model,0,10);
+        return "redirect:/root/word";
     }
     @RequestMapping(value = "/root/word/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
-                manageService.deleteWord(id);
-                common(model,0,10);
-                return "maskword-manage";
+        manageService.deleteWord(id);
+//                common(model,0,10);
+        return "redirect:/root/word";
     }
 }

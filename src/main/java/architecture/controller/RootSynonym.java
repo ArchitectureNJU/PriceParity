@@ -39,29 +39,40 @@ public class RootSynonym {
         return "syn-manage";
     }
 
-
-
     @RequestMapping(value = "/root/synonym/update",method = RequestMethod.POST)
     public String update(
             @ModelAttribute(name = "SynonymBean")SynonymBean bean,
             Model model){
         manageService.save(bean);
-        common(model,0,10);
-        return "syn-manage";
+//        common(model,0,10);
+        return "redirect:/root/synonym";
     }
+
+    @RequestMapping(value = "/root/synonym/update",method = RequestMethod.GET)
+    public String updatePage(@RequestParam String id){
+        //TODO
+        return "syn-update";
+    }
+
     @RequestMapping(value = "/root/synonym/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "SynonymBean")SynonymBean bean,
             Model model
     ){
         manageService.save(bean);
-        common(model,0,10);
-        return "syn-manage";
+//        common(model,0,10);
+        return "redirect:/root/synonym";
     }
+
+    @RequestMapping(value = "/root/synonym/add",method = RequestMethod.GET)
+    public String addPage(){
+        return "syn-add";
+    }
+
     @RequestMapping(value = "/root/synonym/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteSynonym(id);
-        common(model,0,10);
-        return "syn-manage";
+//        common(model,0,10);
+        return "redirect:/root/synonym";
     }
 }
