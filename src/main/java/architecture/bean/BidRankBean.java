@@ -20,4 +20,6 @@ public class BidRankBean {
         this.id = id;
         BeanUtils.copyProperties(entity,this);
     }
+
+
 }

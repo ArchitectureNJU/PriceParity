@@ -37,4 +37,12 @@ public class CommodityBean {
         this.updated_at = DateUtils.dateToString(entity.getUpdated_at());
         comments = new ArrayList<>(entity.getComments());
     }
+
+    public boolean blocked(List<String> rules){
+        for (String s:rules){
+            if (summary.contains(s)||description.contains(s))
+                return true;
+        }
+        return false;
+    }
 }
