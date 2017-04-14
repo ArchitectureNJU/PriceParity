@@ -25,33 +25,34 @@ import static org.junit.Assert.*;
  */
 public class CommodityDaoImplTest extends PriceParityApplicationTests{
 
-    @Test
+//    @Test
     public void mapping() throws Exception {
         JestClient client = clientFactory.getClient();
         jestService.createIndexMapping(client,"srs","commodity","");
     }
 
-    @Test
+//    @Test
     public void findById() throws Exception {
-        System.out.println(commodityDao.findById("AVtrz9WEWl2TViG5FV4v"));
+        System.out.println(commodityDao.findById("AVtrAcly2QcGvg77hiEf"));
     }
 
     @Test
     public void findByKeyWord() throws Exception {
         List<String> keywords = new ArrayList<>();
-        List<CommodityBean> commodityBeans = commodityDao.findByKeyWord(keywords, 0, 10);
+        List<CommodityBean> commodityBeans = commodityDao.findByKeyWord(keywords, -1, -1);
+        System.out.println(commodityBeans.size());
         System.out.println(commodityBeans);
     }
 
-    @Test
+//    @Test
     public void save() throws Exception {
     }
 
-    @Test
+//    @Test
     public void delete() throws Exception {
     }
 
-    @Test
+//    @Test
     public void create() throws Exception {
         CommodityEntity entity = new CommodityEntity();
         entity.setAvatar("https://img14.360buyimg.com/n0/jfs/t3067/308/5815960105/98807/97ab361d/5880849cNe6f36103.jpg");
@@ -65,7 +66,7 @@ public class CommodityDaoImplTest extends PriceParityApplicationTests{
         commentEntity.setUrl("京东买家1211");
         commentEntities.add(commentEntity);
         entity.setComments(commentEntities);
-        entity.setDescription("【新加的数据】(HP)惠普商用360°翻转轻薄触控笔记本新品上市！接口齐全！带触控笔！");
+        entity.setDescription("【好产品值得推荐】(HP)惠普商用360°翻转轻薄触控笔记本新品上市！接口齐全！带触控笔！");
         entity.setName("This is a test title");
         entity.setPrice(5999.0);
         entity.setSource("京东");
