@@ -12,7 +12,7 @@
     <div class="content">
       <div class="card manage-card">
         <div class="title-block"><h3 class="title">同义词表管理</h3>
-          <button class="btn btn-primary">添加同义词组</button>
+          <a href="#" th:href="@{/root/add}" class="btn btn-primary">添加同义词组</a>
         </div>
         <table class="manage-table">
           <tr>
@@ -21,13 +21,14 @@
           </tr>
           <tbody th:each="syn:${synList}">
           <tr>
-            <td th:text="${syn.keywords}">苹果官方授权</td>
+            <td th:text="${syn.words}">苹果官方授权</td>
             <td>
               <a class="link" href="#" th:href="@{/synonym/update}">修改词组内容</a>
               <form action="#" th:action="/synonym/delete" method="post">
                 <input type="hidden" name="id" th:value="${syn.id}">
                 <button class="link" type="submit">移除</button>
-              </form></td>
+              </form>
+            </td>
           </tr>
           </tbody>
         </table>
