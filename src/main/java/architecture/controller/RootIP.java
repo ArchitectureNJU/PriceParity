@@ -58,6 +58,7 @@ public class RootIP {
             @ModelAttribute(name = "BlockIpEntity")BlockIpEntity entity,
             Model model
     ){
+        entity.setEndTime(System.currentTimeMillis());
         manageService.create(entity);
 //        common(model,0,10);
         return "redirect:/root/ip";
