@@ -40,6 +40,8 @@ public interface ManageService {
 
     SynonymBean save(SynonymBean bean);
 
+    SynonymBean findSynonymByid(String id);
+
 
     SynonymBean deleteSynonym(String id);
 
@@ -51,6 +53,8 @@ public interface ManageService {
     BidRankBean save(BidRankBean bidRankEntity);
 
     BidRankBean deleteBidRank(String id);
+
+    BidRankBean findBidRankByid(String id);
 
 
     //blockrecord

@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-13.
  */
-@Controller()
+@Controller
 public class RootBidRank {
 
     @Autowired
@@ -29,7 +29,7 @@ public class RootBidRank {
             @RequestParam(name = "size",defaultValue = "10",required = false)int size,
             Model model
     ){
-       common(model, offset, size);
+        common(model, offset, size);
         return "bid-manage";
     }
 
@@ -38,31 +38,41 @@ public class RootBidRank {
         List<BidRankBean> it=manageService.getBidRank(offset,size);
         model.addAttribute("bidList",it);
     }
+
+    @RequestMapping(value = "/root/bidrank/update",method = RequestMethod.GET)
+    public String updatePage(@RequestParam String id,Model model)
+    {
+        model.addAttribute("goods",manageService.findBidRankByid(id));
+        return "bid-update";
+    }
+
     @RequestMapping(value = "/root/bidrank/update",method = RequestMethod.POST)
     public String update(
             @ModelAttribute(name = "BidRankBean")BidRankBean bean,
             Model model){
         manageService.save(bean);
-        common(model,0,10);
-        return "bid-manage";
+//        common(model,0,10);
+        return "redirect:/root/bidrank";
     }
+
+    @RequestMapping(value = "/root/bidrank/add",method = RequestMethod.GET)
+    public String addPage() {
+        return "bid-add";
+    }
+
     @RequestMapping(value = "/root/bidrank/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "BidRankBean")BidRankBean bean,
             Model model
     ){
         manageService.save(bean);
-        common(model,0,10);
-        return "bid-manage";
+//        common(model,0,10);
+        return "redirect:/root/bidrank";
     }
     @RequestMapping(value = "/root/bidrank/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteBidRank(id);
-        common(model,0,10);
-        return "bid-manage";
+//        common(model,0,10);
+        return "redirect:/root/bidrank";
     }
-
-
-
-
 }

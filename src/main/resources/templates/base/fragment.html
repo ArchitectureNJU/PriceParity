@@ -37,10 +37,10 @@
 </header>
 
 <div class="nav" th:fragment="nav(chosen)">
-  <a class="nav-item" th:class="'nav-item ' + (${chosen}==0 ? 'nav-item-active')">同义词表管理</a>
-  <a class="nav-item" th:class="'nav-item ' + (${chosen}==1 ? 'nav-item-active')">屏蔽词表管理</a>
-  <a class="nav-item" th:class="'nav-item ' + (${chosen}==2 ? 'nav-item-active')">竞价排序管理</a>
-  <a class="nav-item" th:class="'nav-item ' + (${chosen}==3 ? 'nav-item-active')">拦截IP管理</a>
-  <a class="nav-item" th:class="'nav-item ' + (${chosen}==4 ? 'nav-item-active')">拦截IP记录</a>
-  <a class="nav-item" th:class="'nav-item ' + (${chosen}==5 ? 'nav-item-active')">服务器状态</a>
+  <a class="nav-item" th:href="@{/root/synonym}" th:class="'nav-item ' + (${chosen}==0 ? 'nav-item-active')">同义词表管理</a>
+  <a class="nav-item" th:href="@{/root/word}" th:class="'nav-item ' + (${chosen}==1 ? 'nav-item-active')">屏蔽词表管理</a>
+  <a class="nav-item" th:href="@{/root/bidrank}" th:class="'nav-item ' + (${chosen}==2 ? 'nav-item-active')">竞价排序管理</a>
+  <a class="nav-item" th:href="@{/root/ip}" th:class="'nav-item ' + (${chosen}==3 ? 'nav-item-active')">拦截IP管理</a>
+  <a class="nav-item" th:href="@{/root/record}" th:class="'nav-item ' + (${chosen}==4 ? 'nav-item-active')">拦截IP记录</a>
+  <a class="nav-item" th:href="@{/root/server}" th:class="'nav-item ' + (${chosen}==5 ? 'nav-item-active')">服务器状态</a>
 </div>

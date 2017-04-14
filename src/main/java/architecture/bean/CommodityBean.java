@@ -28,6 +28,9 @@ public class CommodityBean {
     private String avatar;
     private List<CommentEntity> comments;
 
+    public CommodityBean() {
+    }
+
     public CommodityBean(String id, CommodityEntity entity) {
         this.id = id;
         BeanUtils.copyProperties(entity,this,"updated_at","comments");

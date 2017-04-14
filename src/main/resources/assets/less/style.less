@@ -2,7 +2,7 @@
 @import "mixin.less";
 
 body {
-  font-family: 'Avenir Next';
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   font-size: @big-font-size;
   color: @font-color;
 }
@@ -27,15 +27,34 @@ p, h1, h2, h3, h4, h5 {
   border: none;
   border-radius: 4px;
   font-size: @small-font-size;
+  background: @border-color;
+  text-decoration: none;
+  color: @font-color;
 
   &:hover {
     .transition(all, 0.3s);
-    background: darken(@primary-color, 20%);
+    background: darken(@border-color, 20%);
+  }
+
+  &:visited {
+    color: @font-color;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
   }
 
   &-primary {
     background: @primary-color;
     color: white;
+    &:hover {
+      .transition(all, 0.3s);
+      background: darken(@primary-color, 20%);
+    }
+    &:visited {
+      color: white;
+    }
   }
 
   &-big {
@@ -157,10 +176,15 @@ header {
       .goods-name {
         p, h2 {
           display: inline-block;
+          vertical-align: middle;
         }
         .goods-name-text {
           margin-right: 7px;
-          font-size: @huge-font-size;
+          font-size: 26px;
+          max-width: 20em;
+          overflow: hidden; /*自动隐藏文字*/
+          text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+          white-space: nowrap;/*强制不换行*/
         }
         .price {
           color: @primary-color;
@@ -300,6 +324,8 @@ header {
       padding: 8px 20px;
       border: 1px solid @border-color;
       cursor: pointer;
+      color: @font-color;
+      text-decoration: none;
 
       &-active {
         border-left: 5px solid @primary-color;
@@ -310,6 +336,10 @@ header {
         .transition(all, 0.3s);
         border-left: 5px solid @primary-color;
         background-color: @primary-light-color;
+      }
+
+      &:visited {
+        color: @font-color;
       }
     }
   }

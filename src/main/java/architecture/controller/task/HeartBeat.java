@@ -30,6 +30,7 @@ public class HeartBeat {
 
 //    @Scheduled(fixedRate = 60000)
     public void beat(){
+
         try {
             MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
             Map map = new HashMap<String, String>();
@@ -46,6 +47,7 @@ public class HeartBeat {
                 logger.debug(serverInfo);
             }
         }catch (Exception e){}
+
 
     }
 

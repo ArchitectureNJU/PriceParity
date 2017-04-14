@@ -14,6 +14,9 @@ public class BlockWordBean {
     private String keyWord;
     private String endTime;
 
+    public BlockWordBean() {
+    }
+
     public BlockWordBean(String id, BlockWordEntity entity) {
         this.id = id;
         this.keyWord = entity.getKeyWord();
