@@ -28,22 +28,25 @@ public class HeartBeat {
     private static Logger logger=Logger.getLogger(HeartBeat.class);
 
 
-    @Scheduled(fixedRate = 60000)
+//    @Scheduled(fixedRate = 60000)
     public void beat(){
-        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        Map map = new HashMap<String, String>();
-        map.put("Content-Type", "application/json");
+        try {
+            MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+            Map map = new HashMap<String, String>();
+            map.put("Content-Type", "application/json");
 
-        headers.setAll(map);
-        ServerInfo serverInfo=new ServerInfo();
-        HttpEntity<?> request = new HttpEntity<>(serverInfo.getInfo(), headers);
-        String url = systemConfig.getHeartURL();
+            headers.setAll(map);
+            ServerInfo serverInfo=new ServerInfo();
+            HttpEntity<?> request = new HttpEntity<>(serverInfo.getInfo(), headers);
+            String url = systemConfig.getHeartURL();
 
-        ResponseEntity<?> response = new RestTemplate().postForEntity(url, request, String.class);
-        logger.info("Http post status :"+response.getStatusCodeValue());
-        if (systemConfig.isDebug()){
-            logger.debug(serverInfo);
-        }
+            ResponseEntity<?> response = new RestTemplate().postForEntity(url, request, String.class);
+            logger.info("Http post status :"+response.getStatusCodeValue());
+            if (systemConfig.isDebug()){
+                logger.debug(serverInfo);
+            }
+        }catch (Exception e){}
+
     }
 
 }
