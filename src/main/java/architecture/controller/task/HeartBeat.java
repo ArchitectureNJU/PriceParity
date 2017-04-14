@@ -30,20 +30,7 @@ public class HeartBeat {
 
     @Scheduled(fixedRate = 60000)
     public void beat(){
-        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        Map map = new HashMap<String, String>();
-        map.put("Content-Type", "application/json");
-
-        headers.setAll(map);
-        ServerInfo serverInfo=new ServerInfo();
-        HttpEntity<?> request = new HttpEntity<>(serverInfo.getInfo(), headers);
-        String url = systemConfig.getHeartURL();
-
-        ResponseEntity<?> response = new RestTemplate().postForEntity(url, request, String.class);
-        logger.info("Http post status :"+response.getStatusCodeValue());
-        if (systemConfig.isDebug()){
-            logger.debug(serverInfo);
-        }
+//
     }
 
 }
