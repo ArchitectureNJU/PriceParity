@@ -16,6 +16,17 @@ public class SynonymBean {
     private Set<String> words;
 
 
+    public SynonymBean(String word){
+        if (word==null||word.length()==0){
+            words=new HashSet<>();
+        }else {
+            String[] strs = word.split(",");
+            words=new HashSet<>();
+            for (String s:strs)
+                words.add(s);
+        }
+    }
+
     public SynonymBean() {
     }
 
