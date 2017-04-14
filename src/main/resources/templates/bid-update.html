@@ -10,7 +10,7 @@
   <div class="wrapper">
     <div class="card single-card">
       <h3 class="title">修改竞价商品</h3>
-      <form class="login-form" action="#" th:action="@{/bidrank/update}" method="post">
+      <form class="login-form" action="#" th:action="@{/root/bidrank/update}" method="post">
         <div class="form-item">
           <label for="id">竞价商品ID</label>
           <input id="id" name="id" type="text" th:value="${goods.id}" placeholder="请输入竞价商品ID"/>
@@ -21,7 +21,7 @@
         </div>
         <div class="btn-block">
           <button type="submit" class="btn btn-primary btn-big">确认修改</button>
-          <a href="/bidrank" th:href="@{/bidrank}" class="btn btn-big">取消</a>
+          <a href="/bidrank" th:href="@{/root/bidrank}" class="btn btn-big">取消</a>
         </div>
       </form>
     </div>
