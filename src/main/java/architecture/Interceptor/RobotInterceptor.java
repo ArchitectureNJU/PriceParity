@@ -56,6 +56,7 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
+
     private boolean isRobot(HttpServletRequest request, HttpServletResponse response, String ip) throws ServletException, IOException {
         boolean robot = false;
         List<BlockRecordBean> records = blockRecordDao.findAll(-1,0);
