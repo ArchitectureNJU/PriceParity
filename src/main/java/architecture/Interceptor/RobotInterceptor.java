@@ -1,12 +1,18 @@
 package architecture.Interceptor;
 
+import architecture.bean.BlockRecordBean;
+import architecture.dao.BlockRecordDao;
+import architecture.entity.BlockRecordEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,20 +21,22 @@ import java.util.Set;
  */
 public class RobotInterceptor extends HandlerInterceptorAdapter {
     @Autowired
+    BlockRecordDao blockRecordDao;
+    @Autowired
     ServletContext context;
 
     /**
-     * 默认限制时间（单位：ms）
+     * limit time
      */
     private static final long LIMITED_TIME_MILLIS = 60 * 1000;
 
     /**
-     * 用户连续访问最高阀值，超过该值则认定为恶意操作的IP，进行限制
+     * times in security time
      */
     private static final int LIMIT_NUMBER = 20;
 
     /**
-     * 用户访问最小安全时间，在该时间内如果访问次数大于阀值，则记录为恶意IP，否则视为正常访问
+     * security time
      */
     private static final int MIN_SAFE_TIME = 5000;
 
@@ -36,19 +44,27 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String clientip = request.getRemoteAddr();
-        if (!isRobot(request, clientip)){
+        if (isRobot(request,response, clientip)){
+            request.getRequestDispatcher("/templates_origin/frequent.html").forward(request,response);
             //intercept this request
             return false;
         }
         return true;
     }
 
-    private boolean isRobot(HttpServletRequest request, String ip){
+    private boolean isRobot(HttpServletRequest request, HttpServletResponse response, String ip) throws ServletException, IOException {
         boolean robot = false;
-        Map<String, Long> robotIpMap = (Map<String, Long>) context.getAttribute("robotIpMap");
-        filterRobotIpMap(robotIpMap);
-        if (isLimitedIP(robotIpMap, ip)){
-            long rejectedTime = robotIpMap.get(ip)-System.currentTimeMillis();
+        List<BlockRecordBean> records = blockRecordDao.findAll(-1,0);
+        filterRobotIpRecord(records);
+        if (isLimitedIP(records, ip)){
+            String id = new String();
+            for (BlockRecordBean record: records){
+                if (record.getIp().equals(ip)){
+                    id = record.getId();
+                }
+            }
+            BlockRecordBean bean = blockRecordDao.findById(id);
+            long rejectedTime = bean.getBlockTime()-System.currentTimeMillis();
             //remaining time
             request.setAttribute("remainingTime", ((rejectedTime / 1000) + (rejectedTime % 1000 > 0 ? 1 : 0)));
             return false;
@@ -61,8 +77,12 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
                 Long ipAccessTime = ipInfo[1];
                 Long currentTimeMillis = System.currentTimeMillis();
                 if (currentTimeMillis - ipAccessTime <= MIN_SAFE_TIME) {
-                    robotIpMap.put(ip, currentTimeMillis + LIMITED_TIME_MILLIS);
+                    BlockRecordEntity entity = new BlockRecordEntity();
+                    entity.setIp(ip);
+                    entity.setBlockTime(currentTimeMillis + LIMITED_TIME_MILLIS);
+                    blockRecordDao.create(entity);
                     request.setAttribute("remainingTime", LIMITED_TIME_MILLIS);
+                    request.getRequestDispatcher("/templates_origin/frequent.html").forward(request,response);
                     return false;
                 } else {
                     initIpVisitsNumber(ipMap, ip);
@@ -84,21 +104,17 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
 
     /**
      * compare ip
-     * @param robotIpMap
+     * @param records
      * @param ip
      * @return
      */
-    private boolean isLimitedIP(Map<String, Long> robotIpMap, String ip) {
-        if (robotIpMap == null || ip == null) {
+    private boolean isLimitedIP(List<BlockRecordBean> records, String ip) {
+        if (records == null || ip == null) {
             // not limited
             return false;
         }
-        Set<String> keys = robotIpMap.keySet();
-        Iterator<String> keyIt = keys.iterator();
-        while (keyIt.hasNext()) {
-            String key = keyIt.next();
-            if (key.equals(ip)) {
-                // limited
+        for (BlockRecordBean record: records){
+            if (record.getIp().equals(ip)){
                 return true;
             }
         }
@@ -107,20 +123,20 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
 
     /**
      * get rid of out-dated robot
-     * @param robotIpMap
+     * @param records
      */
-    private void filterRobotIpMap(Map<String, Long> robotIpMap) {
-        if (robotIpMap == null){
+    private void filterRobotIpRecord(List<BlockRecordBean> records) {
+        if (records == null){
             return;
         }
-        Set<String> keys = robotIpMap.keySet();
-        Iterator<String> keyIt = keys.iterator();
-        long currentTimeMillis = System.currentTimeMillis();
-        while (keyIt.hasNext()) {
-            long expireTimeMillis = robotIpMap.get(keyIt.next());
-            if (expireTimeMillis <= currentTimeMillis) {
-                keyIt.remove();
+        for (BlockRecordBean record: records){
+            long expireTime = record.getBlockTime();
+            long currentTime = System.currentTimeMillis();
+            if (expireTime <= currentTime){
+                String id = record.getId();
+                blockRecordDao.delete(id);
             }
+
         }
     }
 }
