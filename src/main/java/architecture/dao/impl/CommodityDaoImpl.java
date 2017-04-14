@@ -117,4 +117,16 @@ public class CommodityDaoImpl extends BaseDaoImpl<CommodityEntity> implements Co
             return null;
         }
     }
+
+    /**
+     * Create commodity bean
+     *
+     * @param entity entity
+     * @return {@link CommodityBean}
+     */
+    @Override
+    public CommodityBean create(CommodityEntity entity) {
+        BeanResult<CommodityEntity> result = super.create(entity, TYPE_NAME, CommodityEntity.class);
+        return new CommodityBean(result.getId(), result.getData());
+    }
 }

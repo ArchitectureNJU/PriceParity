@@ -42,4 +42,11 @@ public interface CommodityDao {
      * @return deleted commodity
      */
     CommodityBean delete(String id);
+
+    /**
+     * Create commodity bean
+     * @param entity entity
+     * @return {@link CommodityBean}
+     */
+    CommodityBean create(CommodityEntity entity);
 }
