@@ -37,7 +37,7 @@ public class RootIP {
 
     private void common(Model model,int offset,int size){
         List<BlockIpBean> it=manageService.getBlockIP(offset,size);
-        model.addAttribute("blockip",it);
+        model.addAttribute("interceptList",it);
     }
 
 //    @RequestMapping(value = "/root/ip/update",method = RequestMethod.POST)
