@@ -19,6 +19,7 @@ import java.util.List;
 /**
  * Created by raychen on 2017/4/14.
  */
+@Component
 public class EbayParser implements Parser {
 
     @Resource
@@ -69,11 +70,24 @@ public class EbayParser implements Parser {
     @Override
     public void addToDatabase(List<Product> products) {
         for (Product pr: products) {
+
+            System.out.println(pr.getTitle());
+
             CommodityEntity entity = new CommodityEntity();
             entity.setSource(pr.getSource());
             entity.setAvatar(pr.getAvatar());
             entity.setComments(new ArrayList<>());
-            entity.setPrice(Double.parseDouble(pr.getPrice()));
+            String price = pr.getPrice();
+            price = price.substring(4,price.length());
+            price = price.replace(",","");
+            int index = price.indexOf('.');
+            if (index != -1)
+                price = price.substring(0,index + 3);
+
+            System.out.println(price);
+
+
+            entity.setPrice(Double.parseDouble(price));
             entity.setName(pr.getTitle());
             entity.setUpdated_at(new Date(pr.getTime()));
             entity.setUrl(pr.getUrl());

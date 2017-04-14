@@ -21,6 +21,7 @@ import java.util.List;
 /**
  * Created by raychen on 2017/4/14.
  */
+//@Component
 public class DDParser implements Parser {
 
     @Resource
@@ -55,7 +56,7 @@ public class DDParser implements Parser {
             product.setSource("DangDang");
             product.setTime(new Date().toString());
             String detailHtml = crawler.processUrl("http://product.dangdang.com/"+id+".html");
-            parseDetail(detailHtml, product);
+//            parseDetail(detailHtml, product);
             products.add(product);
         }
         addToDatabase(products);
@@ -97,11 +98,21 @@ public class DDParser implements Parser {
     @Override
     public void addToDatabase(List<Product> products) {
         for (Product pr: products) {
+            System.out.println(pr.getTitle());
             CommodityEntity entity = new CommodityEntity();
             entity.setSource(pr.getSource());
             entity.setAvatar(pr.getAvatar());
             entity.setComments(new ArrayList<>());
-            entity.setPrice(Double.parseDouble(pr.getPrice()));
+            String price = pr.getPrice();
+            if (price.charAt(0) == 165)
+                price = price.substring(1,pr.getPrice().length());
+            int index = price.indexOf('.');
+            if (index != -1)
+                price = price.substring(0,index + 3);
+
+            System.out.println(price);
+
+            entity.setPrice(Double.parseDouble(price));
             entity.setName(pr.getTitle());
             entity.setUpdated_at(new Date(pr.getTime()));
             entity.setUrl(pr.getUrl());

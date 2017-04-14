@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by raychen on 2017/4/14.
  */
-@Component
+//@Component
 public class JDParser implements Parser{
 
     @Resource
@@ -109,6 +109,8 @@ public class JDParser implements Parser{
     @Override
     public void addToDatabase(List<Product> products) {
         for (Product pr: products) {
+            System.out.println(pr.getTitle());
+            System.out.println(pr.getAvatar());
             CommodityEntity entity = new CommodityEntity();
             entity.setSource(pr.getSource());
             entity.setAvatar(pr.getAvatar());

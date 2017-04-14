@@ -25,13 +25,13 @@ import static org.junit.Assert.*;
  */
 public class CommodityDaoImplTest extends PriceParityApplicationTests{
 
-    @Test
+//    @Test
     public void mapping() throws Exception {
         JestClient client = clientFactory.getClient();
         jestService.createIndexMapping(client,"srs","commodity","");
     }
 
-    @Test
+//    @Test
     public void findById() throws Exception {
         System.out.println(commodityDao.findById("AVtrAcly2QcGvg77hiEf"));
     }
@@ -40,18 +40,19 @@ public class CommodityDaoImplTest extends PriceParityApplicationTests{
     public void findByKeyWord() throws Exception {
         List<String> keywords = new ArrayList<>();
         List<CommodityBean> commodityBeans = commodityDao.findByKeyWord(keywords, -1, -1);
+        System.out.println(commodityBeans.size());
         System.out.println(commodityBeans);
     }
 
-    @Test
+//    @Test
     public void save() throws Exception {
     }
 
-    @Test
+//    @Test
     public void delete() throws Exception {
     }
 
-    @Test
+//    @Test
     public void create() throws Exception {
         CommodityEntity entity = new CommodityEntity();
         entity.setAvatar("https://img14.360buyimg.com/n0/jfs/t3067/308/5815960105/98807/97ab361d/5880849cNe6f36103.jpg");
