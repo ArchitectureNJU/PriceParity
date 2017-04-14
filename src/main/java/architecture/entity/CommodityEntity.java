@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.BeanUtils;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +35,6 @@ public class CommodityEntity {
     public CommodityEntity(CommodityBean bean) {
         BeanUtils.copyProperties(bean,this,"updated_at","comments");
         this.updated_at = new Date(bean.getUpdated_at());
-        Collections.copy(comments,bean.getComments());
+        comments = new ArrayList<>(bean.getComments());
     }
 }

@@ -4,6 +4,9 @@ import architecture.PriceParityApplicationTests;
 import architecture.bean.BidRankBean;
 import architecture.dao.BidRankDao;
 import architecture.entity.BidRankEntity;
+import architecture.jest.ClientFactory;
+import architecture.jest.JestService;
+import io.searchbox.client.JestClient;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 
@@ -29,12 +32,10 @@ public class BidRankDaoImplTest extends PriceParityApplicationTests {
     }
 
     @Test
-    @Rollback
-    @Transactional
     public void create1() throws Exception {
         BidRankEntity entity = new BidRankEntity();
-        entity.setCommodityId(0);
-        entity.setMoney(0);
+        entity.setCommodityId("Test id");
+        entity.setMoney(1);
         BidRankBean bidRankBean = bidRankDao.create(entity);
         System.out.println(bidRankBean);
         System.out.println(bidRankBean==null?"null":bidRankBean.getId());
@@ -46,10 +47,17 @@ public class BidRankDaoImplTest extends PriceParityApplicationTests {
 
     @Test
     public void delete() throws Exception {
-        System.out.println(bidRankDao.delete("AVtl30Va2QcGvg77hiEK"));
+        JestClient client = factory.getClient();
+        jestService.delete(client, "srs");
     }
 
     @Resource
     private BidRankDao bidRankDao;
+
+    @Resource
+    private JestService jestService;
+
+    @Resource
+    private ClientFactory factory;
 
 }
