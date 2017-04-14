@@ -81,7 +81,7 @@ public class CommodityDaoImpl extends BaseDaoImpl<CommodityEntity> implements Co
             List<SearchResult.Hit<CommodityEntity,Void>> hits = result.getHits(CommodityEntity.class);
             JsonObject jsonObject = result.getJsonObject();
             JsonArray hitsArray = jsonObject.getAsJsonObject("hits").getAsJsonArray("hits");
-            for (int i = 0; i < result.getTotal(); i++) {
+            for (int i = 0; i < hitsArray.size(); i++) {
                 JsonObject object = hitsArray.get(i).getAsJsonObject();
                 results.add(new BeanResult<>(hits.get(i).source,object.get("_id").getAsString()));
             }
