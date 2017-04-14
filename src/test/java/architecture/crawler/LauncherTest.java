@@ -84,38 +84,39 @@ public class LauncherTest extends PriceParityApplicationTests{
         };
 
 
-        for (int i = 0;i < 13;i++){
-            SynonymEntity entity = new SynonymEntity();
-            List<String> list = new ArrayList<String>();
-
-            for (int j = 0;j < l[i].length;j++){
-                if (j == 0)
-                    list.add(l[i][1]);
-                if (j == 1)
-                    list.add(l[i][0]);
-                else
-                    list.add(l[i][j]);
-            }
+//        for (int i = 0;i < 13;i++){
+//            SynonymEntity entity = new SynonymEntity();
+//            List<String> list = new ArrayList<String>();
+//
+//            for (int j = 0;j < l[i].length;j++){
+////                if (j == 0)
+////                    list.add(l[i][1]);
+////                if (j == 1)
+////                    list.add(l[i][0]);
+////                else
+//                    list.add(l[i][j]);
+//            }
+////
+////
+////            list.add("hp");
+////            list.add("惠普");
+////            list.add("hui pu");
+////            list.add("huipu");
+//            entity.setWords(list);
+//            synonymDao.create(entity);
 //
 //
-//            list.add("hp");
-//            list.add("惠普");
-//            list.add("hui pu");
-//            list.add("huipu");
-            entity.setWords(list);
-            synonymDao.create(entity);
+//        }
 
+        SynonymEntity entity = new SynonymEntity();
+        List<String> list = new ArrayList<String>();
 
-        }
-
-//        SynonymEntity entity = new SynonymEntity();
-//        List<String> list = new ArrayList<String>();
-//        list.add("hp");
-//        list.add("惠普");
-//        list.add("hui pu");
-//        list.add("huipu");
-//        entity.setWords(list);
-//        synonymDao.create(entity);
+        list.add("惠普");
+        list.add("hp");
+        list.add("hui pu");
+        list.add("huipu");
+        entity.setWords(list);
+        synonymDao.create(entity);
 
 
 
