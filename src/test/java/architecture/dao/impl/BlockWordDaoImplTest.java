@@ -20,6 +20,7 @@ public class BlockWordDaoImplTest extends PriceParityApplicationTests {
 
     @Test
     public void findAll() throws Exception {
+        System.out.println(blockWordDao.findAll(0,10));
     }
 
     @Test

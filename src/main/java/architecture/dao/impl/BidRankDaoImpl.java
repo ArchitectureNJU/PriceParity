@@ -40,7 +40,7 @@ public class BidRankDaoImpl extends BaseDaoImpl<BidRankEntity> implements BidRan
     public BidRankBean findById(String id) {
         BidRankEntity entity = super.findById(id,TYPE_NAME, BidRankEntity.class);
         if (entity!=null) {
-            new BidRankBean(id, entity);
+            return new BidRankBean(id, entity);
         }
         return null;
     }

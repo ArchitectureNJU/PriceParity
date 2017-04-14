@@ -41,7 +41,7 @@ public class SynonymDaoImpl extends BaseDaoImpl<SynonymEntity> implements Synony
     public SynonymBean findById(String id) {
         SynonymEntity entity = super.findById(id,TYPE_NAME, SynonymEntity.class);
         if (entity!=null) {
-            new SynonymBean(id, entity);
+            return new SynonymBean(id, entity);
         }
         return null;
     }
