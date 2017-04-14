@@ -23,8 +23,8 @@
           <tr>
             <td th:text="${syn.words}">苹果官方授权</td>
             <td>
-              <a class="link" href="#" th:href="@{/root/synonym/update}">修改词组内容</a>
-              <form action="#" th:action="/synonym/delete" method="post">
+              <a class="link" href="#" th:href="@{'/root/synonym/update?id='+${syn.id}}">修改词组内容</a>
+              <form action="#" th:action="@{/synonym/delete}" method="post">
                 <input type="hidden" name="id" th:value="${syn.id}">
                 <button class="link" type="submit">移除</button>
               </form>
