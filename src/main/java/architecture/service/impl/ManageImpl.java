@@ -83,6 +83,11 @@ public class ManageImpl implements ManageService {
     }
 
     @Override
+    public SynonymBean findSynonymByid(String id) {
+        return synonymDao.findById(id);
+    }
+
+    @Override
     public SynonymBean deleteSynonym(String id) {
         return synonymDao.delete(id);
     }
@@ -105,6 +110,11 @@ public class ManageImpl implements ManageService {
     @Override
     public BidRankBean deleteBidRank(String id) {
         return bidRankDao.delete(id);
+    }
+
+    @Override
+    public BidRankBean findBidRankByid(String id) {
+        return bidRankDao.findById(id);
     }
 
     @Override

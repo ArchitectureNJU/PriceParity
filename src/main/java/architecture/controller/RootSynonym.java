@@ -49,8 +49,8 @@ public class RootSynonym {
     }
 
     @RequestMapping(value = "/root/synonym/update",method = RequestMethod.GET)
-    public String updatePage(@RequestParam String id){
-        //TODO
+    public String updatePage(@RequestParam String id,Model model){
+        model.addAttribute("syn",manageService.findSynonymByid(id));
         return "syn-update";
     }
 

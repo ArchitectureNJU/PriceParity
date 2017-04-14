@@ -39,6 +39,7 @@ public class RootWord {
         model.addAttribute("maskword",it);
     }
 
+    @RequestMapping(value = "/root/word/add",method = RequestMethod.GET)
     public String addPage() {
         return "maskword-add";
     }
@@ -49,13 +50,11 @@ public class RootWord {
             Model model
     ){
         manageService.save(bean);
-//        common(model,0,10);
         return "redirect:/root/word";
     }
     @RequestMapping(value = "/root/word/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteWord(id);
-//                common(model,0,10);
         return "redirect:/root/word";
     }
 }

@@ -22,8 +22,10 @@ public class SearchImpl implements SearchService {
     @Override
     public List<CommodityBean> search(String keyword, int offset, int limit) {
         List<String> keywords=new ArrayList<>();
-        String[] keys=keyword.split("\\+");
-        keywords.addAll(Arrays.asList(keys));
+        if (keyword.length()!=0) {
+            String[] keys = keyword.split("\\+");
+            keywords.addAll(Arrays.asList(keys));
+        }
         return commodityDao.findByKeyWord(keywords, offset, limit);
     }
 }

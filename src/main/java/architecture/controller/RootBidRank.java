@@ -40,7 +40,9 @@ public class RootBidRank {
     }
 
     @RequestMapping(value = "/root/bidrank/update",method = RequestMethod.GET)
-    public String updatePage(@RequestParam String id) {
+    public String updatePage(@RequestParam String id,Model model)
+    {
+        model.addAttribute("goods",manageService.findBidRankByid(id));
         return "bid-update";
     }
 
