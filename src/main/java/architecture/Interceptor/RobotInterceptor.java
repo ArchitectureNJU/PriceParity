@@ -69,6 +69,7 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
             }
             BlockRecordBean bean = blockRecordDao.findById(id);
 
+
             long lastBlockTime = System.currentTimeMillis();
             bean.setLastBlockTime(DateUtils.longToStringFull(lastBlockTime));
             long blockTime = lastBlockTime + LIMITED_TIME_MILLIS;
@@ -78,6 +79,7 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
             bean.setTimes(times);
             //update record
             blockRecordDao.save(bean);
+
 
 
             //remaining time
