@@ -23,7 +23,12 @@ public class SynonymEntity {
             words=new ArrayList<>();
         }else {
             String[] strs = word.split(",|\\[|\\]");
-            words= Arrays.asList(strs);
+            words= new ArrayList<>();
+            for (String s:strs){
+                if (s.length()!=0){
+                    words.add(s);
+                }
+            }
         }
     }
 }

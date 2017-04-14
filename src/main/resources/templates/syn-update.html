@@ -13,10 +13,11 @@
       <form class="login-form" action="#" th:action="@{/root/synonym/update}" method="post">
         <div class="form-item">
           <label for="syn">同义词组</label>
-          <textarea id="syn" name="syn" placeholder="请输入同义词组" th:text="${syn}"></textarea>
+          <input type="hidden" name="id" th:value="${syn.id}">
+          <input id="syn" name="syn" placeholder="请输入同义词组" th:value="${syn.words}">
         </div>
         <div class="btn-block">
-          <button type="submit" class="btn btn-primary btn-big">添加</button>
+          <button type="submit" class="btn btn-primary btn-big">修改</button>
           <a href="#" th:href="@{/root/synonym}" class="btn btn-big">取消</a>
         </div>
       </form>
