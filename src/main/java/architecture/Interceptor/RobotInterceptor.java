@@ -49,7 +49,7 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String clientip = request.getRemoteAddr();
         if (isRobot(request,response, clientip)){
-            request.getRequestDispatcher("/templates_origin/frequent.html").forward(request,response);
+            response.sendRedirect(request.getContextPath()+"/frequent");
             //intercept this request
             return false;
         }
@@ -104,7 +104,7 @@ public class RobotInterceptor extends HandlerInterceptorAdapter {
                     entity.setTimes(1);
                     blockRecordDao.create(entity);
 //                    request.setAttribute("remainingTime", LIMITED_TIME_MILLIS);
-                    request.getRequestDispatcher("/templates_origin/frequent.html").forward(request,response);
+                    response.sendRedirect(request.getContextPath()+"/frequent");
                     return true;
                 } else {
                     initIpVisitsNumber(ipMap, ip);
