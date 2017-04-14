@@ -9,5 +9,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class QueryObj {
-    private MatchObj query;
+    private MatchObj match;
 }

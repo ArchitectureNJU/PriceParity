@@ -8,6 +8,8 @@ import architecture.utils.JsonMapping;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import io.searchbox.core.SearchResult;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -68,8 +70,10 @@ public class CommodityDaoImpl extends BaseDaoImpl<CommodityEntity> implements Co
             for (String string: keyword) {
                 queryKey.append(string).append(" ");
             }
-            query.put("query",new QueryObj(new MatchObj(queryKey.toString(), queryKey.toString())));
+            String queryStr = queryKey.substring(0,queryKey.length()-1);
+            query.put("query",new QueryObj(new MatchObj(queryStr)));
         }
+        System.out.println(JsonMapping.toJson(query));
         SearchResult result =
                 jestService.search(clientFactory.getClient() ,"srs", TYPE_NAME, JsonMapping.toJson(query));
         List<BeanResult<CommodityEntity>> results = new ArrayList<>();
