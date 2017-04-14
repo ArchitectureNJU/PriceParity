@@ -33,13 +33,12 @@ public class CommodityDaoImplTest extends PriceParityApplicationTests{
 
     @Test
     public void findById() throws Exception {
+        System.out.println(commodityDao.findById("AVtrAcly2QcGvg77hiEf"));
     }
 
     @Test
     public void findByKeyWord() throws Exception {
         List<String> keywords = new ArrayList<>();
-        keywords.add("惠普");
-        keywords.add("HP");
         List<CommodityBean> commodityBeans = commodityDao.findByKeyWord(keywords, -1, -1);
         System.out.println(commodityBeans);
     }

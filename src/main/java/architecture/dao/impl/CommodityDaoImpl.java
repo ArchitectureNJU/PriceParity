@@ -43,7 +43,7 @@ public class CommodityDaoImpl extends BaseDaoImpl<CommodityEntity> implements Co
     public CommodityBean findById(String id) {
         CommodityEntity entity = super.findById(id,TYPE_NAME, CommodityEntity.class);
         if (entity!=null) {
-            new CommodityBean(id, entity);
+            return new CommodityBean(id, entity);
         }
         return null;
     }
