@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-13.
  */
-@Controller()
+@Controller
 public class RootBidRank {
 
     @Autowired

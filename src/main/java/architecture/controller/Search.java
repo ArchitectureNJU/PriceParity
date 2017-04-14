@@ -16,15 +16,15 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-12.
  */
-@Controller("/search")
+@Controller
 public class Search {
 
     @Autowired
     SearchService searchService;
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/search",method = RequestMethod.GET)
     public String search(
             @RequestParam(name = "key")String key,
-            @RequestParam(name = "page",defaultValue = "1")int page,
+            @RequestParam(name = "page",defaultValue = "0")int page,
             @RequestParam(name = "split",defaultValue = "10")int split,
             Model model
     ){
