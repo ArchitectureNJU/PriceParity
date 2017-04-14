@@ -25,7 +25,7 @@
             <td th:text="${intercept.ip}">192.168.1.1</td>
             <td th:text="${intercept.endTime}">2017年4月13日23:11:36</td>
             <td>
-              <form action="#" th:action="/ip/delete" method="post">
+              <form action="#" th:action="@{/ip/delete}" method="post">
                 <input type="hidden" name="id" th:value="${intercept.id}">
                 <button class="link" type="submit">移除</button>
               </form>
