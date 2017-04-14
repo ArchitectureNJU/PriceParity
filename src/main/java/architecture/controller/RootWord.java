@@ -47,11 +47,11 @@ public class RootWord {
 
     @RequestMapping(value = "/root/word/add",method = RequestMethod.POST)
     public String add(
-            @RequestParam(name = "syn")String blockWord,
+            @ModelAttribute("BlockWordBean")BlockWordBean bean,
             Model model
     ){
 
-        manageService.save(new SynonymBean(blockWord));
+        manageService.save(bean);
         return "redirect:/root/word";
     }
     @RequestMapping(value = "/root/word/delete",method = RequestMethod.POST)
