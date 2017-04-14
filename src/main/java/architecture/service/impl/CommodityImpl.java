@@ -2,6 +2,7 @@ package architecture.service.impl;
 
 import architecture.bean.CommodityBean;
 import architecture.dao.CommodityDao;
+import architecture.entity.CommodityEntity;
 import architecture.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,10 @@ public class CommodityImpl implements CommodityService {
     @Override
     public CommodityBean find(String id) {
         return commodityDao.findById(id);
+    }
+
+    public CommodityBean add(CommodityEntity entity){
+        return commodityDao.create(entity);
     }
 
 }

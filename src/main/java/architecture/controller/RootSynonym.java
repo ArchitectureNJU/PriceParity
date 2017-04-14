@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-13.
  */
-@Controller("/synonym")
+@Controller()
 public class RootSynonym {
 
 
@@ -29,7 +29,7 @@ public class RootSynonym {
         model.addAttribute("synList",it);
     }
 
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/root/synonym",method = RequestMethod.GET)
     public String getSynonym(
             @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
             @RequestParam(name = "size",defaultValue = "10",required = false)int size,
@@ -41,7 +41,7 @@ public class RootSynonym {
 
 
 
-    @RequestMapping(value = "update",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/synonym/update",method = RequestMethod.POST)
     public String update(
             @ModelAttribute(name = "SynonymBean")SynonymBean bean,
             Model model){
@@ -49,7 +49,7 @@ public class RootSynonym {
         common(model,0,10);
         return "syn-manage";
     }
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/synonym/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "SynonymBean")SynonymBean bean,
             Model model
@@ -58,7 +58,7 @@ public class RootSynonym {
         common(model,0,10);
         return "syn-manage";
     }
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/synonym/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteSynonym(id);
         common(model,0,10);

@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-12.
  */
-@Controller("/ip")
+@Controller()
 public class RootIP {
     @Autowired
     ManageService manageService;
@@ -27,7 +27,7 @@ public class RootIP {
 
 
 
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/root/ip",method = RequestMethod.GET)
     public String getBlockIP(
             @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
             @RequestParam(name = "size",defaultValue = "10",required = false)int size,
@@ -43,7 +43,7 @@ public class RootIP {
         List<BlockIpBean> it=manageService.getBlockIP(offset,size);
         model.addAttribute("blockip",it);
     }
-    @RequestMapping(value = "update",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/ip/update",method = RequestMethod.POST)
     public String update(
             @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
             Model model){
@@ -51,7 +51,7 @@ public class RootIP {
         common(model,0,10);
         return "";
     }
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/ip/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "BlockIpBean")BlockIpBean bean,
             Model model
@@ -60,7 +60,7 @@ public class RootIP {
         common(model,0,10);
         return "";
     }
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/ip/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteIP(id);
         common(model,0,10);

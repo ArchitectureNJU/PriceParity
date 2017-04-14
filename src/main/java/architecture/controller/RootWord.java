@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-13.
  */
-@Controller("/word")
+@Controller()
 public class RootWord {
 
     @Autowired
@@ -24,7 +24,7 @@ public class RootWord {
 
 
 
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/root/word",method = RequestMethod.GET)
     public String getBlockWord(
             @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
             @RequestParam(name = "size",defaultValue = "10",required = false)int size,
@@ -38,7 +38,7 @@ public class RootWord {
         List<BlockWordBean> it=manageService.getBlockWord(offset,size);
         model.addAttribute("maskword",it);
     }
-    @RequestMapping(value = "update",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/word/update",method = RequestMethod.POST)
     public String update(
             @ModelAttribute(name = "BlockWordBean")BlockWordBean bean,
             Model model){
@@ -46,7 +46,7 @@ public class RootWord {
         common(model,0,10);
         return "maskword-manage";
     }
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/word/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "BlockWordBean")BlockWordBean bean,
             Model model
@@ -55,7 +55,7 @@ public class RootWord {
         common(model,0,10);
         return "maskword-manage";
     }
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/word/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
                 manageService.deleteWord(id);
                 common(model,0,10);

@@ -17,13 +17,13 @@ import java.util.List;
 /**
  * Created by cxworks on 17-4-13.
  */
-@Controller("/bidrank")
+@Controller()
 public class RootBidRank {
 
     @Autowired
     ManageService manageService;
 
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/root/bidrank",method = RequestMethod.GET)
     public String getBidRank(
             @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
             @RequestParam(name = "size",defaultValue = "10",required = false)int size,
@@ -38,7 +38,7 @@ public class RootBidRank {
         List<BidRankBean> it=manageService.getBidRank(offset,size);
         model.addAttribute("bidList",it);
     }
-    @RequestMapping(value = "update",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/bidrank/update",method = RequestMethod.POST)
     public String update(
             @ModelAttribute(name = "BidRankBean")BidRankBean bean,
             Model model){
@@ -46,7 +46,7 @@ public class RootBidRank {
         common(model,0,10);
         return "bid-manage";
     }
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/bidrank/add",method = RequestMethod.POST)
     public String add(
             @ModelAttribute(name = "BidRankBean")BidRankBean bean,
             Model model
@@ -55,7 +55,7 @@ public class RootBidRank {
         common(model,0,10);
         return "bid-manage";
     }
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/root/bidrank/delete",method = RequestMethod.POST)
     public String delete(@RequestParam(name = "id")String id,Model model){
         manageService.deleteBidRank(id);
         common(model,0,10);
