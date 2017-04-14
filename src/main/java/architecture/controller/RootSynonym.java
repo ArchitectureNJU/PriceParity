@@ -56,11 +56,10 @@ public class RootSynonym {
 
     @RequestMapping(value = "/root/synonym/add",method = RequestMethod.POST)
     public String add(
-            @ModelAttribute(name = "SynonymBean")SynonymBean bean,
+            @RequestParam(name = "syn")String blockWord,
             Model model
     ){
-        manageService.save(bean);
-//        common(model,0,10);
+        manageService.save(new SynonymBean(blockWord));
         return "redirect:/root/synonym";
     }
 
