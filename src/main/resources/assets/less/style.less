@@ -2,7 +2,7 @@
 @import "mixin.less";
 
 body {
-  font-family: 'Avenir Next';
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   font-size: @big-font-size;
   color: @font-color;
 }
@@ -176,10 +176,15 @@ header {
       .goods-name {
         p, h2 {
           display: inline-block;
+          vertical-align: middle;
         }
         .goods-name-text {
           margin-right: 7px;
-          font-size: @huge-font-size;
+          font-size: 26px;
+          max-width: 20em;
+          overflow: hidden; /*自动隐藏文字*/
+          text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+          white-space: nowrap;/*强制不换行*/
         }
         .price {
           color: @primary-color;
