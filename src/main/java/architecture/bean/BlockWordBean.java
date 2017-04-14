@@ -17,8 +17,6 @@ public class BlockWordBean {
     private String keyWord;
     private String endTime;
 
-
-
     public BlockWordBean() {
 
         Calendar calendar=Calendar.getInstance();
@@ -30,29 +28,5 @@ public class BlockWordBean {
         this.id = id;
         this.keyWord = entity.getKeyWord();
         this.endTime = DateUtils.longToStringFull(entity.getEndTime());
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getKeyWord() {
-        return keyWord;
-    }
-
-    public void setKeyWord(String keyWord) {
-        this.keyWord = keyWord;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
     }
 }

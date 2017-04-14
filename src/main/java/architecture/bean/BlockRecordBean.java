@@ -17,17 +17,10 @@ public class BlockRecordBean {
     private long blockTime;
     private long times;
 
-    public BlockRecordBean() {
-    }
-
     public BlockRecordBean(String id, BlockRecordEntity entity) {
         this.id = id;
         BeanUtils.copyProperties(entity, this, "lastBlockTime");
         this.lastBlockTime = DateUtils.longToStringFull(entity.getLastBlockTime());
-    }
-
-    public String getId() {
-        return id;
     }
 
 

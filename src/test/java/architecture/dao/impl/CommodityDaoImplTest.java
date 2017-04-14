@@ -33,7 +33,7 @@ public class CommodityDaoImplTest extends PriceParityApplicationTests{
 
     @Test
     public void findById() throws Exception {
-        System.out.println(commodityDao.findById("AVtrAcly2QcGvg77hiEf"));
+        System.out.println(commodityDao.findById("AVtrz9WEWl2TViG5FV4v"));
     }
 
     @Test
