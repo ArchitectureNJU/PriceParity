@@ -53,7 +53,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
             List<SearchResult.Hit<T,Void>> hits = result.getHits(clazz);
             JsonObject jsonObject = result.getJsonObject();
             JsonArray hitsArray = jsonObject.getAsJsonObject("hits").getAsJsonArray("hits");
-            for (int i = 0; i < result.getTotal(); i++) {
+            for (int i = 0; i < result.getTotal()&&i<hitsArray.size(); i++) {
                 JsonObject object = hitsArray.get(i).getAsJsonObject();
                 results.add(new BeanResult<T>(hits.get(i).source,object.get("_id").getAsString()));
             }
