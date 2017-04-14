@@ -3,11 +3,15 @@ package architecture.crawler.parser;
 import architecture.crawler.model.Product;
 import architecture.crawler.util.CrawlerUtil;
 import architecture.crawler.util.FileUtil;
+import architecture.dao.CommodityDao;
+import architecture.entity.CommodityEntity;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  * Created by raychen on 2017/4/14.
  */
 public class EbayParser implements Parser {
+
+    @Resource
+    private CommodityDao commodityDao;
 
     private CrawlerUtil crawler = new CrawlerUtil();
 
@@ -61,16 +68,16 @@ public class EbayParser implements Parser {
 
     @Override
     public void addToDatabase(List<Product> products) {
-        for (Product p: products) {
-            FileUtil.printToFile(p.getId());
-            FileUtil.printToFile(p.getTime());
-            FileUtil.printToFile(p.getAvatar());
-            FileUtil.printToFile(p.getDepict());
-            FileUtil.printToFile(p.getPrice()+"");
-            FileUtil.printToFile(p.getSource());
-            FileUtil.printToFile(p.getTitle());
-            FileUtil.printToFile(p.getUrl());
-            FileUtil.printToFile("------------------------------------------------------");
+        for (Product pr: products) {
+            CommodityEntity entity = new CommodityEntity();
+            entity.setSource(pr.getSource());
+            entity.setAvatar(pr.getAvatar());
+            entity.setComments(new ArrayList<>());
+            entity.setPrice(Double.parseDouble(pr.getPrice()));
+            entity.setName(pr.getTitle());
+            entity.setUpdated_at(new Date(pr.getTime()));
+            entity.setUrl(pr.getUrl());
+            commodityDao.create(entity);
         }
     }
 }

@@ -11,7 +11,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,10 @@ import java.util.List;
  * Created by raychen on 2017/4/14.
  */
 public class DDParser implements Parser {
+
+    @Resource
+    private CommodityDao commodityDao;
+
     private CrawlerUtil crawler = new CrawlerUtil();
 
     @Override
@@ -90,6 +96,16 @@ public class DDParser implements Parser {
 
     @Override
     public void addToDatabase(List<Product> products) {
-        CommodityDao dao = new CommodityDaoImpl();
+        for (Product pr: products) {
+            CommodityEntity entity = new CommodityEntity();
+            entity.setSource(pr.getSource());
+            entity.setAvatar(pr.getAvatar());
+            entity.setComments(new ArrayList<>());
+            entity.setPrice(Double.parseDouble(pr.getPrice()));
+            entity.setName(pr.getTitle());
+            entity.setUpdated_at(new Date(pr.getTime()));
+            entity.setUrl(pr.getUrl());
+            commodityDao.create(entity);
+        }
     }
 }
