@@ -9,6 +9,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class MatchObj {
-    private String title;
-    private String content;
+    private String name;
 }
