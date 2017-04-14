@@ -38,8 +38,7 @@ public class ClientFactory {
                 if (client == null) {
                     JestClientFactory factory = new JestClientFactory();
                     factory.setHttpClientConfig(new HttpClientConfig.Builder(config.getHosts())
-                            .multiThreaded(true).discoveryEnabled(true)
-                            .discoveryFrequency(1L, TimeUnit.MINUTES).build());
+                            .multiThreaded(true).build());
                     client = factory.getObject();
                 }
             }
