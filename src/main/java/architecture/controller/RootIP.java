@@ -27,8 +27,8 @@ public class RootIP {
 
     @RequestMapping(value = "/root/ip",method = RequestMethod.GET)
     public String getBlockIP(
-            @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
-            @RequestParam(name = "size",defaultValue = "10",required = false)int size,
+            @RequestParam(name = "offset",defaultValue = "-1",required = false)int offset,
+            @RequestParam(name = "size",defaultValue = "-1",required = false)int size,
             Model model
     ){
         common(model, offset, size);

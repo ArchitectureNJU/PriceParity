@@ -24,8 +24,8 @@ public class RootRecord {
     ManageService manageService;
     @RequestMapping(value = "/root/record",method = RequestMethod.GET)
     public String getBlockRecord(
-            @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
-            @RequestParam(name = "size",defaultValue = "10",required = false)int size,
+            @RequestParam(name = "offset",defaultValue = "-1",required = false)int offset,
+            @RequestParam(name = "size",defaultValue = "-1",required = false)int size,
             Model model
     ){
         common(model, offset, size);

@@ -28,8 +28,8 @@ public class RootWord {
 
     @RequestMapping(value = "/root/word",method = RequestMethod.GET)
     public String getBlockWord(
-            @RequestParam(name = "offset",defaultValue = "0",required = false)int offset,
-            @RequestParam(name = "size",defaultValue = "10",required = false)int size,
+            @RequestParam(name = "offset",defaultValue = "-1",required = false)int offset,
+            @RequestParam(name = "size",defaultValue = "-1",required = false)int size,
             Model model
     ){
         common(model,offset,size);
@@ -38,7 +38,7 @@ public class RootWord {
 
     private void common(Model model,int offset,int size){
         List<BlockWordBean> it=manageService.getBlockWord(offset,size);
-        model.addAttribute("maskword",it);
+        model.addAttribute("maskWordList",it);
     }
 
     @RequestMapping(value = "/root/word/add",method = RequestMethod.GET)

@@ -22,7 +22,7 @@ public class SynonymEntity {
         if (word==null||word.length()==0){
             words=new ArrayList<>();
         }else {
-            String[] strs = word.split(",");
+            String[] strs = word.split(",|\\[|\\]");
             words= Arrays.asList(strs);
         }
     }

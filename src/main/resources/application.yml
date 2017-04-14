@@ -4,11 +4,13 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGACYHTML5
+  template:
+    cache: false
 ---
 elasticsearch:
   cluster: elasticsearch-price-parity
   hosts:
-    - http://123.206.103.124:9200
+#    - http://123.206.103.124:9200
     - http://115.159.143.242:9200
 ---
 system:
