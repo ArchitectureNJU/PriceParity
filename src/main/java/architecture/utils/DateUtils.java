@@ -1,5 +1,6 @@
 package architecture.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,5 +19,14 @@ public class DateUtils {
     }
     public static String dateToString(Date date) {
         return simpleFormat.format(date);
+    }
+    public static long StringFullToLong(String full){
+        Date date = null;
+        try {
+            date = fullFormat.parse(full);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
     }
 }

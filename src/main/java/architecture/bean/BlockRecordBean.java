@@ -14,13 +14,12 @@ public class BlockRecordBean {
     private String id;
     private String ip;
     private String lastBlockTime;
-    private String blockTime;
+    private long blockTime;
     private long times;
 
     public BlockRecordBean(String id, BlockRecordEntity entity) {
         this.id = id;
-        BeanUtils.copyProperties(entity, this, "lastBlockTime","blockTime");
+        BeanUtils.copyProperties(entity, this, "lastBlockTime");
         this.lastBlockTime = DateUtils.longToStringFull(entity.getLastBlockTime());
-        this.blockTime = DateUtils.longToStringFull(entity.getBlockTime());
     }
 }
