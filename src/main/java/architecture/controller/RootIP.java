@@ -34,7 +34,7 @@ public class RootIP {
             Model model
     ){
         common(model, offset, size);
-        return "";
+        return "intercept-manage";
     }
 
 

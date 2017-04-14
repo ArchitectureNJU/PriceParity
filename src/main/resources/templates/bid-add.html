@@ -10,18 +10,18 @@
   <div class="wrapper">
     <div class="card single-card">
       <h3 class="title">添加竞价商品</h3>
-      <form class="login-form" action="#" th:action="@{/bidrank/add}" method="post">
+      <form class="login-form" action="#" th:action="@{/root/bidrank/add}" method="post">
         <div class="form-item">
           <label for="id">竞价商品ID</label>
-          <input id="id" name="id" type="text" placeholder="请输入竞价商品ID"/>
+          <input id="id" name="commodityId" type="text" placeholder="请输入竞价商品ID"/>
         </div>
         <div class="form-item">
           <label for="price">竞价商品ID</label>
-          <input id="price" name="price" type="text" placeholder="请输入竞价金额"/>
+          <input id="price" name="money" type="text" placeholder="请输入竞价金额"/>
         </div>
         <div class="btn-block">
           <button type="submit" class="btn btn-primary btn-big">添加</button>
-          <a href="/bidrank" th:href="@{/bidrank}" class="btn btn-big">取消</a>
+          <a href="/root/bidrank" th:href="@{/root/bidrank}" class="btn btn-big">取消</a>
         </div>
       </form>
     </div>

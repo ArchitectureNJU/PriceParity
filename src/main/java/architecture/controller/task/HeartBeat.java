@@ -28,7 +28,7 @@ public class HeartBeat {
     private static Logger logger=Logger.getLogger(HeartBeat.class);
 
 
-    @Scheduled(fixedRate = 60000)
+//    @Scheduled(fixedRate = 60000)
     public void beat(){
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
         Map map = new HashMap<String, String>();
