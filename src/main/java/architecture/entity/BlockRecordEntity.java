@@ -16,10 +16,12 @@ public class BlockRecordEntity {
     private String ip;
     private long lastBlockTime;
     private long blockTime;
+    private long times;
 
     public BlockRecordEntity(BlockRecordBean bean) {
         this.ip = bean.getIp();
-        this.blockTime = bean.getBlockTime();
+        this.times = bean.getTimes();
         this.lastBlockTime = new Date(bean.getLastBlockTime()).getTime();
+        this.blockTime = new Date(bean.getBlockTime()).getTime();
     }
 }
