@@ -10,7 +10,7 @@
   <div class="wrapper">
     <div class="goods-list" th:each="goods:${goodsList}">
       <div class="brief">
-        <img src="/static/img/demo3.png" th:src="@{/img/demo3.png}" alt="" class="goods-img">
+        <img src="/static/img/demo3.png" th:src="${goods.avatar}" alt="暂无图片" class="goods-img">
         <div class="brief-text">
           <div class="goods-name"><a class="goods-name-text" th:href="@{'/commodity/info?id='+${goods.id}}" th:text="${goods.name}">Apple Watch</a><p class="price">¥<span th:text="${goods.price}">120</span></p></div>
           <p class="description" th:text="${goods.summary}">Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good. Apple Watch is pretty good.</p>
