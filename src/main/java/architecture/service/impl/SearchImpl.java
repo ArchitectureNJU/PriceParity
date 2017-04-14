@@ -43,6 +43,7 @@ public class SearchImpl implements SearchService {
                 List<String> temp=list.stream().filter(b->b.has(key)).map(b->b.getZero()).collect(Collectors.toList());
                 keywords.addAll(temp);
             }
+            keywords.addAll(Arrays.asList(keys));
 
         }
         List<CommodityBean> preResult=commodityDao.findByKeyWord(keywords, offset, limit);

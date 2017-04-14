@@ -25,7 +25,7 @@ public class Search {
     public String search(
             @RequestParam(name = "key")String key,
             @RequestParam(name = "page",defaultValue = "0")int page,
-            @RequestParam(name = "split",defaultValue = "10")int split,
+            @RequestParam(name = "split",defaultValue = "500")int split,
             Model model
     ){
 
